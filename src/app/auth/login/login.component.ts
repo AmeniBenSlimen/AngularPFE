@@ -4,7 +4,6 @@ import { TokenstorageService } from 'src/app/services/tokenstorage.service';
 import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -69,5 +68,5 @@ export class LoginComponent implements OnInit{
     );
    
   }
-  
+
 }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:8084/clinique/api/auth'
+  private url = 'http://localhost:8083/clinique/api/auth'
 
   constructor(private http:HttpClient) { }
   login(forms:any):Observable<any>{
@@ -15,9 +15,6 @@ export class AuthService {
   }
   register(forms:any):Observable<any>{
     return this.http.post(this.url+'/signup',
-    {
-      username:forms.username,
-      email:forms.email,
-      password:forms.password});
+    {username:forms.username,fullname:forms.fullname,email:forms.email,phone:forms.phone,password:forms.password});
   }
 }

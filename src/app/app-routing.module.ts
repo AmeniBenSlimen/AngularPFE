@@ -4,12 +4,14 @@ import { MenuDashboardComponent } from './dashboard-admin/menu-dashboard/menu-da
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BodyDashboardComponent } from './dashboard-admin/body-dashboard/body-dashboard.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 const routes: Routes = [  
 {path:'admin',component:MenuDashboardComponent , children:[
-{path:'dashboard' , component: BodyDashboardComponent}
-
+{path:'dashboard' , component: BodyDashboardComponent},
+{path:'users' , component: AllUsersComponent }
 ] },
+
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent}];
 

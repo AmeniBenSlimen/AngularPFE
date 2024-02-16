@@ -48,35 +48,84 @@
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Registration</span>
-              <form id="stripe-login">
-                <div class="field padding-bottom--24">
-                  <label for="username">Username</label>
-                  <input type="text" name="username">
-                </div>
-                <div class="field padding-bottom--24">
-                    <label for="fullname">Fullname</label>
-                    <input type="text" name="fullname">
-                  </div>
+              <form id="stripe-login" *ngIf="!isLogedIn" [formGroup]="form" (ngSubmit)="onSubmit()"
+             >
+             <div class="field padding-bottom--24">
+              <label for="username">Username</label>
+              <input type="text" name="username" formControlName="username">
+              <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="submitted && username?.invalid"
+            >
+              Username is required!
+            </div>
+            </div>
+            <div class="field padding-bottom--24">
+              <label for="fullname">Fullname</label>
+              <input type="text" name="fullname" formControlName="fullname">
+              <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="submitted && fullname?.invalid"
+            >
+              Fullname is required!
+            </div>
+            </div>
                   <div class="field padding-bottom--24">
                     <label for="email">Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" formControlName="email">
                   </div>
                   <div class="field padding-bottom--24">
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone">
+                    <input type="text" name="phone" formControlName="phone">
                   </div>
-                <div class="field padding-bottom--24">
-                  <div class="grid--50-50">
-                    <label for="password">Password</label>
-                    <div class="reset-pass">
-                      <a href="#"></a>
+                  <div class="field padding-bottom--24">
+                    <label for="password">password</label>
+                    <input type="password" name="password" formControlName="password" >
+                    <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="submitted &&   password?.invalid"
+                  >
+             
+                    <div *ngIf="password?.errors!['required']">Password is required</div>
+                    <div *ngIf="password?.errors!['minlength']">
+                      Password must be at least 6 characters
                     </div>
                   </div>
-                  <input type="password" name="password">
-                </div>
-                <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Register" style="color: #5469d4;font-weight: bold;">
-                </div>
+                  </div>
+
+                  <div class="field padding-bottom--24">
+                    <label for="password">Confirm password</label>
+                    <input type="password" name="confirmPassword" formControlName="confirmPassword" >
+                    <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="submitted &&   password?.invalid"
+                  >
+<!-- register.component.html -->
+
+<div *ngIf="submitted && form.get('confirmPassword')?.errors?.['mismatch'] && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">
+  Les mots de passe ne correspondent pas.
+</div>
+
+
+                  </div>
+                  </div>
+                
+                  <div class="field padding-bottom--24">
+                    <input type="submit" name="submit" value="Register" style="color: #5469d4;font-weight: bold;">
+                    <div class="form-group">
+                      <div
+                        class="alert alert-danger"
+                        role="alert"
+                        *ngIf=" isLoginFailed"
+                      >
+                        Login failed: {{ errorMessage }}
+                      </div>
+                    </div>
+                  </div>
               </form>
             </div>
           </div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="keywords"
+      content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template"
+    />
+    <meta
+      name="description"
+      content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+    
+  
+  </head>
+
+  <body>
+   
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+      </div>
+    </div>
+  
+    <div
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin5"
+      data-sidebartype="full"
+      data-sidebar-position="absolute"
+      data-header-position="absolute"
+      data-boxed-layout="full"
+    >
+     
+    
+      <div class="">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">List of users </h5>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Fullname</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Phoen</th>
+                      <th scope="col">Rele</th>
+                      <th scope="col">Actions</th>
+                      <th scope="col"></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let u of users">
+                      <th scope="row">{{u?.id}}</th>
+                      <td>{{u?.username}}</td>
+                      <td>{{u?.fullname}}</td>
+                      <td>{{u?.email}}</td>
+                      <td>{{u?.phone}}</td>
+                      <td></td>
+                      <td><button class="btn btn-primary btn-sm">Update</button></td>
+                      <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div></div></div></div></div></div>
+   
+    
+  </body>
+</html>

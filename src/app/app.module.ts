@@ -9,13 +9,17 @@ import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { authInterceptorProvider } from './services/authinterceptor.service';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderDashboardComponent,
     MenuDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
