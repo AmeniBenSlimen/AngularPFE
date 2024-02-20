@@ -24,4 +24,7 @@ export class TokenstorageService {
   public getUser(){
     return JSON.parse(sessionStorage.getItem(this.USER_KEY)!);
   }
+  clean(): void {
+    window.localStorage.clear();
+  }
 }

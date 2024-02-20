@@ -12,9 +12,11 @@ export class AllUsersComponent implements OnInit{
 constructor(private service:UserService){}
 
 ngOnInit(): void {
+
   this.service.getUsers().subscribe({
     next: (data) =>{
       this.users = data ;
+    
     },
     error : (Error) =>{
       console.log(Error);

@@ -11,7 +11,7 @@ import { authInterceptorProvider } from './services/authinterceptor.service';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
-
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,7 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [authInterceptorProvider],
+  providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
