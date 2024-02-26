@@ -8,15 +8,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./menu-dashboard.component.css']
 })
 export class MenuDashboardComponent implements OnInit{
-  constructor(private authService : AuthService) {
+  constructor(public authService : AuthService) {
   }
   showAdminBoard = false;
   AuthUserSub! : Subscription;
   ngOnInit(): void {
-    
+
    }
+
   handleLogout() {
     this.authService.logout();
   }
- 
+
 }

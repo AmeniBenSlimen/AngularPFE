@@ -52,66 +52,65 @@
              >
              <div class="field padding-bottom--24">
               <label for="username">Username</label>
-              <input type="text" name="username" formControlName="username">
-              <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="submitted && username?.invalid"
-            >
+              <input type="text" name="username" formControlName="username" #username required>
+              <div class="alert alert-danger" role="alert" *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['required']">
               Username is required!
             </div>
             </div>
             <div class="field padding-bottom--24">
               <label for="fullname">Fullname</label>
-              <input type="text" name="fullname" formControlName="fullname">
+              <input type="text" name="fullname" formControlName="fullname"  required #fullname>
               <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="submitted && fullname?.invalid"
-            >
+              class="alert alert-danger" role="alert" *ngIf="form.get('fullname')?.touched && form.get('fullname')?.errors?.['required']">
               Fullname is required!
             </div>
             </div>
                   <div class="field padding-bottom--24">
                     <label for="email">Email</label>
-                    <input type="email" name="email" formControlName="email">
+                    <input type="email" name="email" formControlName="email" #email required>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
+                      Email is required!
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
+                      Please enter a valid email address.
+                    </div>
                   </div>
                   <div class="field padding-bottom--24">
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone" formControlName="phone">
+                    <input type="text" name="phone" formControlName="phone" minlength="8" #phone required>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('minlength')">
+                      Phone must be 8 numbers
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('phone')?.touched && form.get('phone')?.errors?.['required']">Phone is required!</div>
+                    
+                    
+
                   </div>
                   <div class="field padding-bottom--24">
                     <label for="password">password</label>
-                    <input type="password" name="password" formControlName="password" >
-                    <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="submitted &&   password?.invalid"
-                  >
-             
-                    <div *ngIf="password?.errors!['required']">Password is required</div>
-                    <div *ngIf="password?.errors!['minlength']">
-                      Password must be at least 6 characters
+                    <input type="password" name="password" formControlName="password" #password minlength="8" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+                      Password is required!
                     </div>
-                  </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('minlength')">
+                      Password must be minimum 8 characters
+                    </div>
+          
+                  
                   </div>
 
                   <div class="field padding-bottom--24">
                     <label for="password">Confirm password</label>
-                    <input type="password" name="confirmPassword" formControlName="confirmPassword" >
-                    <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="submitted &&   password?.invalid"
-                  >
-<!-- register.component.html -->
-
-<div *ngIf="submitted && form.get('confirmPassword')?.errors?.['mismatch'] && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">
-  Les mots de passe ne correspondent pas.
-</div>
-
-
+                    <input type="password" name="confirmPassword" formControlName="confirmPassword" #confirmPassword required>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.errors?.['required']">
+                      Confirm password is required
+                    </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="form.get('confirmPassword')?.errors?.['mismatch'] && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">
+                    Password do not match please verify!
                   </div>
+
+
+                  
                   </div>
                 
                   <div class="field padding-bottom--24">
@@ -122,7 +121,7 @@
                         role="alert"
                         *ngIf=" isLoginFailed"
                       >
-                        Login failed: {{ errorMessage }}
+                        Login failed
                       </div>
                     </div>
                   </div>

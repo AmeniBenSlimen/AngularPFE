@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenstorageService } from 'src/app/services/tokenstorage.service';
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   errorMessage='';
   roles:string[]=[];
   submitted:boolean = false ;
-
+  existingFullnames: string[] = []; 
   constructor(private authservice : AuthService , 
     private tokenservice : TokenstorageService ,
     private fb:FormBuilder,
@@ -24,15 +24,15 @@ export class RegisterComponent implements OnInit {
     ngOnInit(): void {
       if(this.tokenservice.getToken()!= null){
         this.isLogedIn = true;
-        this.roles = this.tokenservice.getUser().role;
+        this.roles = this.roles;
        // alert('on est connecte'+this.isLogedIn+"role :"+this.roles);
       }
   
       this.form = this.fb.group({
         username: ['' , Validators.required] ,
-        fullname: ['', Validators.required],
+        fullname: ['', [Validators.required], [this.uniqueFullnameValidator(this.existingFullnames)]],
         email: ['', [Validators.required, Validators.email]],
-        phone: ['', Validators.required],
+        phone: ['', Validators.required, Validators.minLength(6)],
         password: ['' , [Validators.required , Validators.minLength(6)]] ,
         confirmPassword: ['', Validators.required]
       }, {
@@ -55,7 +55,15 @@ export class RegisterComponent implements OnInit {
       }
     }
     
-    
+    uniqueFullnameValidator(existingFullnames: string[]): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const value = control.value;
+        if (existingFullnames.includes(value)) {
+          return { 'uniqueFullname': { value: value } };
+        }
+        return null;
+      };
+    }
     
     get username ()
     {
@@ -69,6 +77,7 @@ export class RegisterComponent implements OnInit {
     {
       return this.form.get('fullname')
     }
+    get phone(){return this.form.get('phone')}
     onSubmit(){
       this.submitted = true ;
       if(this.form.invalid)
@@ -83,7 +92,7 @@ export class RegisterComponent implements OnInit {
           this.submitted = false ;
           this.isLoginFailed = false;
           this.isLogedIn = true;
-          this.roles = this.tokenservice.getUser().role;
+          this.roles = this.roles;
           this.router.navigate(['/admin/dashboard'])
         },
         error => {

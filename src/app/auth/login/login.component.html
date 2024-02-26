@@ -63,17 +63,10 @@
                 </div>
                 <div class="field padding-bottom--24">
                     <label for="password">password</label>
-                    <input type="password" name="password" formControlName="password" >
-                    <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="submitted &&   password?.invalid"
-                  >
-             
-                    <div *ngIf="password?.errors!['required']">Password is required</div>
-                    <div *ngIf="password?.errors!['minlength']">
-                      Password must be at least 6 characters
-                    </div>
+                    <input type="password" name="password" formControlName="password" #password minlength="8" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+                   Password is required
+                  
                   </div>
                   </div>
                 
@@ -85,7 +78,7 @@
                       role="alert"
                       *ngIf=" isLoginFailed"
                     >
-                      Login failed: {{ errorMessage }}
+                      Login failed:  Incorrect username or password 
                     </div>
                   </div>
                 </div>
@@ -93,7 +86,7 @@
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span><a routerLink="/login">Sign in</a></span>
+            <span><a routerLink="/register">Sign up</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">© Stackfindover</a></span>
               <span><a href="#">Contact</a></span>
