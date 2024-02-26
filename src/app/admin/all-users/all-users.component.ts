@@ -9,6 +9,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AllUsersComponent implements OnInit{
   users  : User[] = [];
+  p: number = 1;
+  itemsPerPage : number =10;
+  totalUsers:any;
 constructor(private service:UserService){}
 
 ngOnInit(): void {
@@ -16,6 +19,7 @@ ngOnInit(): void {
   this.service.getUsers().subscribe({
     next: (data) =>{
       this.users = data ;
+      this.totalUsers=data.length;
     
     },
     error : (Error) =>{

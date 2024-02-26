@@ -12,6 +12,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AuthService } from './services/auth.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AuthService } from './services/auth.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
