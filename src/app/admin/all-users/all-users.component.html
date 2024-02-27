@@ -46,7 +46,14 @@
                 <div class="card-body">
                   <h5 class="card-title mb-0">List of users </h5>
                 </div>
-                
+                <div class="main-search-input-wrap">
+                  <div class="main-search-input fl-wrap">
+                      <div class="main-search-input-item">
+                        <input type="text"  value="" placeholder="Search Users..." [(ngModel)]="searchtext">
+                      </div>                                
+                  
+                </div>                      
+              </div>
                 <table class="table">
                   <thead>
                     <tr>
@@ -62,7 +69,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let u of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                    <tr *ngFor="let u of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
                       <th scope="row">{{u?.id}}</th>
                       <td>{{u?.username}}</td>
                       <td>{{u?.fullname}}</td>

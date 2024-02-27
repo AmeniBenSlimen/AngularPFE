@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { DialogServiceService } from 'src/app/services/dialog-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,9 @@ export class AllUsersComponent implements OnInit{
   p: number = 1;
   itemsPerPage : number =10;
   totalUsers:any;
-constructor(private service:UserService){}
+  searchtext:any;
+constructor(private service:UserService,
+            private dialogService: DialogServiceService){}
 
 ngOnInit(): void {
 
@@ -28,4 +31,15 @@ ngOnInit(): void {
   });
 }
 
+deleteUser(userId: number): void {
+  const dialogRef = this.dialogService.openConfirmDialog('Are you sure you want to delete this user?');
+  dialogRef.afterClosed().subscribe({
+    next: (result:any) => {
+    if (result) {
+      console.log('User deleted successfully');
+    }
+   }
+   }
+    );
+}
 }

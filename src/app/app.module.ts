@@ -13,6 +13,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AuthService } from './services/auth.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FilterPipe } from './filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MenuDashboardComponent,
     LoginComponent,
     RegisterComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    DeleteUserComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDialogModule
   ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
