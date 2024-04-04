@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { DialogServiceService } from 'src/app/services/dialog-service.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,7 +16,8 @@ export class AllUsersComponent implements OnInit{
   totalUsers:any;
   searchtext:any;
 constructor(private service:UserService,
-            private dialogService: DialogServiceService){}
+            private dialogService: DialogServiceService,
+            private router:Router){}
 
 ngOnInit(): void {
 
@@ -30,16 +32,7 @@ ngOnInit(): void {
     }
   });
 }
-
-deleteUser(userId: number): void {
-  const dialogRef = this.dialogService.openConfirmDialog('Are you sure you want to delete this user?');
-  dialogRef.afterClosed().subscribe({
-    next: (result:any) => {
-    if (result) {
-      console.log('User deleted successfully');
-    }
-   }
-   }
-    );
+consulterPermissions(id: number) {
+  this.router.navigate(['/permission', id]);
 }
 }

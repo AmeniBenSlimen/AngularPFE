@@ -27,10 +27,11 @@
   </head>
 
   <body>
-
+    <br>
+    <button class="btn btn-primary btn-sm" style="margin-left: 1180px;" routerLink="/admin/add-role">Ajouter role</button>
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Liste des utilisateurs</h5>
+                  <h5 class="card-title">Liste des roles</h5>
                   <div class="table-responsive">
                     <div class="main-search-input-wrap">
                       <div class="main-search-input fl-wrap">
@@ -46,31 +47,26 @@
                     >
                       <thead>
                         <tr>
-                          <th>Matricule</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>E-mail</th>
-                          <th>Compte désactivé</th>
+                          <th>id</th>
+                          <th>Libellé role</th>
+                          <th>Code role</th>
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let u of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
+                      <tbody *ngFor="let r of roles | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
                         <tr>
-                          <td>{{u?.id}}</td>
-                          <td>{{u?.username}}</td>
-                          <td>{{u?.fullname}}</td>
-                          <td>{{u?.email}}</td>
-                          <td>{{u?.status}}</td>
-                          <td><button class="btn btn-primary btn-sm" [routerLink]="['/admin/permission', u.id]">Consulter permission</button></td>
+                          <td>{{r?.id}}</td>
+                          <td>{{r?.lbRole}}</td>
+                          <td>{{r?.cdRole}}</td>
+                          <td><button class="btn btn-primary btn-sm" style="background-color:#00881D;border-color: #00881D;" [routerLink]="['/admin/updateRole', r.id]">Update</button></td>
                         </tr>
                       
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>Matricule</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>E-mail</th>
+                          <th>id</th>
+                          <th>Libellé role</th>
+                          <th>Code role</th>
                          <th>Action</th>
                         </tr>
                       </tfoot>

@@ -5,6 +5,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BodyDashboardComponent } from './dashboard-admin/body-dashboard/body-dashboard.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { PermissionComponent } from './admin/permission/permission.component';
+import { ListRolesComponent } from './admin/list-roles/list-roles.component';
+import { UpdateRoleComponent } from './admin/update-role/update-role.component';
+import { AddRoleComponent } from './admin/add-role/add-role.component';
 
 const routes: Routes = [  
   {
@@ -13,7 +17,11 @@ const routes: Routes = [
     
     children: [
       { path: 'dashboard', component: BodyDashboardComponent },
-      { path: 'users', component: AllUsersComponent }
+      { path: 'users', component: AllUsersComponent },
+      { path: 'permission/:id', component: PermissionComponent },
+      { path: 'roles', component: ListRolesComponent},
+      { path: 'updateRole/:id', component: UpdateRoleComponent},
+      { path: 'add-role', component: AddRoleComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

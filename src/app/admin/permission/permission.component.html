@@ -1,0 +1,33 @@
+<!-- role-management.component.html -->
+<div class="user-management" style="
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+">
+   <h2>Gestion des rôles par utilisateur</h2>
+   <div class="form-group">
+    <label for="nom">Nom:</label>
+    <input type="text" disabled [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nom Produit" id="nom">
+  </div>
+
+  <label for="nom">Rôles:</label>
+  <div style="margin-bottom: 10px;">
+    <div *ngFor="let role of roles">
+      <label>
+        <input type="checkbox">
+        <label for="">{{ role.cdRole }}</label>
+      </label>
+    </div>
+  </div>
+  <button style="
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    " (click)="assignRoles()">Appliquer</button>
+</div>

@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
           this.isLoginFailed = false;
           this.isLogedIn = true;
           this.roles = this.roles;
-          this.router.navigate(['/admin/dashboard'])
+          
         },
         error => {
           this.isLoginFailed = true;

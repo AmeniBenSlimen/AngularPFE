@@ -7,6 +7,7 @@ export class TokenstorageService {
   TOKEN_KEY = 'auth-token';
   USER_KEY = 'auth-user';
   constructor() { }
+  
   signOut(){
     window.sessionStorage.clear();
   }

@@ -11,9 +11,11 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
+  // gérer les tokens 
   helper=new JwtHelperService()
   role=''
-  private url = 'http://localhost:8083/clinique/api/auth'
+  private url = 'http://localhost:8084/bank/api/auth'
+  // pour connaître l'état d'authentification de l'utilisateur
   AuthenticatedUser$  = new BehaviorSubject<User | null>(null);
   constructor(private http:HttpClient, private tokenstorageService : TokenstorageService,private router: Router) {
    }

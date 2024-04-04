@@ -16,6 +16,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter.pipe';
+import { PermissionComponent } from './admin/permission/permission.component';
+import { ListRolesComponent } from './admin/list-roles/list-roles.component';
+import { RouterModule } from '@angular/router';
+import { UpdateRoleComponent } from './admin/update-role/update-role.component';
+import { AddRoleComponent } from './admin/add-role/add-role.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { FilterPipe } from './filter.pipe';
     RegisterComponent,
     AllUsersComponent,
     DeleteUserComponent,
-    FilterPipe
+    FilterPipe,
+    PermissionComponent,
+    ListRolesComponent,
+    UpdateRoleComponent,
+    AddRoleComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +44,8 @@ import { FilterPipe } from './filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
