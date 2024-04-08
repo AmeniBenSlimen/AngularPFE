@@ -21,6 +21,8 @@ import { ListRolesComponent } from './admin/list-roles/list-roles.component';
 import { RouterModule } from '@angular/router';
 import { UpdateRoleComponent } from './admin/update-role/update-role.component';
 import { AddRoleComponent } from './admin/add-role/add-role.component';
+import { DeleteRoleUserComponent } from './admin/delete-role-user/delete-role-user.component';
+import { RoleUserComponent } from './admin/role-user/role-user.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AddRoleComponent } from './admin/add-role/add-role.component';
     PermissionComponent,
     ListRolesComponent,
     UpdateRoleComponent,
-    AddRoleComponent
+    AddRoleComponent,
+    DeleteRoleUserComponent,
+    RoleUserComponent
   ],
   imports: [
     BrowserModule,

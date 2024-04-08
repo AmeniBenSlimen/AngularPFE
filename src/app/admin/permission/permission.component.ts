@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PermissionComponent {
   user: User = new User() ;
   userId:number = 0;
-  roles  : Roles[] = [];
+  userRoles  : Roles[] = [];
   selectedRoles: Roles[] = [];
   constructor(private service:UserService ,private sniper:ActivatedRoute, private router:Router){ }
 
@@ -24,7 +24,7 @@ export class PermissionComponent {
         this.user = res;
         this.service.getRoles().subscribe({
           next: (data) => {
-            this.roles = data;
+            this.userRoles = data;
           },
         });
       },
@@ -62,9 +62,9 @@ export class PermissionComponent {
     });
   }
   get isAdmin() {
-    return this.user && this.user.roles && 
-           (this.user.roles.some(role => role.cdRole === 'ROLE_ADMIN') || 
-            this.user.roles.some(role => role.cdRole === 'ROLE_USER'));
+    return this.user && this.user.userRoles && 
+           (this.user.userRoles.some(role => role.cdRole === 'ROLE_ADMIN') || 
+            this.user.userRoles.some(role => role.cdRole === 'ROLE_USER'));
   }
   
   

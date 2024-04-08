@@ -52,6 +52,7 @@
                           <th>E-mail</th>
                           <th>Compte désactivé</th>
                           <th>Action</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let u of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
@@ -62,6 +63,7 @@
                           <td>{{u?.email}}</td>
                           <td>{{u?.status}}</td>
                           <td><button class="btn btn-primary btn-sm" [routerLink]="['/admin/permission', u.id]">Consulter permission</button></td>
+                          <td><button class="btn btn-primary btn-sm" [routerLink]="['/admin/list-role-user', u.id]">Role user</button></td>
                         </tr>
                       
                       </tbody>

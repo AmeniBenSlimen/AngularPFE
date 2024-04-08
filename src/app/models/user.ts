@@ -8,5 +8,5 @@ export class User {
     password?:string;
     phone?:string;
     status?:boolean;
-    roles?: Roles[];
+    userRoles?: Roles[];
 }    

@@ -28,7 +28,11 @@ export class UserService {
     const url= `${this.Url}/getAllRoles`;
     return this.http.get<Roles[]>(url);
   }
-  /*getUser(id:any){
-    return this.http.get<any>(`${this.BasicUrl}/get?id=${id}`);
- }*/
+  public getUserRole(id:number): Observable<User>{
+    const url= `${this.Url}/userRole/${id}`;
+    return this.http.get<User>(url);
+  }
+  removeRoleFromUser(userId: number, roleId: number) {
+    return this.http.delete(`${this.Url}/user/${userId}/roles/${roleId}`);
+  }
 }
