@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteUserComponent } from '../admin/delete-user/delete-user.component';
+import { UpdateUserComponent } from '../admin/update-user/update-user.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,9 @@ import { DeleteUserComponent } from '../admin/delete-user/delete-user.component'
 export class DialogServiceService {
 
   constructor(private dialog: MatDialog) { }
-  openConfirmDialog(message: string): any {
-    return this.dialog.open(DeleteUserComponent, {
-      width: '400px',
-      data: message
+  openConfirmDialog(): any {
+    return this.dialog.open(UpdateUserComponent, {
+      width: '400px'
     });
   }
 }

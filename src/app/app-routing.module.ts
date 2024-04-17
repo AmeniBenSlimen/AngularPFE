@@ -9,8 +9,9 @@ import { PermissionComponent } from './admin/permission/permission.component';
 import { ListRolesComponent } from './admin/list-roles/list-roles.component';
 import { UpdateRoleComponent } from './admin/update-role/update-role.component';
 import { AddRoleComponent } from './admin/add-role/add-role.component';
-import { DeleteRoleUserComponent } from './admin/delete-role-user/delete-role-user.component';
 import { RoleUserComponent } from './admin/role-user/role-user.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
 
 const routes: Routes = [  
   {
@@ -24,8 +25,9 @@ const routes: Routes = [
       { path: 'roles', component: ListRolesComponent},
       { path: 'updateRole/:id', component: UpdateRoleComponent},
       { path: 'add-role', component: AddRoleComponent},
-      { path: 'delete-role-user', component:DeleteRoleUserComponent},
-      { path: 'list-role-user/:id', component:RoleUserComponent}
+      { path: 'list-role-user/:id', component:RoleUserComponent},
+      { path: 'list-users', component:ListUsersComponent},
+      { path: 'update-user/:id', component:UpdateUserComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

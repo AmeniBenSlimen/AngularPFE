@@ -35,4 +35,10 @@ export class UserService {
   removeRoleFromUser(userId: number, roleId: number) {
     return this.http.delete(`${this.Url}/user/${userId}/roles/${roleId}`);
   }
+  updateUser(id:any,user:any){
+    return this.http.put<User>(`${this.Url}/updateUser/${id}`,user);
+ }
+ deleteUser(id:any){
+  return this.http.delete<any>(`${this.Url}/deleteUser/${id}`);
+}
 }

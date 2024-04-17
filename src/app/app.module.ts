@@ -13,7 +13,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AuthService } from './services/auth.service';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter.pipe';
 import { PermissionComponent } from './admin/permission/permission.component';
@@ -21,8 +20,9 @@ import { ListRolesComponent } from './admin/list-roles/list-roles.component';
 import { RouterModule } from '@angular/router';
 import { UpdateRoleComponent } from './admin/update-role/update-role.component';
 import { AddRoleComponent } from './admin/add-role/add-role.component';
-import { DeleteRoleUserComponent } from './admin/delete-role-user/delete-role-user.component';
 import { RoleUserComponent } from './admin/role-user/role-user.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +32,14 @@ import { RoleUserComponent } from './admin/role-user/role-user.component';
     LoginComponent,
     RegisterComponent,
     AllUsersComponent,
-    DeleteUserComponent,
     FilterPipe,
     PermissionComponent,
     ListRolesComponent,
     UpdateRoleComponent,
     AddRoleComponent,
-    DeleteRoleUserComponent,
-    RoleUserComponent
+    RoleUserComponent,
+    ListUsersComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
