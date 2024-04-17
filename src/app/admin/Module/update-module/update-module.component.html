@@ -1,0 +1,43 @@
+<br><br><br>
+<div class="row" style="margin-left: 400px;">
+    <div class="col-md-6">
+      <div class="card">
+        <form class="form-horizontal">
+          <div class="card-body">
+            <h4 class="card-title">Mise à jours module</h4>
+            <div class="form-group row">
+              <label
+                for="fname"
+                class="col-sm-3 text-end control-label col-form-label"
+                >Code module</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  [(ngModel)]="module.cdModul" [ngModelOptions]="{standalone: true}" disabled class="form-control" placeholder="Libellé role" id="lbRole"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="lname"
+                class="col-sm-3 text-end control-label col-form-label"
+                >Libellé module</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  [(ngModel)]="module.lbModul" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Code role" id="cdRole"
+                />
+              </div>
+            </div>
+            </div>
+          <div class="border-top">
+            <div class="card-body" style="display: flex; justify-content: center;">
+              <button type="submit" (click) ="updateModule()" class="btn btn-primary" style="background-color:#00881D;border-color: #00881D;">
+                Enregistrer
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>

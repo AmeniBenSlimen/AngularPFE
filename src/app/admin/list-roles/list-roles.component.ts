@@ -11,7 +11,7 @@ import { RoleService } from 'src/app/services/role.service';
 export class ListRolesComponent implements OnInit{
   roles  : Roles[] = [];
   p: number = 1;
-  itemsPerPage : number =10;
+  itemsPerPage : number =5;
   totalUsers:any;
   searchtext:any;
   constructor(private service:RoleService,

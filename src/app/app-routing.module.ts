@@ -12,6 +12,9 @@ import { AddRoleComponent } from './admin/add-role/add-role.component';
 import { RoleUserComponent } from './admin/role-user/role-user.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
+import { ListModuleComponent } from './admin/Module/list-module/list-module.component';
+import { UpdateModuleComponent } from './admin/Module/update-module/update-module.component';
+import { AddModuleComponent } from './admin/Module/add-module/add-module.component';
 
 const routes: Routes = [  
   {
@@ -27,7 +30,10 @@ const routes: Routes = [
       { path: 'add-role', component: AddRoleComponent},
       { path: 'list-role-user/:id', component:RoleUserComponent},
       { path: 'list-users', component:ListUsersComponent},
-      { path: 'update-user/:id', component:UpdateUserComponent}
+      { path: 'update-user/:id', component:UpdateUserComponent},
+      { path: 'list-modules', component:ListModuleComponent},
+      { path: 'update-module/:cdModul', component:UpdateModuleComponent},
+      { path: 'add-module', component:AddModuleComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

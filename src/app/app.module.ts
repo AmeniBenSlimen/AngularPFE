@@ -23,6 +23,9 @@ import { AddRoleComponent } from './admin/add-role/add-role.component';
 import { RoleUserComponent } from './admin/role-user/role-user.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
+import { ListModuleComponent } from './admin/Module/list-module/list-module.component';
+import { UpdateModuleComponent } from './admin/Module/update-module/update-module.component';
+import { AddModuleComponent } from './admin/Module/add-module/add-module.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { UpdateUserComponent } from './admin/update-user/update-user.component';
     AddRoleComponent,
     RoleUserComponent,
     ListUsersComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ListModuleComponent,
+    UpdateModuleComponent,
+    AddModuleComponent
   ],
   imports: [
     BrowserModule,
