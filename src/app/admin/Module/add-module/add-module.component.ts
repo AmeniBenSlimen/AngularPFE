@@ -19,7 +19,6 @@ export class AddModuleComponent {
 create(): void {
   this.service.addModule(this.module).subscribe({
     next: (data) => {
-      // Notification SweetAlert
       Swal.fire({
         title: 'Succès!',
         text: 'Le module a été ajouté avec succès.',
@@ -34,7 +33,6 @@ create(): void {
     },
     error: (err) => {
       console.log(err);
-      // Notification d'erreur avec SweetAlert
       Swal.fire({
         title: 'Erreur!',
         text: 'Une erreur est survenue lors de l\'ajout du module.',

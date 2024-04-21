@@ -1,8 +1,9 @@
-import { Component, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Roles } from 'src/app/models/roles';
 import { User } from 'src/app/models/user';
+import { RoleService } from 'src/app/services/role.service';
+import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,61 +12,66 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./permission.component.css']
 })
 export class PermissionComponent {
-  user: User = new User() ;
-  userId:number = 0;
-  userRoles  : Roles[] = [];
-  selectedRoles: Roles[] = [];
-  constructor(private service:UserService ,private sniper:ActivatedRoute, private router:Router){ }
+  roles: Roles[] = [];
+  user: User = new User();
+  userId: number = 0;
+  users: User[] = [];
+
+  constructor(private roleService: RoleService,
+              private service: UserService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userId = this.sniper.snapshot.params['id'];
-    this.service.getByUserId(this.userId).subscribe({
-      next: (res) => {
-        this.user = res;
-        this.service.getRoles().subscribe({
-          next: (data) => {
-            this.userRoles = data;
-          },
-        });
+    this.userId = this.route.snapshot.params['id'];
+    this.loadUser(this.userId);
+    this.loadRoles();
+  }
+
+  loadUser(userId: number): void {
+    this.service.getByUserId(userId).subscribe(
+      (data: User) => {
+        this.user = data;
       },
-      error: (error) => {
-        console.error('error fetching user with id :' + this.userId, error);
+      (error: any) => {
+        console.error('Error fetching user:', error);
       }
-    });
+    );
   }
-  onRoleChange(role: Roles, isChecked: boolean) {
-    if (isChecked) {
-      // Vérifier si le rôle est déjà dans la liste des rôles sélectionnés
-      const existingIndex = this.selectedRoles.findIndex(selectedRole => selectedRole.id === role.id);
-      if (existingIndex === -1) {
-        // Si le rôle n'est pas déjà sélectionné, l'ajouter à la liste
-        this.selectedRoles.push(role);
+
+  loadRoles(): void {
+    this.roleService.getRoles().subscribe(
+      (data: Roles[]) => {
+        this.roles = data.map(role => ({ ...role, selected: false }));
+      },
+      (error: any) => {
+        console.error('Error fetching roles:', error);
       }
-    } else {
-      // Retirer le rôle de la liste des rôles sélectionnés s'il est décoché
-      const index = this.selectedRoles.findIndex(selectedRole => selectedRole.id === role.id);
-      if (index !== -1) {
-        this.selectedRoles.splice(index, 1);
-      }
-    }
+    );
   }
-  
-  assignRoles() {
-    this.service.assignRolesToUser(this.userId, this.selectedRoles).subscribe({
+
+  submitForm(): void {
+    const selectedRoles = this.roles.filter(role => role.selected);
+    this.service.assignRolesToUser(this.userId, selectedRoles).subscribe({
       next: () => {
-        console.log('Roles assigned successfully.');
-        this.selectedRoles = [];
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Role Affecté avec succès!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.loadUser(this.userId); // Recharger les détails de l'utilisateur après l'affectation des rôles
+        this.roles.forEach(role => role.selected = false);
       },
       error: (error) => {
         console.error('Error assigning roles:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error assigning roles. Please try again later.'
+        });
       }
     });
   }
-  get isAdmin() {
-    return this.user && this.user.userRoles && 
-           (this.user.userRoles.some(role => role.cdRole === 'ROLE_ADMIN') || 
-            this.user.userRoles.some(role => role.cdRole === 'ROLE_USER'));
-  }
-  
-  
 }

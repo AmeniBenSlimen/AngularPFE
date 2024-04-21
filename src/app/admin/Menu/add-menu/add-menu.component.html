@@ -1,0 +1,40 @@
+<br><br><br>
+<div class="container">
+  <div class="form-wrap">
+    <form id="survey-form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label id="name-label" for="username">Code Menu</label>
+            <input type="text" [(ngModel)]="menu.cdMenu" [ngModelOptions]="{standalone: true}" id="username" placeholder="Entrer code module" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label id="name-label" for="fullname">Libellé Menu</label>
+            <input type="text" [(ngModel)]="menu.lbMenu" [ngModelOptions]="{standalone: true}" id="fullname" placeholder="Entrer Libellé module" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label id="name-label" for="fullname">Affecter à un Module</label>
+              <select class="form-control" [(ngModel)]="menu.cdModule" [ngModelOptions]="{standalone: true}" id="description">
+                <option *ngFor ="let m of module" value="{{m.cdModul}}">{{m.cdModul}}</option>
+                </select>            
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <button type="submit" (click)="create()" class="btn btn-primary" style="background-color:#00881D;border-color: #00881D;">
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br><br><br>
+<br><br><br>
+<br><br><br><br><br><br>

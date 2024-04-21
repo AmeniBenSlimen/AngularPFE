@@ -26,6 +26,9 @@ import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { ListModuleComponent } from './admin/Module/list-module/list-module.component';
 import { UpdateModuleComponent } from './admin/Module/update-module/update-module.component';
 import { AddModuleComponent } from './admin/Module/add-module/add-module.component';
+import { AddMenuComponent } from './admin/Menu/add-menu/add-menu.component';
+import { ListMenuComponent } from './admin/Menu/list-menu/list-menu.component';
+import { UpdateMenuComponent } from './admin/Menu/update-menu/update-menu.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { AddModuleComponent } from './admin/Module/add-module/add-module.compone
     UpdateUserComponent,
     ListModuleComponent,
     UpdateModuleComponent,
-    AddModuleComponent
+    AddModuleComponent,
+    AddMenuComponent,
+    ListMenuComponent,
+    UpdateMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,9 @@ import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { ListModuleComponent } from './admin/Module/list-module/list-module.component';
 import { UpdateModuleComponent } from './admin/Module/update-module/update-module.component';
 import { AddModuleComponent } from './admin/Module/add-module/add-module.component';
+import { AddMenuComponent } from './admin/Menu/add-menu/add-menu.component';
+import { ListMenuComponent } from './admin/Menu/list-menu/list-menu.component';
+import { UpdateMenuComponent } from './admin/Menu/update-menu/update-menu.component';
 
 const routes: Routes = [  
   {
@@ -33,7 +36,10 @@ const routes: Routes = [
       { path: 'update-user/:id', component:UpdateUserComponent},
       { path: 'list-modules', component:ListModuleComponent},
       { path: 'update-module/:cdModul', component:UpdateModuleComponent},
-      { path: 'add-module', component:AddModuleComponent}
+      { path: 'add-module', component:AddModuleComponent},
+      { path: 'add-menu', component:AddMenuComponent},
+      { path: 'list-menu', component:ListMenuComponent},
+      { path: 'update-menu/:cdMenu', component:UpdateMenuComponent}
     ]
   },
   { path: 'login', component: LoginComponent },
