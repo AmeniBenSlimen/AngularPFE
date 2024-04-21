@@ -74,4 +74,27 @@ export class PermissionComponent {
       }
     });
   }
+  deleteRole(userId: number, roleId: number): void {
+    this.service.deleteRoleUser(userId, roleId).subscribe({
+      next: () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Role deleted successfully!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        // Rechargez les données de l'utilisateur après la suppression du rôle
+        this.loadUser(userId);
+      },
+      error: (error) => {
+        console.error('Error deleting role:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error deleting role. Please try again later.'
+        });
+      }
+    });
+  }
 }

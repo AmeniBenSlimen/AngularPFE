@@ -27,6 +27,7 @@
   background-color: green;
   color: #fff;
   border: none;
+  border-color: green;
   border-radius: 5px;
   cursor: pointer;" type="submit">Enregistrer</button>
   </div>
@@ -38,29 +39,39 @@
     <div class="table-responsive">
       <div class="main-search-input-wrap">
         <div class="main-search-input fl-wrap">
-<table
-id="zero_config"
-class="table table-striped table-bordered"
->
+<table id="zero_config" class="table table-striped table-bordered">
 <thead>
   <tr>
     <th>Matricule</th>
     <th>Nom</th>
     <th>Prénom</th>
     <th>Roles</th>
+    <th>Action</th>
   </tr>
 </thead>
 <tbody>
-  <tr *ngIf="user"> 
-    <td>{{ user.id }}</td>
-    <td>{{ user.username }}</td>
-    <td>{{ user.fullname }}</td>
-    <td>
-      <div *ngFor="let role of user.userRoles; let isLast=last">{{ role.cdRole }}{{ !isLast ? '  ' : '' }}</div>
-
-    </td>   
-  </tr>
+  <ng-container *ngIf="user">
+    <ng-container *ngFor="let role of user.userRoles; let isLast=last">
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.fullname }}</td>
+        <td>{{ role.cdRole }}</td>
+        <td> 
+          <button *ngIf="user && user.id && role" (click)="deleteRole(user.id, role.id!)" style="
+          padding: 10px 20px;
+          background-color: red;
+          color: #fff;
+          border: none;
+          border-color: red;
+          border-radius: 5px;
+          cursor: pointer;">Delete</button>
+        </td> 
+      </tr>
+    </ng-container>
+  </ng-container>
 </tbody>
+
 <tfoot>
   <tr>
     <th>Matricule</th>

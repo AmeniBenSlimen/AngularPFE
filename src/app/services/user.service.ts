@@ -15,8 +15,11 @@ export class UserService {
     return this.http.get<User[]>(`${this.BasicUrl}`);
   }
   private Url ='http://localhost:8084/bank/api/auth';
-  assignRolesToUser(userId: number, roles: Roles[]): Observable<void> {
+  public assignRolesToUser(userId: number, roles: Roles[]): Observable<void> {
     return this.http.put<void>(`${this.Url}/${userId}/roles`, roles);
+  }
+  public deleteRoleUser(userId: number, roleId:number):Observable<any>{
+    return this.http.delete(`${this.Url}/user/${userId}/roles/${roleId}`);
   }
   public getByUserId(id: number): Observable<User> {
 
