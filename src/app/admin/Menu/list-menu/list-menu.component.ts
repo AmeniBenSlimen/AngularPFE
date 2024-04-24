@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './list-menu.component.html',
   styleUrls: ['./list-menu.component.css']
 })
-export class ListMenuComponent {
+export class ListMenuComponent{
 
   menus  : Menu[] = [];
   p: number = 1;

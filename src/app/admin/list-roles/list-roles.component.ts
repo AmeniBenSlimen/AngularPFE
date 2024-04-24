@@ -32,4 +32,5 @@ export class ListRolesComponent implements OnInit{
     updateRole(id:any):void{
       this.router.navigate(['/update-role',id]);
     }
+    
 }

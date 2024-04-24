@@ -18,7 +18,6 @@ export class RoleService {
         return this.http.post<Roles>(`${this.BasicUrl}/addRole`,role);
       } 
   public getRoleId(id: number): Observable<Roles> {
-
     const url = `${this.BasicUrl}/getByIdRole/${id}`;
     return this.http.get<Roles>(url);
   }

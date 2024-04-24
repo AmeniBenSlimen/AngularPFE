@@ -38,6 +38,11 @@ export class AuthService {
   getToken(){
     this.tokenstorageService.getToken();
   }
+  private Url ='http://localhost:8084/bank/api/auth'
+  public getUserRole(id:number): Observable<User>{
+    const url= `${this.Url}/userRole/${id}`;
+    return this.http.get<User>(url);
+  }
   /*refreshToken(){
     return this.http.request('post', 'http://localhost:8083/clinique/api/auth/refresh-token-cookie', {
       withCredentials: true

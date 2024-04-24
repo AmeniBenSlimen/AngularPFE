@@ -29,6 +29,10 @@ import { AddModuleComponent } from './admin/Module/add-module/add-module.compone
 import { AddMenuComponent } from './admin/Menu/add-menu/add-menu.component';
 import { ListMenuComponent } from './admin/Menu/list-menu/list-menu.component';
 import { UpdateMenuComponent } from './admin/Menu/update-menu/update-menu.component';
+import { ListPrivilegeComponent } from './admin/privilege/list-privilege/list-privilege.component';
+import { ListPrivilegeWithRoleComponent } from './admin/privilege/list-privilege-with-role/list-privilege-with-role.component';
+import { AddPrivilegeComponent } from './admin/privilege/add-privilege/add-privilege.component';
+import { UpdatePrivilegeComponent } from './admin/privilege/update-privilege/update-privilege.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { UpdateMenuComponent } from './admin/Menu/update-menu/update-menu.compon
     AddModuleComponent,
     AddMenuComponent,
     ListMenuComponent,
-    UpdateMenuComponent
+    UpdateMenuComponent,
+    ListPrivilegeComponent,
+    ListPrivilegeWithRoleComponent,
+    AddPrivilegeComponent,
+    UpdatePrivilegeComponent,
   ],
   imports: [
     BrowserModule,

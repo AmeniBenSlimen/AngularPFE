@@ -23,19 +23,22 @@
       sizes="16x16"
       href="../assets/images/favicon.png"
     />
-  
+
   </head>
 
   <body>
 
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Liste des utilisateurs</h5>
+                  <h5 class="card-title">Liste des Priviléges par Role</h5>
+                  <br>
+              
+              
                   <div class="table-responsive">
                     <div class="main-search-input-wrap">
                       <div class="main-search-input fl-wrap">
                           <div class="main-search-input-item">
-                            <input type="text"  value="" placeholder="Search Users..." [(ngModel)]="searchtext">
+                            <input type="text"  value="" placeholder="Recherche..." [(ngModel)]="searchtext">
                           </div>                                
                       
                     </div>                      
@@ -46,33 +49,37 @@
                     >
                       <thead>
                         <tr>
-                          <th>Matricule</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>E-mail</th>
-                          <th>Compte désactivé</th>
+                          <th>ID</th>
+                          <th>Code Role</th>
+                          <th>Code Menu</th>
+                          <th>Libellé Menu</th>
+                          <th>Code Module</th>
+                          <th>Libellé Module</th>
                           <th>Action</th>
+
                         </tr>
                       </thead>
-                      <tbody *ngFor="let u of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
+                      <tbody *ngFor="let p of privileges | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
                         <tr>
-                          <td>{{u?.id}}</td>
-                          <td>{{u?.username}}</td>
-                          <td>{{u?.fullname}}</td>
-                          <td>{{u?.email}}</td>
-                          <td>{{u?.status}}</td>
-                          <td><button class="btn btn-primary btn-sm" [routerLink]="['/admin/permission', u.id]">Consulter permission</button></td>
-                          <!--<td><button class="btn btn-primary btn-sm" [routerLink]="['/admin/list-role-user', u.id]">Role user</button></td>-->
+                          <td>{{p?.id}}</td>
+                          <td>{{p?.role.cdRole}}</td>
+                          <td>{{p?.menuId}}</td>
+                          <td>{{p?.menu.lbMenu}}</td>
+                          <td>{{ p?.menu.module.cdModul }}</td>
+                          <td>{{ p?.menu.module.lbModul }}</td>
+                          <td><button class="btn btn-danger btn-sm" (click)="deletePrivilege(p?.id)">Delete</button></td>
                         </tr>
                       
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>Matricule</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>E-mail</th>
-                         <th>Action</th>
+                          <th>ID</th>
+                          <th>Code Role</th>
+                          <th>Code Menu</th>
+                          <th>Libellé Menu</th>
+                          <th>Code Module</th>
+                          <th>Libellé Module</th>
+                          <th>Action</th>
                         </tr>
                       </tfoot>
                     </table>
@@ -81,18 +88,7 @@
                   </div>
                   </div>
                   </div>
-          
-        <!-- ============================================================== -->
-       
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    
-      <!-- ============================================================== -->
-      <!-- End Page wrapper  -->
-      <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-  >
+  
   </body>
 </html>
