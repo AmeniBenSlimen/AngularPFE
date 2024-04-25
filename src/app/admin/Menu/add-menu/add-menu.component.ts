@@ -28,7 +28,7 @@ export class AddMenuComponent implements OnInit{
     console.log("Creating menu with:", this.module);
     this.service.addMenu(this.menu).subscribe({
       next :(data) => {
-       // this.router.navigate(["/list-product"]);
+       this.router.navigate(["admin/list-menu"]);
       },
        error:(err) => {
         console.log(err);

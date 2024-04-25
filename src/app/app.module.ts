@@ -33,6 +33,7 @@ import { ListPrivilegeComponent } from './admin/privilege/list-privilege/list-pr
 import { ListPrivilegeWithRoleComponent } from './admin/privilege/list-privilege-with-role/list-privilege-with-role.component';
 import { AddPrivilegeComponent } from './admin/privilege/add-privilege/add-privilege.component';
 import { UpdatePrivilegeComponent } from './admin/privilege/update-privilege/update-privilege.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { UpdatePrivilegeComponent } from './admin/privilege/update-privilege/upd
     ReactiveFormsModule,
     NgxPaginationModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]

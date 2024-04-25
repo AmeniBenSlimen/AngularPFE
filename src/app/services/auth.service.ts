@@ -5,6 +5,7 @@ import { TokenstorageService } from './tokenstorage.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Roles } from '../models/roles';
 
 
 @Injectable({
@@ -43,11 +44,7 @@ export class AuthService {
     const url= `${this.Url}/userRole/${id}`;
     return this.http.get<User>(url);
   }
-  /*refreshToken(){
-    return this.http.request('post', 'http://localhost:8083/clinique/api/auth/refresh-token-cookie', {
-      withCredentials: true
-    })
-  }*/
+
   LoggedIn(){
     let token:any=localStorage.getItem('token')
     if(!token){
@@ -66,5 +63,18 @@ export class AuthService {
 
     return true
  }
-
+ getRole(): Roles | null {
+  const user = this.tokenstorageService.getUser();
+  if (user && user.role) {
+    return user.role as Roles;
+  }
+  return null;
+}
+hasAccess(role: Roles): boolean {
+  const userRole = this.getRole();
+  if (userRole) {
+    return userRole === role;
+  }
+  return false; 
+}
 }

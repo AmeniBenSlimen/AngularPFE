@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TokenstorageService } from 'src/app/services/tokenstorage.service';
 import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Roles } from 'src/app/models/roles';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit{
   isLogedIn=false;
   isLoginFailed=false;
   errorMessage='';
-  roles:string[]=[];
+  roles:Roles[]=[];
   submitted:boolean = false ;
   constructor(private authservice : AuthService , 
               private tokenservice : TokenstorageService ,
@@ -70,5 +71,10 @@ export class LoginComponent implements OnInit{
     );
    
   }
-
+  isAdmin(): boolean {
+    return this.authservice.hasAccess({ cdRole: 'ROLE_ADMIN' });
+  }
+  isUser(): boolean {
+    return this.authservice.hasAccess({ cdRole: 'ROLE_USER' });
+  }
 }

@@ -250,24 +250,25 @@
               </li>
              
             
-              
               <li class="sidebar-item" *ngFor="let m of menus">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-face"></i
-                  ><span class="hide-menu">{{m?.cdModule}}</span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a routerLink="/admin/users" class="sidebar-link"
-                      ><i class="mdi mdi-emoticon"></i
-                      ><span class="hide-menu" routerLink="/admin/users" >ajouter user</span></a
-                    >
-                  </li>
-                  
+                <a class="sidebar-link has-arrow waves-effect waves-dark" (click)="m.expanded = !m.expanded" [attr.aria-expanded]="m.expanded ? 'true' : 'false'">
+                    <i class="mdi mdi-face"></i>
+                    <span class="hide-menu">{{m?.cdModul}}</span>
+                    <span class="ml-auto" *ngIf="m.expanded"></span>
+                    <span class="ml-auto" *ngIf="!m.expanded"></span>
+                </a>
+                <ul *ngIf="m.expanded">
+                    <li class="sidebar-item" *ngFor="let mod of m.menuDtos">
+                        <a [routerLink]="mod.routerLink" class="sidebar-link" style="margin-left: 25px;">{{mod.libmenu}}</a>
+                    </li>
                 </ul>
+            </li>
+            
+              
+              
+            
+            
+                  
             </ul>
           </nav>
         
