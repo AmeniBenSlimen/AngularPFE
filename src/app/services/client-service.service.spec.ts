@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PrivilegeService } from './privilege.service';
+import { ClientServiceService } from './client-service.service';
 
-describe('PrivilegeService', () => {
-  let service: PrivilegeService;
+describe('ClientServiceService', () => {
+  let service: ClientServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PrivilegeService);
+    service = TestBed.inject(ClientServiceService);
   });
 
   it('should be created', () => {

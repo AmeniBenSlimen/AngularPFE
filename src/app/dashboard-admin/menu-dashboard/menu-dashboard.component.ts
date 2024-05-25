@@ -35,7 +35,7 @@ export class MenuDashboardComponent implements OnInit {
   }
 
   handleLogout() {
-    this.authService.logout();
+    this.authService. logout();
   }
   isAdmin(): boolean {
     return this.authService.hasAccess({ cdRole: 'ROLE_ADMIN' });

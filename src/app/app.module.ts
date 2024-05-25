@@ -12,7 +12,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AuthService } from './services/auth.service';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule} from 'ngx-pagination';
+import { BodyDashboardComponent } from './dashboard-admin/body-dashboard/body-dashboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from './filter.pipe';
 import { PermissionComponent } from './admin/permission/permission.component';
@@ -34,6 +35,15 @@ import { ListPrivilegeWithRoleComponent } from './admin/privilege/list-privilege
 import { AddPrivilegeComponent } from './admin/privilege/add-privilege/add-privilege.component';
 import { UpdatePrivilegeComponent } from './admin/privilege/update-privilege/update-privilege.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListClientComponent } from './Retail/list-client/list-client.component';
+import { DetailClientComponent } from './Retail/detail-client/detail-client.component';
+import { UploadCsvComponent } from './Retail/upload-csv/upload-csv.component';
+import { ModuleRetailComponent } from './Retail/module-retail/module-retail.component';
+import { FooterComponent } from './dashboard-admin/footer/footer.component';
+import { MenuComponent } from './dashboard-admin/menu/menu.component';
+import { RolesComponent } from './admin/roles/roles.component';
+import { UpdateClientComponent } from './Retail/update-client/update-client.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +71,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ListPrivilegeWithRoleComponent,
     AddPrivilegeComponent,
     UpdatePrivilegeComponent,
+    BodyDashboardComponent,
+    ListClientComponent,
+    DetailClientComponent,
+    UploadCsvComponent,
+    ModuleRetailComponent,
+    FooterComponent,
+    MenuComponent,
+    RolesComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +90,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     MatDialogModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]

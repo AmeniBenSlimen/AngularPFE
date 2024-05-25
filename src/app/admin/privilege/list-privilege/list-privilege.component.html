@@ -23,23 +23,38 @@
       sizes="16x16"
       href="../assets/images/favicon.png"
     />
-
+    <style>
+      body {
+        overflow-y: hidden;
+      }
+    </style>
+  
   </head>
 
   <body>
-
-              <div class="card">
+    <app-menu></app-menu>
+    <br>
+    <div class="user-management" style="
+    max-width:1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-right: 20px;
+  ">
+              <div style="font-size: 16px;font-family: serif">
                 <div class="card-body">
-                  <h5 class="card-title">Liste des Priviléges</h5>
+                  <h5 class="card-title" style="font-family: serif;font-size: 20px;">Liste des Priviléges</h5>
                   <br>
-                  <button class="btn btn-primary btn-sm" style="margin-left: 1100px;" routerLink="/admin/add-privilege">Ajouter Privilége</button>
+                  <button class="btn btn-primary btn-sm" style="font-family: serif;font-size: 15px;margin-left: 1030px;"routerLink="/admin/add-privilege">Ajouter Privilége</button>
               
               
                   <div class="table-responsive">
                     <div class="main-search-input-wrap">
                       <div class="main-search-input fl-wrap">
                           <div class="main-search-input-item">
-                            <input type="text"  value="" placeholder="Rechercher..." [(ngModel)]="searchtext">
+                            <input type="text"  value="" placeholder="Rechercher Privilége..." [(ngModel)]="searchtext">
                           </div>                                
                       
                     </div>                      
@@ -53,7 +68,7 @@
                           <th>ID</th>
                           <th>Role</th>
                           <th>Menu</th>
-                          <th></th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let p of privileges | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
@@ -62,24 +77,18 @@
                           <td>{{p?.role.cdRole}}</td>
                           <td>{{p?.menuId}}</td>
                           <!---<td>{{ p?.menu.module.lbModul }}</td>-->
-                          <td><button class="btn btn-success btn-sm" style="color: white;"[routerLink]="['/admin/update-privilege', p.id]">Update</button></td>                        </tr>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-success btn-sm" style="color: white;"[routerLink]="['/admin/update-privilege', p.id]">Update</button></td>                        </tr>
                       
                       </tbody>
-                      <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>Role</th>
-                            <th>Menu</th>
-                            <th>Action</th>
-                        </tr>
-                      </tfoot>
+
                     </table>
                     <div class="text-center">
                       <pagination-controls (pageChange)="p = $event"></pagination-controls>
                   </div>
                   </div>
-                  </div>
+                  </div></div>
     </div>
-  
+    <div  style="margin-bottom: 150px;"></div>
+
   </body>
 </html>

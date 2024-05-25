@@ -22,6 +22,13 @@ import { ListPrivilegeComponent } from './admin/privilege/list-privilege/list-pr
 import { ListPrivilegeWithRoleComponent } from './admin/privilege/list-privilege-with-role/list-privilege-with-role.component';
 import { AddPrivilegeComponent } from './admin/privilege/add-privilege/add-privilege.component';
 import { UpdatePrivilegeComponent } from './admin/privilege/update-privilege/update-privilege.component';
+import { ListClientComponent } from './Retail/list-client/list-client.component';
+import { DetailClientComponent } from './Retail/detail-client/detail-client.component';
+import { UploadCsvComponent } from './Retail/upload-csv/upload-csv.component';
+import { ModuleRetailComponent } from './Retail/module-retail/module-retail.component';
+import { RolesComponent } from './admin/roles/roles.component';
+import { UpdateClientComponent } from './Retail/update-client/update-client.component';
+
 
 const routes: Routes = [  
   {
@@ -32,7 +39,7 @@ const routes: Routes = [
       { path: 'dashboard', component: BodyDashboardComponent },
       { path: 'users', component: AllUsersComponent },
       { path: 'permission/:id', component: PermissionComponent },
-      { path: 'roles', component: ListRolesComponent},
+      { path: 'consulter-privilege', component: ListRolesComponent},
       { path: 'updateRole/:id', component: UpdateRoleComponent},
       { path: 'add-role', component: AddRoleComponent},
       { path: 'list-role-user/:id', component:RoleUserComponent},
@@ -47,7 +54,13 @@ const routes: Routes = [
       { path: 'list-privilege', component:ListPrivilegeComponent},
       { path: 'privileges/:roleId', component: ListPrivilegeWithRoleComponent },
       { path: 'add-privilege', component: AddPrivilegeComponent},
-      { path: 'update-privilege/:id', component: UpdatePrivilegeComponent}
+      { path: 'update-privilege/:id', component: UpdatePrivilegeComponent},
+      { path: 'list-client', component: ListClientComponent},
+      { path: 'detail-client/:id', component: DetailClientComponent},
+      { path: 'upload-csv', component: UploadCsvComponent},
+      { path: 'module-retail', component: ModuleRetailComponent},
+      { path: 'roles', component: RolesComponent},
+      { path: 'update-client/:id', component: UpdateClientComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

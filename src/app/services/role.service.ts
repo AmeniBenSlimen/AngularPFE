@@ -25,4 +25,7 @@ export class RoleService {
   updateRole(id:any,role:any){
     return this.http.put<Roles>(`${this.BasicUrl}/updateRole/${id}`,role);
  }
+ deleteRole(id:any){
+  return this.http.delete<any>(`${this.BasicUrl}/deleteRole/${id}`);
+}
 }

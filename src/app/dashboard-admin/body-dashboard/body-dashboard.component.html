@@ -41,8 +41,43 @@
       data-header-position="absolute"
       data-boxed-layout="full"
     >
+    <aside class="left-sidebar" data-sidebarbg="skin5" style="height: 900px;">
+      
+      <div class="scroll-sidebar" >
+      
+        <nav class="sidebar-nav">
+          <ul id="sidebarnav" class="pt-4">
+            <li class="sidebar-item">
+              <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
+                routerLink="/admin/dashboard"
+                aria-expanded="false" style="text-decoration: none;font-family: serif;"
+                ><i class="mdi mdi-view-dashboard"></i
+                ><span class="hide-menu">Axly Solution</span></a
+              >
+            </li>
+           
+          
+            <li class="sidebar-item" *ngFor="let m of menus">
+              <a class="sidebar-link has-arrow waves-effect waves-dark" (click)="m.expanded = !m.expanded" [attr.aria-expanded]="m.expanded ? 'true' : 'false'" style="text-decoration: none;font-family: serif;">
+                  <i class="mdi mdi-face"></i>
+                  <span class="hide-menu">{{m?.cdModul}}</span>
+                  <span class="ml-auto" *ngIf="m.expanded"></span>
+                  <span class="ml-auto" *ngIf="!m.expanded"></span>
+              </a>
+              <ul *ngIf="m.expanded">
+                  <li class="sidebar-item" *ngFor="let mod of m.menuDtos">
+                      <a [routerLink]="mod.routerLink" class="sidebar-link" style="margin-left: 25px;text-decoration: none;font-family: serif;">{{mod.libmenu}}</a>
+                  </li>
+              </ul>
+          </li>
 
-      <div class="">
+          </ul>
+        </nav>
+      
+      </div>
+    </aside>
+      <div class="page-wrapper">
      
         <div class="page-breadcrumb">
           <div class="row">
@@ -69,7 +104,7 @@
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img1.jpg" alt="user" />
+                    <img src="../assets/images/big/retail.png" alt="user" />
                     <div class="el-overlay">
                       <ul class="list-style-none el-info">
                         <li class="el-item">
@@ -81,23 +116,23 @@
                               image-popup-vertical-fit
                               el-link
                             "
-                            href="../assets/images/big/img1.jpg"
+                            href="../assets/images/big/retail.png"
                             ><i class="mdi mdi-magnify-plus"></i
                           ></a>
                         </li>
                         <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
-                          ></a>
+                          <a class="btn default btn-outline el-link" [routerLink]="['/admin/module-retail']">
+                            <i class="mdi mdi-link"></i>
+                          </a>           
+                          
+                          
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
+                    <h4 class="mb-0">Module Retail</h4>
+                    <span class="text-muted"></span>
                   </div>
                 </div>
               </div>
@@ -133,8 +168,8 @@
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
+                    <h4 class="mb-0">Module Profess</h4>
+                    <span class="text-muted"></span>
                   </div>
                 </div>
               </div>
@@ -170,8 +205,8 @@
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
+                    <h4 class="mb-0">Module SNI</h4>
+                    <span class="text-muted"></span>
                   </div>
                 </div>
               </div>

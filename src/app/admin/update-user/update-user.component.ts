@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent implements OnInit {
-  user: User = new User(); // Initialize an empty user object
+  user: User = new User(); 
   userId: number = 0;
 
   constructor(
-    private userService: UserService, // Use lowercase 'service' for consistency
-    private sniper: ActivatedRoute, // Use lowercase 'activatedRoute'
+    private userService: UserService, 
+    private sniper: ActivatedRoute, 
     private router: Router
   ) { }
 
@@ -26,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
         this.user = res;
       },
       error : (error) =>{
-        console.error('error fetching product with id :' +this.userId, error);
+        console.error('error fetching user with id :' +this.userId, error);
       }
     })
   }

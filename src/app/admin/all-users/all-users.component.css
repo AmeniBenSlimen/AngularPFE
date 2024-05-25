@@ -101,4 +101,14 @@
     width: 100%;
     border-radius: 6px;
 }
+
+  
+  /* Styles pour le tableau */
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Gris clair */
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Blanc */
+  }
 }

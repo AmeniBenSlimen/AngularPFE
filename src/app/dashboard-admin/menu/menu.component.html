@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     Tell the browser to be responsive to screen width 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="keywords"
+      content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template"
+    />
+    <meta
+      name="description"
+      content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+  </head>
+
+  <body>
+   
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+      </div>
+    </div>
+  
+    <div
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin5"
+      data-sidebartype="full"
+      data-sidebar-position="absolute"
+      data-header-position="absolute"
+      data-boxed-layout="full"
+    >
+    
+      
+    <aside class="left-sidebar" data-sidebarbg="skin5" style="height: 900px;">
+      
+        <div class="scroll-sidebar" >
+        
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav" class="pt-4">
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  routerLink="/admin/dashboard"
+                  aria-expanded="false" style="text-decoration: none;font-family: serif;"
+                  ><i class="mdi mdi-view-dashboard"></i
+                  ><span class="hide-menu">Axly Solution</span></a
+                >
+              </li>          
+              <li class="sidebar-item" *ngFor="let m of menus">
+                <a class="sidebar-link has-arrow waves-effect waves-dark" (click)="m.expanded = !m.expanded" [attr.aria-expanded]="m.expanded ? 'true' : 'false'" style="text-decoration: none;font-family: serif;">
+                    <i class="mdi mdi-face"></i>
+                    <span class="hide-menu">{{m?.cdModul}}</span>
+                    <span class="ml-auto" *ngIf="m.expanded"></span>
+                    <span class="ml-auto" *ngIf="!m.expanded"></span>
+                </a>
+                <ul *ngIf="m.expanded">
+                    <li class="sidebar-item" *ngFor="let mod of m.menuDtos">
+                        <a [routerLink]="mod.routerLink" class="sidebar-link" style="margin-left: 25px;text-decoration: none;font-family: serif;">{{mod.libmenu}}</a>
+                    </li>
+                </ul>
+            </li>
+            </ul>
+          </nav>
+        
+        </div>
+       
+      </aside>
+    
+      <div class="page-wrapper"><router-outlet></router-outlet>
+       
+       
+      </div>
+    
+    </div>
+   
+  </body>
+</html>
