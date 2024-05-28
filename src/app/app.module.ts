@@ -44,6 +44,9 @@ import { FooterComponent } from './dashboard-admin/footer/footer.component';
 import { MenuComponent } from './dashboard-admin/menu/menu.component';
 import { RolesComponent } from './admin/roles/roles.component';
 import { UpdateClientComponent } from './Retail/update-client/update-client.component';
+import { UploadSituationCsvComponent } from './Retail/Situation/upload-situation-csv/upload-situation-csv.component';
+import { ListSituationComponent } from './Retail/Situation/list-situation/list-situation.component';
+import { DetailsSituationComponent } from './Retail/Situation/details-situation/details-situation.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { UpdateClientComponent } from './Retail/update-client/update-client.comp
     FooterComponent,
     MenuComponent,
     RolesComponent,
-    UpdateClientComponent
+    UpdateClientComponent,
+    UploadSituationCsvComponent,
+    ListSituationComponent,
+    DetailsSituationComponent
   ],
   imports: [
     BrowserModule,

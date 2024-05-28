@@ -76,7 +76,7 @@
   ">
               <div style="font-size: 16px;font-family: serif">
                 <div class="card-body">
-                  <h5 class="card-title" style="font-family: serif;font-size: 20px;">Liste des clients</h5>
+                  <h5 class="card-title" style="font-family: serif;font-size: 20px;">Liste des Situations</h5>
                   <br>
                   <button class="btn btn-primary btn-sm"  style="font-family: serif;font-size: 15px;margin-left: 1000px;" routerLink="/admin/upload-csv">Importer fichier CSV</button>
 
@@ -96,24 +96,31 @@
                       <thead>
                         <tr>
                           <th>Matricule</th>
-                          <th>Code Relation</th>
-                          <th>Code Relation Flexcube</th>
-                          <th>Identifiant Prospect</th>
-                          <th>New Model UBCI</th>
+                          <th>Matricule Client</th>
+                          <th>Variable libre 1</th>
+                          <th>Variable libre 2</th>
+                          <th>Variable libre 3</th>
+                          <th>Variable libre 4</th>
+                          <th>Variable libre 5</th>
+                          <th>Variable libre 6</th>
+                          <th>Variable libre 7</th>
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let c of clients | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
+                      <tbody *ngFor="let c of situation | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
                         <tr>
                           <td>{{c?.id}}</td>
-                          <td>{{c?.codeRelation}}</td>
-                          <td>{{c?.codeRelationFlexcube}}</td>
-                          <td>{{c?.identifiantProspect}}</td>
-                          <td>{{c?.newModelUBCI}}</td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-primary btn-sm" [routerLink]="['/admin/detail-client', c.id]">Détails client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-success btn-sm" [routerLink]="['/admin/update-client', c.id]">Update client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-danger btn-sm" (click)="deleteClient(c.id)">Delete</button></td>
-                        </tr>
+                          <td>{{c?.clientId}}</td>
+                          <td>{{c?.variableLibre1}}</td>
+                          <td>{{c?.variableLibre2}}</td>
+                          <td>{{c?.variableLibre3}}</td>
+                          <td>{{c?.variableLibre4}}</td>
+                          <td>{{c?.variableLibre5}}</td>
+                          <td>{{c?.variableLibre6}}</td>
+                          <td>{{c?.variableLibre7}}</td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-primary btn-sm" [routerLink]="['/admin/Situation/details-situation', c.id]">Détails Situation</button></td>
+
+                          
                       </tbody>
                     </table>
                     <div class="text-center">

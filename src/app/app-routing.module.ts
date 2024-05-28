@@ -28,6 +28,9 @@ import { UploadCsvComponent } from './Retail/upload-csv/upload-csv.component';
 import { ModuleRetailComponent } from './Retail/module-retail/module-retail.component';
 import { RolesComponent } from './admin/roles/roles.component';
 import { UpdateClientComponent } from './Retail/update-client/update-client.component';
+import { UploadSituationCsvComponent } from './Retail/Situation/upload-situation-csv/upload-situation-csv.component';
+import { ListSituationComponent } from './Retail/Situation/list-situation/list-situation.component';
+import { DetailsSituationComponent } from './Retail/Situation/details-situation/details-situation.component';
 
 
 const routes: Routes = [  
@@ -60,7 +63,10 @@ const routes: Routes = [
       { path: 'upload-csv', component: UploadCsvComponent},
       { path: 'module-retail', component: ModuleRetailComponent},
       { path: 'roles', component: RolesComponent},
-      { path: 'update-client/:id', component: UpdateClientComponent}
+      { path: 'update-client/:id', component: UpdateClientComponent},
+      { path: 'Situation/upload-csv', component: UploadSituationCsvComponent},
+      { path: 'Situation/consulterSituation', component: ListSituationComponent},
+      { path: 'Situation/details-situation/:id', component: DetailsSituationComponent}
     ]
   },
   { path: 'login', component: LoginComponent },
