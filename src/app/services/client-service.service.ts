@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientServiceService {
-  private BasicUrl ='http://localhost:8084/bank/api/auth';
+  private BasicUrl ='http://localhost:8085/bank/api/auth';
   constructor(private http:HttpClient) { }
   public getClients(){
     return this.http.get<Client[]>(`${this.BasicUrl}/getAllClients`);
@@ -28,5 +28,8 @@ export class ClientServiceService {
   }
   updateClient(id:any,client:any){
     return this.http.put<Client>(`${this.BasicUrl}/updateClient/${id}`,client);
+ }
+ SearchByCodeRelation(codeRelation:any){
+  return this.http.get<Client[]>(`${this.BasicUrl}/findByCodeRelation?codeRelation=${codeRelation}`);
  }
 }

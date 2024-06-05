@@ -15,7 +15,7 @@ export class MenuService {
   public getModuls(){
     return this.http.get<any[]>(`${this.url}/getAllModul`);
   }
-  private url='http://localhost:8084/bank/api/auth';
+  private url='http://localhost:8085/bank/api/auth';
   addMenu(menu:any){
     return this.http.post<Menu>(`${this.url}/addMenu`,menu);
   } 

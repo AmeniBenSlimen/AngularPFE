@@ -15,6 +15,10 @@ export class ListClientComponent implements OnInit {
   itemsPerPage : number =10;
   totalUsers:any;
   searchtext:any;
+  searched: boolean = false;
+  codeRelation: any;
+  exists: boolean = false;
+  notExists: boolean = false;
 constructor(private service:ClientServiceService,
             private router:Router){}
 
@@ -74,6 +78,31 @@ deleteClient(id: any): void {
 }
 detailClient(id:any):void{
   this.router.navigate(['/detail-client',id]);
+}
+SearchByCodeRelation(event?: Event): void {
+  if (event) {
+    event.preventDefault();
+  }
+
+  this.searched = true;
+
+  this.service.SearchByCodeRelation(this.codeRelation).subscribe({
+    next: (data) => {
+      this.exists = true;
+      this.clients = data;
+      this.notExists = this.clients.length === 0;
+      if (this.notExists) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Aucune Client trouvée',
+          text: 'Veuillez essayer un autre CODE RELATION de client.'
+        });
+      }
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  });
 }
 
 

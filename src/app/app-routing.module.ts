@@ -31,6 +31,12 @@ import { UpdateClientComponent } from './Retail/update-client/update-client.comp
 import { UploadSituationCsvComponent } from './Retail/Situation/upload-situation-csv/upload-situation-csv.component';
 import { ListSituationComponent } from './Retail/Situation/list-situation/list-situation.component';
 import { DetailsSituationComponent } from './Retail/Situation/details-situation/details-situation.component';
+import { HabilitationEtRoleComponent } from './Habilitaion/habilitation-et-role/habilitation-et-role.component';
+import { GestionModeleComponent } from './Modeles/gestion-modele/gestion-modele.component';
+import { AddModeleComponent } from './Modeles/add-modele/add-modele.component';
+import { ListModeleComponent } from './Modeles/list-modele/list-modele.component';
+import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
+import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
 
 
 const routes: Routes = [  
@@ -66,7 +72,15 @@ const routes: Routes = [
       { path: 'update-client/:id', component: UpdateClientComponent},
       { path: 'Situation/upload-csv', component: UploadSituationCsvComponent},
       { path: 'Situation/consulterSituation', component: ListSituationComponent},
-      { path: 'Situation/details-situation/:id', component: DetailsSituationComponent}
+      { path: 'Situation/details-situation/:id', component: DetailsSituationComponent},
+      { path: 'habilitation-et-role', component: HabilitationEtRoleComponent},
+      { path: 'models',component: GestionModeleComponent},
+      { path: 'Modele/add-modele',component: AddModeleComponent},
+      { path: 'Modele/list-modele',component: ListModeleComponent},
+      { path: 'Modele/corbeille-modele',component: CorbeilleModeleComponent},
+      { path: 'Modele/update-modele/:id',component: UpdateModeleComponent}
+
+
     ]
   },
   { path: 'login', component: LoginComponent },

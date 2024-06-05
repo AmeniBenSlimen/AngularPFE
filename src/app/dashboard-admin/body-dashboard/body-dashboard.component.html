@@ -23,10 +23,10 @@
     />
   </head>
 
-  <body>
+  <body >
    
-    <div class="preloader">
-      <div class="lds-ripple">
+    <div class="preloader" >
+      <div class="lds-ripple" >
         <div class="lds-pos"></div>
         <div class="lds-pos"></div>
       </div>
@@ -39,26 +39,27 @@
       data-sidebartype="full"
       data-sidebar-position="absolute"
       data-header-position="absolute"
-      data-boxed-layout="full"
+      data-boxed-layout="full" 
     >
-    <aside class="left-sidebar" data-sidebarbg="skin5" style="height: 900px;">
+    <aside class="left-sidebar" data-sidebarbg="skin5" style="height: 900px;background-color: #0F265B">
       
       <div class="scroll-sidebar" >
       
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="pt-4">
+        <nav class="sidebar-nav" >
+          <ul id="sidebarnav" class="pt-4" style="background-color: #0F265B">
             <li class="sidebar-item">
               <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
                 routerLink="/admin/dashboard"
                 aria-expanded="false" style="text-decoration: none;font-family: serif;"
                 ><i class="mdi mdi-view-dashboard"></i
-                ><span class="hide-menu">Axly Solution</span></a
+                >                          <span class="hide-menu">Menu Général</span>
+                </a
               >
             </li>
            
           
-            <li class="sidebar-item" *ngFor="let m of menus">
+           <!--- <li class="sidebar-item" *ngFor="let m of menus">
               <a class="sidebar-link has-arrow waves-effect waves-dark" (click)="m.expanded = !m.expanded" [attr.aria-expanded]="m.expanded ? 'true' : 'false'" style="text-decoration: none;font-family: serif;">
                   <i class="mdi mdi-face"></i>
                   <span class="hide-menu">{{m?.cdModul}}</span>
@@ -70,7 +71,7 @@
                       <a [routerLink]="mod.routerLink" class="sidebar-link" style="margin-left: 25px;text-decoration: none;font-family: serif;">{{mod.libmenu}}</a>
                   </li>
               </ul>
-          </li>
+          </li>-->
 
           </ul>
         </nav>
@@ -141,80 +142,6 @@
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img2.jpg" alt="user" />
-                    <div class="el-overlay">
-                      <ul class="list-style-none el-info">
-                        <li class="el-item">
-                          <a
-                            class="
-                              btn
-                              default
-                              btn-outline
-                              image-popup-vertical-fit
-                              el-link
-                            "
-                            href="../assets/images/big/img2.jpg"
-                            ><i class="mdi mdi-magnify-plus"></i
-                          ></a>
-                        </li>
-                        <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="el-card-content">
-                    <h4 class="mb-0">Module Profess</h4>
-                    <span class="text-muted"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
-              <div class="card">
-                <div class="el-card-item">
-                  <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img3.jpg" alt="user" />
-                    <div class="el-overlay">
-                      <ul class="list-style-none el-info">
-                        <li class="el-item">
-                          <a
-                            class="
-                              btn
-                              default
-                              btn-outline
-                              image-popup-vertical-fit
-                              el-link
-                            "
-                            href="../assets/images/big/img3.jpg"
-                            ><i class="mdi mdi-magnify-plus"></i
-                          ></a>
-                        </li>
-                        <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="el-card-content">
-                    <h4 class="mb-0">Module SNI</h4>
-                    <span class="text-muted"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
-              <div class="card">
-                <div class="el-card-item">
-                  <div class="el-card-avatar el-overlay-1">
                     <img src="../assets/images/big/img4.jpg" alt="user" />
                     <div class="el-overlay">
                       <ul class="list-style-none el-info">
@@ -232,22 +159,21 @@
                           ></a>
                         </li>
                         <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
+                          <a class="btn default btn-outline el-link" [routerLink]="['/admin/habilitation-et-role']">
+
+                          <i class="mdi mdi-link"></i
                           ></a>
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
+                    <h4 class="mb-0">Module Habilitaions et Rôle</h4>
                   </div>
                 </div>
               </div>
             </div>
+            
             <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
               <div class="card">
                 <div class="el-card-item">
@@ -269,18 +195,14 @@
                           ></a>
                         </li>
                         <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
+                          <a class="btn default btn-outline el-link" [routerLink]="['/admin/models']"><i class="mdi mdi-link"></i
                           ></a>
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
+                    <h4 class="mb-0">Gestion des Modules</h4>
                   </div>
                 </div>
               </div>
@@ -317,7 +239,6 @@
                   </div>
                   <div class="el-card-content">
                     <h4 class="mb-0">Project title</h4>
-                    <span class="text-muted">subtitle of project</span>
                   </div>
                 </div>
               </div>

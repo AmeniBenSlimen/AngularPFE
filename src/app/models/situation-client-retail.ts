@@ -2,6 +2,8 @@ export class SituationClientRetail {
     id?:number;
     clientId?:number;
     dateDeSituation?:Date;
+    dateDebutRelation?:Date;
+    idNat?:number;
     numeroComptePrincipal?:string;
     mntEnConsolidation?:number;
     encoursCT?:number;

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class RoleService {
 
-  private BasicUrl ='http://localhost:8084/bank/api/auth';
+  private BasicUrl ='http://localhost:8085/bank/api/auth';
   constructor(private http:HttpClient) { }
   public getRoles(){
     return this.http.get<Roles[]>(`${this.BasicUrl}/getAllRoles`);

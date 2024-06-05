@@ -47,6 +47,14 @@ import { UpdateClientComponent } from './Retail/update-client/update-client.comp
 import { UploadSituationCsvComponent } from './Retail/Situation/upload-situation-csv/upload-situation-csv.component';
 import { ListSituationComponent } from './Retail/Situation/list-situation/list-situation.component';
 import { DetailsSituationComponent } from './Retail/Situation/details-situation/details-situation.component';
+import { HabilitationEtRoleComponent } from './Habilitaion/habilitation-et-role/habilitation-et-role.component';
+import { MenuRetailComponent } from './Retail/menu-retail/menu-retail.component';
+import { GestionModeleComponent } from './Modeles/gestion-modele/gestion-modele.component';
+import { MenuModeleComponent } from './Modeles/menu-modele/menu-modele.component';
+import { AddModeleComponent } from './Modeles/add-modele/add-modele.component';
+import { ListModeleComponent } from './Modeles/list-modele/list-modele.component';
+import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
+import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +93,15 @@ import { DetailsSituationComponent } from './Retail/Situation/details-situation/
     UpdateClientComponent,
     UploadSituationCsvComponent,
     ListSituationComponent,
-    DetailsSituationComponent
+    DetailsSituationComponent,
+    HabilitationEtRoleComponent,
+    MenuRetailComponent,
+    GestionModeleComponent,
+    MenuModeleComponent,
+    AddModeleComponent,
+    ListModeleComponent,
+    CorbeilleModeleComponent,
+    UpdateModeleComponent
   ],
   imports: [
     BrowserModule,

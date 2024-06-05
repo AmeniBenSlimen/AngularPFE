@@ -106,7 +106,7 @@
   }
   </style>
   <body>
-    <app-menu-retail></app-menu-retail>
+    <app-menu-modele></app-menu-modele>
     <br>
     <div class="user-management" style="
     max-width:1200px;
@@ -120,9 +120,9 @@
                   <div class="input-wrap">
                     <div class="input fl-wrap">
                         <div class="input-item">
-                            <input type="text" value="" [(ngModel)]="codeRelation" [ngModelOptions]="{standalone: true}" placeholder="Rechercher client..."  >
+                            <input type="text" value=""  placeholder="Rechercher modele..."  >
                         </div>  
-                        <button type="submit" (click)="SearchByCodeRelation($event)" class="btn1 btn1-primary">Rechercher</button>
+                        <button type="submit"  class="btn1 btn1-primary">Rechercher</button>
                     </div>
                 </div>
               <br>
@@ -137,24 +137,32 @@
                     >
                       <thead>
                         <tr>
-                          <th>Matricule</th>
-                          <th>Code Relation</th>
-                          <th>Code Relation Flexcube</th>
-                          <th>Identifiant Prospect</th>
-                          <th>New Model UBCI</th>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Description</th>
+                          <th>Date de Création</th>
+                          <th>mise à jour</th>
+                          <th>Date de mise à jours</th>
+                          <th>Date de mise à jour suivante</th>
+                          <th>Modèle utilisé</th>
+                          <th>dernière date d'utilisation</th>
+                          <th>désactivé</th>
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let c of clients | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
+                      <tbody *ngFor="let c of modele | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchtext">
                         <tr>
                           <td>{{c?.id}}</td>
-                          <td>{{c?.codeRelation}}</td>
-                          <td>{{c?.codeRelationFlexcube}}</td>
-                          <td>{{c?.identifiantProspect}}</td>
-                          <td>{{c?.newModelUBCI}}</td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/detail-client', c.id]">Détails client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-success btn-sm" [routerLink]="['/admin/update-client', c.id]">Update client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-danger btn-sm" (click)="deleteClient(c.id)">Delete</button></td>
+                          <td>{{c?.name}}</td>
+                          <td>{{c?.description}}</td>
+                          <td>{{c?.dateCreation}}</td>
+                          <td>{{c?.updatebale}}</td>
+                          <td>{{c?.dateUpdate}}</td>
+                          <td>{{c?.nextUpdateDate}}</td>
+                          <td>{{c?.used}}</td>
+                          <td>{{c?.lastUsedDate}}</td>
+                          <td>{{c?.disabled}}</td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-success btn-sm" (click)="restoreModele(c.id)">Restaurer</button></td>
                         </tr>
                       </tbody>
                     </table>

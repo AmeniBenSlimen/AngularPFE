@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ModulService {
 
-  private BasicUrl ='http://localhost:8084/bank/api/auth/getAllModul';
+  private BasicUrl ='http://localhost:8085/bank/api/auth/getAllModul';
   constructor(private http:HttpClient) { }
   public getModules(){
     return this.http.get<Modul[]>(`${this.BasicUrl}`);

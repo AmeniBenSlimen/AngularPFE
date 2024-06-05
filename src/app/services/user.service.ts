@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private BasicUrl ='http://localhost:8084/bank/api/auth/users';
+  private BasicUrl ='http://localhost:8085/bank/api/auth/users';
   constructor(private http:HttpClient) { }
   public getUsers(){
     return this.http.get<User[]>(`${this.BasicUrl}`);
