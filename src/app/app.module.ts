@@ -55,6 +55,7 @@ import { AddModeleComponent } from './Modeles/add-modele/add-modele.component';
 import { ListModeleComponent } from './Modeles/list-modele/list-modele.component';
 import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
 import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.com
     AddModeleComponent,
     ListModeleComponent,
     CorbeilleModeleComponent,
-    UpdateModeleComponent
+    UpdateModeleComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

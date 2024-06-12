@@ -73,7 +73,7 @@
                           <td>{{r?.id}}</td>
                           <td>{{r?.lbRole}}</td>
                           <td>{{r?.cdRole}}</td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-primary btn-sm" [routerLink]="['/admin/privileges', r.id]">Consulter Priviléges</button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn  btn-sm" [routerLink]="['/admin/privileges', r.id]"><img style="height: 23px;width: 23px;" src="../assets/images/see.png" alt="update"></button></td>
                         </tr>
                       
                       </tbody>
@@ -86,6 +86,8 @@
                   </div>
     </div></div><br>
     <div  style="margin-bottom: 200px;"></div>
-
+    <div class="page-wrapper">
+      <app-footer></app-footer>
+  </div>
   </body>
 </html>

@@ -22,89 +22,9 @@
       sizes="16x16"
       href="../assets/images/favicon.png"
     />
-  
+
   </head>
-  <style>
-    .input-wrap {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-  }
-  
-  .input {
-      display: flex;
-      align-items: center;
-      width: 60%;
-      max-width: 600px;
-      background: #fff;
-      border-radius: 50px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      padding: 10px 20px;
-  }
-  
-  .input-item {
-      flex: 1;
-  }
-  
-  .input-item input {
-      width: 100%;
-      border: none;
-      outline: none;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 50px;
-  }
-  
-  .input-item input::placeholder {
-      color: #999;
-  }
-  
-  .btn1 {
-      background-color: #4285F4;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  }
-  
-  .btn1:hover {
-      background-color: #357ae8;
-  }
-  
-  /* Style pour les messages */
-  .message-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-  }
-  
-  .message-box {
-      background-color: #f8f9fa;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message-box .fs-title {
-      font-size: 18px;
-      color: #333;
-      margin: 0;
-  }
-  
-  .fs-title {
-      font-size: 18px;
-      color: #333;
-  }
-  </style>
+
   <body>
     <app-menu-modele></app-menu-modele>
     <br>
@@ -119,11 +39,17 @@
                 <div class="card-body">
                   <div class="input-wrap">
                     <div class="input fl-wrap">
-                        <div class="input-item">
-                            <input type="text" value=""  placeholder="Rechercher modele..."  >
-                        </div>  
-                        <button type="submit"  class="btn1 btn1-primary">Rechercher</button>
-                    </div>
+                      <div class="input-item">
+                          <input type="text" value="" placeholder="Rechercher avec Nom">
+                      </div>
+                      <div class="input-item">
+                          <input type="text" value="" placeholder="Rechercher avec Année">
+                      </div>
+                      <div class="input-button">
+                          <button type="submit" class="btn1 btn1-primary">Rechercher</button>
+                      </div>
+                  </div>
+                  
                 </div>
               <br>
                   <div class="table-responsive">
@@ -162,8 +88,8 @@
                           <td>{{c?.used}}</td>
                           <td>{{c?.lastUsedDate}}</td>
                           <td>{{c?.disabled}}</td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-success btn-sm" (click)="updateModele(c.id)">Update</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-danger btn-sm" (click)="deleteModele(c.id)">Delete</button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="button edit-button" (click)="updateModele(c.id)"><img style="height: 23px;width: 23px;" src="../assets/images/rotation.png" alt="update"></button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="button delete-button" (click)="deleteModele(c.id)"><img style="height: 23px;width: 23px;" src="../assets/images/delete.png" alt="Delete"></button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -176,6 +102,8 @@
        
     </div>
     <div  style="margin-bottom: 220px;"></div>
-
+    <div class="page-wrapper">
+      <app-footer></app-footer>
+  </div>
   </body>
 </html>

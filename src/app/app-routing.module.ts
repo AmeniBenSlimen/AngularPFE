@@ -37,6 +37,7 @@ import { AddModeleComponent } from './Modeles/add-modele/add-modele.component';
 import { ListModeleComponent } from './Modeles/list-modele/list-modele.component';
 import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
 import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 const routes: Routes = [  
@@ -84,7 +85,8 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path:'', component: HomePageComponent}
 ];
 
 @NgModule({

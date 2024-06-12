@@ -152,9 +152,9 @@
                           <td>{{c?.codeRelationFlexcube}}</td>
                           <td>{{c?.identifiantProspect}}</td>
                           <td>{{c?.newModelUBCI}}</td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/detail-client', c.id]">Détails client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-success btn-sm" [routerLink]="['/admin/update-client', c.id]">Update client</button></td>
-                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline-danger btn-sm" (click)="deleteClient(c.id)">Delete</button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline btn-sm" [routerLink]="['/admin/detail-client', c.id]"><img style="height: 23px;width: 23px;" src="../assets/images/details.png" alt="update" title="Plus d'infos"></button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline btn-sm" [routerLink]="['/admin/update-client', c.id]"><img style="height: 23px;width: 23px;" src="../assets/images/rotation.png" alt="update" title="Mette à jours"></button></td>
+                          <td style="text-align: center; vertical-align: middle;"><button class="btn btn-outline btn-sm" (click)="deleteClient(c.id)"><img style="height: 23px;width: 23px;" src="../assets/images/bin.png" alt="update" title="Supprimer"></button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -167,6 +167,8 @@
        
     </div>
     <div  style="margin-bottom: 220px;"></div>
-
+    <div class="page-wrapper">
+      <app-footer></app-footer>
+  </div>
   </body>
 </html>

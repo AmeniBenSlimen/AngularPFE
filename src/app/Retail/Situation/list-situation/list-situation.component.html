@@ -142,7 +142,7 @@
                 <td>{{c?.idNat}}</td>
                 <td>{{c?.dateDeSituation}}</td>
                 <td style="text-align: center; vertical-align: middle;">
-                  <button  class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin/Situation/details-situation', c.id]">Détails Situation</button>
+                  <button  class="btn btn-outline btn-sm" [routerLink]="['/admin/Situation/details-situation', c.id]"><img style="height: 23px;width: 23px;" src="../assets/images/details.png" alt="update" title="Plus d'infos"></button>
                 </td>
               </tr>
             </tbody>
@@ -155,5 +155,8 @@
     </div>
   </div>
   <div style="margin-bottom: 220px;"></div>
+  <div class="page-wrapper">
+    <app-footer></app-footer>
+</div>
 </body>
 </html>
