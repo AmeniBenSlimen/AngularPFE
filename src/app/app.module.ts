@@ -56,7 +56,11 @@ import { ListModeleComponent } from './Modeles/list-modele/list-modele.component
 import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
 import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { AddVariableComponent } from './Modeles/Variable/add-variable/add-variable.component';
+import { AddScoreComponent } from './Modeles/Score/add-score/add-score.component';
+import { ListVariableComponent } from './Modeles/Variable/list-variable/list-variable.component';
+import { ConsulterScoresVariableComponent } from './Modeles/Variable/consulter-scores-variable/consulter-scores-variable.component';
+import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionnaire.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,8 +107,13 @@ import { HomePageComponent } from './home-page/home-page.component';
     ListModeleComponent,
     CorbeilleModeleComponent,
     UpdateModeleComponent,
-    HomePageComponent
-  ],
+    HomePageComponent,
+    AddVariableComponent,
+    AddScoreComponent,
+    ListVariableComponent,
+    ConsulterScoresVariableComponent,
+    QuestionnaireComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -114,9 +123,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     NgxPaginationModule,
     MatDialogModule,
     RouterModule,
-    NgbModule,
-    BrowserAnimationsModule
-  ],
+    NgbModule  ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
 })

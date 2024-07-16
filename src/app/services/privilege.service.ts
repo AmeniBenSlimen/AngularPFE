@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PrivilegeService {
-  private BasicUrl='http://localhost:8085/bank/api/auth';
+  private BasicUrl='http://localhost:8082/bank/api/auth';
   constructor(private http:HttpClient) { }
 
   public getPrivilege(){

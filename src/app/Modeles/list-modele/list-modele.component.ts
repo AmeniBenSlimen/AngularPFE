@@ -12,6 +12,9 @@ import Swal from 'sweetalert2';
 })
 export class ListModeleComponent implements OnInit {
   modele: Modele[] = [];
+  name: string = '';
+  id?:number;
+  annee?: number;
   p: number = 1;
   itemsPerPage: number = 10;
   totalUsers: any;
@@ -22,7 +25,7 @@ export class ListModeleComponent implements OnInit {
   notExists: boolean = false;
   maDate: Date = new Date();
 
-  constructor(private service: ModeleService, private router: Router) {}
+  constructor(private service: ModeleService,private router: Router) {}
 
   ngOnInit(): void {
     this.loadModele();
@@ -43,7 +46,7 @@ export class ListModeleComponent implements OnInit {
   deleteModele(id: any): void {
     Swal.fire({
       title: 'Êtes-vous sûr?',
-      text: "Vous êtes sur le point de supprimer cet client!",
+      text: "Vous êtes sur le point de supprimer ce modèle!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -54,16 +57,14 @@ export class ListModeleComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.deleteModele(id).subscribe({
           next: (res) => {
-            Swal.fire('Supprimé!', 'Le modele a été supprimé.', 'success');
+            Swal.fire('Supprimé!', 'Le modèle a été supprimé.', 'success');
             this.removeModeleFromList(id); 
-            //this.router.navigate(['/admin/Modele/corbeille-modele']); 
-        
           },
           error: (error) => {
-            console.error('Erreur lors de la suppression de Modèle :', error);
+            console.error('Erreur lors de la suppression de modèle :', error);
             Swal.fire(
               'Échec de la suppression!',
-              'La suppression de Modèle a échoué. ' + error.message,
+              'La suppression de modèle a échoué. ' + error.message,
               'error'
             );
           },
@@ -78,8 +79,57 @@ export class ListModeleComponent implements OnInit {
     this.modele = this.modele.filter(m => m.id !== id);
   }
 
-  updateModele(id:any):void{
+  updateModele(id:any):void {
     this.router.navigate(['/admin/Modele/update-modele',id]);
   }
+
+  SearchByNameAndAnnee(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+  
+    this.searched = true;
+  
+    this.service.SearchByNameAndAnnee(this.name,this.annee).subscribe({
+      next: (data) => {
+        this.exists = true;
+        this.modele = data;
+        this.notExists = this.modele.length === 0;
+        if (this.notExists) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Aucun modèle trouvé',
+            text: 'Veuillez essayer un autre Nom de Modèle.'
+          });
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  toggleUsed(modele: Modele): void {
+    if (!modele || modele.id === undefined) {
+        console.error('Modèle invalide:', modele);
+        return;
+    }
+
+    this.service.ModeleUsed(modele.id).subscribe({
+        next: (updatedModele: Modele) => {
+            const index = this.modele.findIndex(m => m.id === updatedModele.id);
+            if (index !== -1) {
+                this.modele[index] = updatedModele;
+                console.log('Modèle mis à jour:', updatedModele);
+            } else {
+                console.error('Modèle non trouvé dans la liste:', updatedModele);
+            }
+        },
+        error: (error) => {
+            console.error('Erreur lors de la mise à jour du modèle:', error);
+        }
+    });
+}
+
 
 }

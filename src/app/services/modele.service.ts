@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ModeleService {
 
-  private BasicUrl ='http://localhost:8085/bank/api/auth';
+  private BasicUrl ='http://localhost:8082/bank/api/auth';
   constructor(private http:HttpClient) { }
   public getModeles(){
     return this.http.get<Modele[]>(`${this.BasicUrl}/ModelsSoftDeletedTrue`);
@@ -34,5 +34,11 @@ export class ModeleService {
 }
 public getSoftDeleteModels(){
   return this.http.get<Modele[]>(`${this.BasicUrl}/ModelsSoftDeleted`);
+}
+SearchByNameAndAnnee(name:any,annee:any){
+  return this.http.get<Modele[]>(`${this.BasicUrl}/searchByNameAndAnnee?name=${name}&annee=${annee}`);
+ }
+ModeleUsed(id: number): Observable<Modele> {
+  return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, null);
 }
 }

@@ -1,6 +1,6 @@
 export class Modele {
 id?: number;
-nom?:string;
+name?:string;
 description?:string; 
 dateCreation?:Date;
 dateUpdate?:Date;
@@ -9,4 +9,5 @@ updatebale?:boolean;
 nextUpdateDate?:Date;
 lastUsedDate?:Date;
 disabled?:boolean;
+annee?:number;
 }

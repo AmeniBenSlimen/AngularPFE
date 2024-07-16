@@ -15,7 +15,7 @@ export class AuthService {
   // gérer les tokens 
   helper=new JwtHelperService()
   role=''
-  private url = 'http://localhost:8085/bank/api/auth'
+  private url = 'http://localhost:8082/bank/api/auth'
   // pour connaître l'état d'authentification de l'utilisateur
   AuthenticatedUser$  = new BehaviorSubject<User | null>(null);
   constructor(private http:HttpClient, private tokenstorageService : TokenstorageService,private router: Router) {
@@ -39,7 +39,7 @@ export class AuthService {
   getToken(){
     this.tokenstorageService.getToken();
   }
-  private Url ='http://localhost:8084/bank/api/auth'
+  private Url ='http://localhost:8082/bank/api/auth'
   public getUserRole(id:number): Observable<User>{
     const url= `${this.Url}/userRole/${id}`;
     return this.http.get<User>(url);

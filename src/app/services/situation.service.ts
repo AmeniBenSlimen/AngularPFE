@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SituationService {
 
-  private BasicUrl ='http://localhost:8085/bank/api/auth';
+  private BasicUrl ='http://localhost:8082/bank/api/auth';
   constructor(private http:HttpClient) { }
   public getSituations(){
     return this.http.get<SituationClientRetail[]>(`${this.BasicUrl}/ConsulterSituation`);

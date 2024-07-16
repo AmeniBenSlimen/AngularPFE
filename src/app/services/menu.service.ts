@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuService {
-  private BasicUrl ='http://localhost:8084/bank/api/auth/admin/dashboard';
+  private BasicUrl ='http://localhost:8082/bank/api/auth/admin/dashboard';
   constructor(private http:HttpClient) { }
   public getMenus(){
     return this.http.get<Menu[]>(`${this.BasicUrl}`);
@@ -15,7 +15,7 @@ export class MenuService {
   public getModuls(){
     return this.http.get<any[]>(`${this.url}/getAllModul`);
   }
-  private url='http://localhost:8085/bank/api/auth';
+  private url='http://localhost:8082/bank/api/auth';
   addMenu(menu:any){
     return this.http.post<Menu>(`${this.url}/addMenu`,menu);
   } 

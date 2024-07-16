@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenstorageService } from 'src/app/services/tokenstorage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -78,29 +79,41 @@ export class RegisterComponent implements OnInit {
       return this.form.get('fullname')
     }
     get phone(){return this.form.get('phone')}
-    onSubmit(){
-      this.submitted = true ;
-      if(this.form.invalid)
-      {
-        return ;
+    onSubmit() {
+      this.submitted = true;
+      if (this.form.invalid) {
+        return;
       }
-      this.authservice.register(this.form.value).subscribe(
   
+      this.authservice.register(this.form.value).subscribe(
         data => {
-          this.tokenservice.saveToken(data.token)
-          this.tokenservice.saveUser(JSON.stringify(data));
-          this.submitted = false ;
+          /*this.tokenservice.saveToken(data.token);
+          this.tokenservice.saveUser(JSON.stringify(data));*/
+          this.submitted = false;
           this.isLoginFailed = false;
-          this.isLogedIn = true;
-          this.roles = this.roles;
-          
+          this.isLogedIn = false;
+          //this.roles = this.roles;
+  
+          Swal.fire({
+            icon: 'success',
+            title: 'Succès',
+            text: 'Vous avez créé un compte avec succès! Merci de connecter maintemant',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            this.router.navigate(['/login']);
+          });
         },
         error => {
           this.isLoginFailed = true;
           this.isLogedIn = false;
+  
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Une erreur est survenue lors de la création du compte.',
+            confirmButtonText: 'OK'
+          });
         }
       );
-     
     }
-
 }

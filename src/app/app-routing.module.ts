@@ -38,6 +38,11 @@ import { ListModeleComponent } from './Modeles/list-modele/list-modele.component
 import { CorbeilleModeleComponent } from './Modeles/corbeille-modele/corbeille-modele.component';
 import { UpdateModeleComponent } from './Modeles/update-modele/update-modele.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AddVariableComponent } from './Modeles/Variable/add-variable/add-variable.component';
+import { AddScoreComponent } from './Modeles/Score/add-score/add-score.component';
+import { ListVariableComponent } from './Modeles/Variable/list-variable/list-variable.component';
+import { ConsulterScoresVariableComponent } from './Modeles/Variable/consulter-scores-variable/consulter-scores-variable.component';
+import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionnaire.component';
 
 
 const routes: Routes = [  
@@ -79,9 +84,13 @@ const routes: Routes = [
       { path: 'Modele/add-modele',component: AddModeleComponent},
       { path: 'Modele/list-modele',component: ListModeleComponent},
       { path: 'Modele/corbeille-modele',component: CorbeilleModeleComponent},
-      { path: 'Modele/update-modele/:id',component: UpdateModeleComponent}
-
-
+      { path: 'Modele/update-modele/:id',component: UpdateModeleComponent},
+      { path: 'Variable/add-variable', component: AddVariableComponent},
+      { path: 'Score/add-score/:id', component: AddScoreComponent},
+      { path: 'Variable/list-variable', component: ListVariableComponent},
+      { path: 'Variable/ConsulterScoresVariable/:id', component: ConsulterScoresVariableComponent},
+      { path: 'Modele/questionnaire', component: QuestionnaireComponent}
+      
     ]
   },
   { path: 'login', component: LoginComponent },

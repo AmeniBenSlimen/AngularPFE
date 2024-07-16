@@ -36,7 +36,6 @@ loadMenu():void{
 }
 deleteModule(cdMenu: any): void {
  
-  // Afficher un Sweet Alert pour demander confirmation
   Swal.fire({
     title: 'Êtes-vous sûr?',
     text: "Vous êtes sur le point de supprimer cet module !",
