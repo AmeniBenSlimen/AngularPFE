@@ -1,5 +1,6 @@
 export enum Type {
-    TEXT = 'TEXT',
-    NUMBER = 'NUMBER',
-    DATE = 'DATE'
-  }
+  NUMBER = 'NUMBER',
+  INTERVALE = 'INTERVALE',
+  DATE = 'DATE',
+  ENUMERATION = 'ENUMERATION' // Ajoutez cette ligne si elle est utilisée
+}

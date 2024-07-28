@@ -20,8 +20,13 @@ export class MenuDashboardComponent implements OnInit {
   showAdminBoard = false;
   AuthUserSub!: Subscription;
   privileges : Privilege[]=[];
+  currentUser: any;
 
-  constructor(public authService: AuthService, private menuService: MenuService,private pservice:PrivilegeService) {}
+  constructor(public authService: AuthService, private menuService: MenuService,private pservice:PrivilegeService) {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
 
   ngOnInit(): void {
     this.menuService.getModuls().subscribe({
@@ -31,6 +36,9 @@ export class MenuDashboardComponent implements OnInit {
       error: (error) => {
         console.log(error);
       }
+    });
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
     });
   }
 

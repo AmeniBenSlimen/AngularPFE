@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class ModulService {
 
-  private BasicUrl ='http://localhost:8082/bank/api/auth/getAllModul';
+  private BasicUrl ='http://localhost:8085/bank/api/auth/getAllModul';
   constructor(private http:HttpClient) { }
   public getModules(){
     return this.http.get<Modul[]>(`${this.BasicUrl}`);
   }
-  private url='http://localhost:8082/bank/api/auth'
+  private url='http://localhost:8085/bank/api/auth'
   public getByCdModul(cdModul: String): Observable<Modul> {
     const Url = `${this.url}/getByCodModule/${cdModul}`;
     return this.http.get<Modul>(Url);

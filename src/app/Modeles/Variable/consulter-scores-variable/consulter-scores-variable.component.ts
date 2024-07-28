@@ -25,14 +25,17 @@ export class ConsulterScoresVariableComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = +params['id'];
+      console.log(params);
       this.loadVariableWithScores(id);
     });
+    
   }
-
   loadVariableWithScores(id: number): void {
     this.variableService.getVariableById(id).subscribe(
       (data: Variable) => {
         this.variable = data;
+        console.log('Variable loaded:', this.variable);
+        this.variable.scores.forEach(score => console.log('Score:', score));
       },
       error => {
         console.error('Error loading variable details:', error);
@@ -40,29 +43,76 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
-
+  
   openUpdateForm(scoreId?: number): void {
     if (scoreId === undefined || !this.variable) {
       console.error('Score ID or variable is undefined');
       return;
     }
 
-    this.variableService.getScoreById(scoreId).subscribe(
+    this.scoreService.ScoreById(scoreId).subscribe(
       (score: Score) => {
+        console.log('Received score from backend:', score);
+
+        let inputHtml = '';
+
+        switch (score.type) {
+          case 'ENUMERATION':
+            console.log('ENUMERATION valeur:', score.valeur); 
+            inputHtml = `<input id="swal-input2" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Choix" value="${score.valeur ?? ''}">`;
+            break;
+          case 'INTERVALE':
+            inputHtml = 
+              `<input id="swal-input3" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Valeur Min" value="${score.vmin ?? ''}">` +
+              `<input id="swal-input4" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Valeur Max" value="${score.vmax ?? ''}">`;
+            break;
+          case 'DATE':
+            inputHtml = `<input id="swal-input-date" class="swal2-input" placeholder="Date" type="date" value="${score.valeur ?? ''}">`;
+            break;
+          case 'NUMBER':
+            inputHtml = `<input id="swal-input6" style="font-size: 16px;font-family: serif" class="swal2-input" type="number" value="${score.valeur ?? ''}">`;
+            break;
+          default:
+            inputHtml = `<input id="swal-input2" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Valeur" value="${score.valeur ?? ''}">`;
+            break;
+        }
+
         Swal.fire({
           title: 'Modifier Score',
           html:
-            `<input id="swal-input1" class="swal2-input" placeholder="Nouveau Score" value="${score.score}">` +
-            `<input id="swal-input2" class="swal2-input" placeholder="Nouveau Choix" value="${score.valeur}">`,
+            `<input id="swal-input1" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Score" value="${score.score ?? ''}">` +
+            inputHtml,
           showCancelButton: true,
           confirmButtonText: 'Modifier',
           cancelButtonText: 'Annuler',
           preConfirm: () => {
             const newScore = (document.getElementById('swal-input1') as HTMLInputElement).value;
-            const newChoice = (document.getElementById('swal-input2') as HTMLInputElement).value;
+            const newChoice = (document.getElementById('swal-input2') as HTMLInputElement)?.value;
+            const newVMin = (document.getElementById('swal-input3') as HTMLInputElement)?.value;
+            const newVMax = (document.getElementById('swal-input4') as HTMLInputElement)?.value;
+            const newDate = (document.getElementById('swal-input5') as HTMLInputElement)?.value;
+            const newNumber = (document.getElementById('swal-input6') as HTMLInputElement)?.value;
 
             score.score = parseFloat(newScore);
-            score.valeur = newChoice;
+
+            switch (score.type) {
+              case 'ENUMERATION':
+                score.valeur = newChoice ?? undefined;
+                break;
+              case 'INTERVALE':
+                score.vmin = newVMin ? parseFloat(newVMin) : undefined;
+                score.vmax = newVMax ? parseFloat(newVMax) : undefined;
+                break;
+              case 'DATE':
+                score.valeur = newDate ?? undefined;
+                break;
+              case 'NUMBER':
+                score.valeur = newNumber ? parseFloat(newNumber) : undefined;
+                break;
+              default:
+                score.valeur = newChoice ?? undefined;
+                break;
+            }
 
             if (score.id) {
               this.updateScore(score.id, score);
@@ -78,6 +128,8 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
+
+  
 
   updateScore(scoreId: number, updatedScore: Score): void {
     this.scoreService.updateScore(scoreId, updatedScore).subscribe(
@@ -133,10 +185,10 @@ export class ConsulterScoresVariableComponent implements OnInit {
     Swal.fire({
       title: 'Modifier Question',
       html:
-        '<input id="swal-input1" class="swal2-input" placeholder="Nouvelle Description" value="' + this.variable?.description + '">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Nouveau Code" value="' + this.variable?.code + '">' +
-        '<input id="swal-input3" class="swal2-input" placeholder="Nouveau Coefficient" value="' + (this.variable && this.variable.coefficient !== undefined ? this.variable.coefficient.toString() : '') + '">' +
-        '<input id="swal-input4" class="swal2-input" placeholder="Nouveau Type" value="' + (this.variable && this.variable.type ? this.variable.type.toString() : '') + '">',
+        '<input id="swal-input1"style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouvelle Description" value="' + this.variable?.description + '">' +
+        '<input id="swal-input2"style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Code" value="' + this.variable?.code + '">' +
+        '<input id="swal-input3"style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Coefficient" value="' + (this.variable && this.variable.coefficient !== undefined ? this.variable.coefficient.toString() : '') + '">' +
+        '<input id="swal-input4" disabled style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Type" value="' + (this.variable && this.variable.type ? this.variable.type.toString() : '') + '">',
 
       showCancelButton: true,
       confirmButtonText: 'Modifier',
@@ -177,4 +229,116 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     });
   }
+  openAddScoreForm(): void {
+    if (!this.variable) {
+      console.error('Variable is undefined');
+      return;
+    }
+  
+    let htmlContent = '';
+    switch (this.variable.type) {
+      case 'ENUMERATION':
+        htmlContent = 
+          '<input id="swal-input-score" class="swal2-input" placeholder="Score">' +
+          '<input id="swal-input-value" class="swal2-input" placeholder="Choix">';
+        break;
+      case 'INTERVALE':
+        htmlContent = 
+          '<input id="swal-input-score" class="swal2-input" placeholder="Score">' +
+          '<input id="swal-input-vmin" class="swal2-input" placeholder="Valeur Min">' +
+          '<input id="swal-input-vmax" class="swal2-input" placeholder="Valeur Max">';
+        break;
+      case 'DATE':
+        htmlContent = 
+          '<input id="swal-input-score" class="swal2-input" placeholder="Score">' +
+          '<input id="swal-input-date" class="swal2-input" placeholder="Date" type="date">';
+        break;
+      case 'NUMBER':
+        htmlContent = 
+          '<input id="swal-input-score" class="swal2-input" placeholder="Score">' +
+          '<input id="swal-input-num" class="swal2-input" placeholder="Nombre">';
+        break;
+      default:
+        console.error('Invalid variable type');
+        return;
+    }
+  
+    Swal.fire({
+      title: 'Ajouter un Score',
+      html: htmlContent,
+      showCancelButton: true,
+      confirmButtonText: 'Ajouter',
+      cancelButtonText: 'Annuler',
+      preConfirm: () => {
+        const scoreValue = (document.getElementById('swal-input-score') as HTMLInputElement).value;
+        const scoreDto: any = {
+          variableId: this.variable?.id,
+          score: parseFloat(scoreValue),
+        };
+  
+        if (isNaN(scoreDto.score)) {
+          Swal.showValidationMessage('Le score doit être un nombre valide');
+          return;
+        }
+  
+        switch (this.variable?.type) {
+          case 'ENUMERATION':
+            scoreDto.enumeration = (document.getElementById('swal-input-value') as HTMLInputElement).value;
+            if (!scoreDto.enumeration) {
+              Swal.showValidationMessage('Le choix est requis');
+              return;
+            }
+            break;
+          case 'INTERVALE':
+            scoreDto.vmin = parseFloat((document.getElementById('swal-input-vmin') as HTMLInputElement).value);
+            scoreDto.vmax = parseFloat((document.getElementById('swal-input-vmax') as HTMLInputElement).value);
+            if (isNaN(scoreDto.vmin) || isNaN(scoreDto.vmax)) {
+              Swal.showValidationMessage('Les valeurs min et max doivent être des nombres valides');
+              return;
+            }
+            break;
+          case 'DATE':
+            scoreDto.date = (document.getElementById('swal-input-date') as HTMLInputElement).value;
+            if (!scoreDto.date) {
+              Swal.showValidationMessage('La date est requise');
+              return;
+            }
+            break;
+          case 'NUMBER':
+            scoreDto.num = parseFloat((document.getElementById('swal-input-num') as HTMLInputElement).value);
+            if (isNaN(scoreDto.num)) {
+              Swal.showValidationMessage('Le nombre doit être un nombre valide');
+              return;
+            }
+            break;
+          default:
+            Swal.showValidationMessage('Type de variable invalide');
+            return;
+        }
+  
+        return scoreDto;
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        this.addScore(result.value);
+      }
+    });
+  }
+  
+  addScore(scoreDto: any): void {
+    this.scoreService.createScore(scoreDto).subscribe(
+      () => {
+        console.log('Score ajouté avec succès');
+        if (this.variable?.id) {
+          this.loadVariableWithScores(this.variable.id);
+        }
+        Swal.fire('Succès', 'Score ajouté avec succès!', 'success');
+      },
+      error => {
+        console.error('Erreur lors de l\'ajout du score :', error);
+        Swal.fire('Erreur', 'Erreur lors de l\'ajout du score', 'error');
+      }
+    );
+  }
+  
 }  

@@ -8,7 +8,7 @@ export class Variable {
     description?: string;
     type?: Type;
     modeleId?: number;
-    scores: Score[];
+    scores: Score[] = []; 
 
     constructor(id?: number, code?: string, description?: string, coefficient?: number, type?: Type, scores: Score[] = []) {
         this.id = id;

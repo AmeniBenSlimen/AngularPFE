@@ -82,7 +82,9 @@ export class ListModeleComponent implements OnInit {
   updateModele(id:any):void {
     this.router.navigate(['/admin/Modele/update-modele',id]);
   }
-
+  addVariable(id:any):void {
+    this.router.navigate(['/admin/Variable/add-variable',id]);
+  }
   SearchByNameAndAnnee(event?: Event): void {
     if (event) {
       event.preventDefault();

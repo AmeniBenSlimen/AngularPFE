@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { TokenstorageService } from './tokenstorage.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
@@ -12,14 +12,30 @@ import { Roles } from '../models/roles';
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
   // gérer les tokens 
   helper=new JwtHelperService()
   role=''
-  private url = 'http://localhost:8082/bank/api/auth'
+  private url = 'http://localhost:8085/bank/api/auth'
   // pour connaître l'état d'authentification de l'utilisateur
+
   AuthenticatedUser$  = new BehaviorSubject<User | null>(null);
+
   constructor(private http:HttpClient, private tokenstorageService : TokenstorageService,private router: Router) {
+    this.currentUserSubject = new BehaviorSubject<any>(null);
+    this.currentUser = this.currentUserSubject.asObservable();
+    this.getCurrentUser();
    }
+
+   getCurrentUser(): Observable<any> {
+    return this.http.get<any>(`${this.url}/current-user`);
+  }
+
+  public get currentUserValue(): any {
+    return this.currentUserSubject.value;
+  }
+
   login(forms:any):Observable<any>{
     return this.http.post(this.url+'/signin',
     {username:forms.username,password:forms.password});
@@ -34,12 +50,11 @@ export class AuthService {
   logout(){
     this.tokenstorageService.signOut();
     this.router.navigate(['/login']);
-
   }
   getToken(){
     this.tokenstorageService.getToken();
   }
-  private Url ='http://localhost:8082/bank/api/auth'
+  private Url ='http://localhost:8085/bank/api/auth';
   public getUserRole(id:number): Observable<User>{
     const url= `${this.Url}/userRole/${id}`;
     return this.http.get<User>(url);
@@ -77,4 +92,5 @@ hasAccess(role: Roles): boolean {
   }
   return false; 
 }
+
 }

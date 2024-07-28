@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private BasicUrl ='http://localhost:8082/bank/api/auth/users';
+  private BasicUrl ='http://localhost:8085/bank/api/auth/users';
   constructor(private http:HttpClient) { }
   public getUsers(){
     return this.http.get<User[]>(`${this.BasicUrl}`);
   }
-  private Url ='http://localhost:8082/bank/api/auth';
+  private Url ='http://localhost:8085/bank/api/auth';
   public assignRolesToUser(userId: number, roles: Roles[]): Observable<void> {
     return this.http.put<void>(`${this.Url}/${userId}/roles`, roles);
   }

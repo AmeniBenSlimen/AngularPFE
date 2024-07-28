@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit{
   constructor(private authservice : AuthService , 
               private tokenservice : TokenstorageService ,
               private fb:FormBuilder,
-              private router:Router){}
+              private router:Router,
+            ){}
   ngOnInit(): void {
     if(this.tokenservice.getToken()!= null){
       this.isLogedIn = true;

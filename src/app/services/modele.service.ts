@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Modele } from '../models/modele';
 import { Observable } from 'rxjs';
+import { Variable } from '../models/variable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModeleService {
 
-  private BasicUrl ='http://localhost:8082/bank/api/auth';
+  private BasicUrl ='http://localhost:8085/bank/api/auth';
   constructor(private http:HttpClient) { }
   public getModeles(){
     return this.http.get<Modele[]>(`${this.BasicUrl}/ModelsSoftDeletedTrue`);
@@ -22,6 +23,10 @@ export class ModeleService {
     const url = `${this.BasicUrl}/getModeleById/${id}`;
     return this.http.get<Modele>(url);
   }
+  getVariableById(id: number): Observable<Variable> {
+    return this.http.get<Variable>(`${this.BasicUrl}/getVariableById/${id}`);
+  }
+  
   restoreModele(id: number): Observable<any> {
     const url = `${this.BasicUrl}/restoreModele/${id}`;
     return this.http.put(url, null);

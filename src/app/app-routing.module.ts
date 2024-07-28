@@ -85,8 +85,8 @@ const routes: Routes = [
       { path: 'Modele/list-modele',component: ListModeleComponent},
       { path: 'Modele/corbeille-modele',component: CorbeilleModeleComponent},
       { path: 'Modele/update-modele/:id',component: UpdateModeleComponent},
-      { path: 'Variable/add-variable', component: AddVariableComponent},
-      { path: 'Score/add-score/:id', component: AddScoreComponent},
+      { path: 'Variable/add-variable/:modeleId', component: AddVariableComponent},
+      { path: 'Score/add-score/:variableId', component: AddScoreComponent},
       { path: 'Variable/list-variable', component: ListVariableComponent},
       { path: 'Variable/ConsulterScoresVariable/:id', component: ConsulterScoresVariableComponent},
       { path: 'Modele/questionnaire', component: QuestionnaireComponent}

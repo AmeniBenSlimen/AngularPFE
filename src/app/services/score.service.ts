@@ -8,12 +8,12 @@ import { Variable } from '../models/variable';
   providedIn: 'root'
 })
 export class ScoreService {
-  private BasicUrl ='http://localhost:8082/bank/api/auth';
+  private BasicUrl ='http://localhost:8085/bank/api/auth';
   constructor(private http:HttpClient) { }
   
-  addScore(score:any){
-    return this.http.post<Score>(`${this.BasicUrl}/addScore`,score);
-  } 
+  createScore(score: Score): Observable<Score> {
+    return this.http.post<Score>(`${this.BasicUrl}/addScore`, score);
+  }
   updateScore(scoreId: number, updatedScore: Score): Observable<Score> {
     const url = `${this.BasicUrl}/updataScore/${scoreId}`;
     return this.http.put<Score>(url, updatedScore);
@@ -26,5 +26,8 @@ export class ScoreService {
   }
   public getAllVariables(){
     return this.http.get<Variable[]>(`${this.BasicUrl}/getAllVariables`);
+  }
+  public ScoreById(id: number):Observable<any>{
+    return this.http.get(`${this.BasicUrl}/scores/${id}`);
   }
 }

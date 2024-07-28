@@ -42,6 +42,19 @@ export class QuestionnaireComponent implements OnInit {
       return;
     }
 
+    // Check if all questions have a selected value
+    for (let variable of this.variables) {
+      if (!this.selectedValues[variable.id!.toString()]) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: `Veuillez sélectionner une réponse pour la question: ${variable.description}`,
+          confirmButtonText: 'OK'
+        });
+        return;
+      }
+    }
+
     this.finalScore = 0;
     this.variables.forEach(variable => {
       const selectedValue = this.selectedValues[variable.id!.toString()];
@@ -51,11 +64,8 @@ export class QuestionnaireComponent implements OnInit {
       }
     });
 
-    // Display final score using SweetAlert
     Swal.fire({
-      title: 'Score final',
-      text: `Le score final est : ${this.finalScore}`,
-      icon: 'success',
+      title: `Le score final est : ${this.finalScore}`,
       confirmButtonText: 'OK'
     });
   }

@@ -1,9 +1,11 @@
-// add-score.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Score } from 'src/app/models/score';
+import { Variable } from 'src/app/models/variable';
+import { VariableService } from 'src/app/services/variable.service';
 import { ScoreService } from 'src/app/services/score.service';
 import Swal from 'sweetalert2';
+import { Type } from 'src/app/models/type.enum'; // Importer l'énumération Type
 
 @Component({
   selector: 'app-add-score',
@@ -12,39 +14,68 @@ import Swal from 'sweetalert2';
 })
 export class AddScoreComponent implements OnInit {
   score: Score = new Score();
-  variableId ?: number;
+  variable: Variable | undefined;   
+  variableId: number | undefined;
 
-  constructor(private route: ActivatedRoute, private service: ScoreService, private router: Router) {}
+  // Déclarer l'énumération Type pour l'utiliser dans le template
+  Type = Type;
+
+  constructor(
+    private scoreService: ScoreService,
+    private variableService: VariableService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.variableId = +this.route.snapshot.paramMap.get('id')!;
-    this.score.variableId = this.variableId;
+    this.variableId = +this.route.snapshot.params['variableId'];
+    console.log('Variable ID:', this.variableId);
 
+    if (this.variableId) {
+      this.variableService.getVariableById(this.variableId).subscribe({
+        next: (res) => {
+          this.variable = res;
+          console.log('Variable:', this.variable);
+          this.score.variableId = this.variableId;
+        },
+        error: (error) => {
+          console.error('Error fetching variable with ID:', this.variableId, error);
+        }
+      });
+    } else {
+      console.error('Variable ID is not provided.');
+    }
   }
-  resetForm(): void {
-    this.score = new Score();
-    this.score.variableId = this.variableId;
-  }
-  create(): void {
-    console.log("Creating score with:", this.score); 
-    this.service.addScore(this.score).subscribe({
-      next: (data) => {
+
+  createScore(): void {
+    if (!this.variableId) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Variable ID is required to add a score.',
+      });
+      return;
+    }
+
+    this.scoreService.createScore(this.score).subscribe({
+      next: (response) => {
+        console.log('Score created successfully:', response);
         Swal.fire({
           icon: 'success',
-          title: 'Succès',
-          text: 'Score ajouté avec succès !',
-        }).then(() => {
-          this.resetForm();
+          text: 'Score created successfully',
         });
+        this.router.navigate(['/admin/Modele/list-modele']);
       },
       error: (err) => {
+        console.error('Error creating score:', err);
         Swal.fire({
           icon: 'error',
-          text: 'Échec de l\'ajout du score !',
+          text: 'Failed to create score. Please check the console for more details.',
         });
-        console.log(err);
-      },
+      }
     });
   }
-  
+
+  isType(type: Type): boolean {
+    return this.variable?.type === type;
+  }
 }

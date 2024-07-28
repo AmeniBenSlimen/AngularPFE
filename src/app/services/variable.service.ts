@@ -9,18 +9,18 @@ import { Score } from '../models/score';
 })
 export class VariableService {
 
-  private BasicUrl ='http://localhost:8082/bank/api/auth';
+  private BasicUrl ='http://localhost:8085/bank/api/auth';
   constructor(private http:HttpClient) { }
   
-  addVariable(variable:any){
-    return this.http.post<Variable>(`${this.BasicUrl}/addVariable`,variable);
+  addVariable(variable:any,modeleId:any){
+    return this.http.post<Variable>(`${this.BasicUrl}/addVariable/${modeleId}`,variable);
   } 
   public getAllVariables(){
     return this.http.get<Variable[]>(`${this.BasicUrl}/getAllVariables  `);
   }
   public getVariableById(id: number): Observable<any> {
 
-    const url = `${this.BasicUrl}/getVariableById/${id}`;
+    const url = `${this.BasicUrl}/getVariableScoreById/${id}`;
     return this.http.get<any>(url);
   }
   getScoreById(scoreId: number): Observable<Score> {

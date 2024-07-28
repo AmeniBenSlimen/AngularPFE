@@ -9,11 +9,14 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
   <style>
-    .navbar-header, .navbar-collapse, .navbar-nav, .topbar{
+    .navbar-header, .navbar-collapse, .navbar-nav, .topbar {
       background-color: #0F265B !important;
     }
     .move-left {
-      margin-left: 1157px; 
+      margin-left: 1157px;
+    }
+    .user-name {
+      color: black; /* Change this to any color that contrasts with the background */
     }
   </style>
 </head>
@@ -92,8 +95,8 @@
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../assets/images/user.png" alt="user" class="rounded-circle move-left" width="31" />
               </a>
-              <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown" >
-                <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-account me-1 ms-1"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-account me-1 ms-1"></i>{{ currentUser?.username }}</a> <!-- Apply the same style here if needed -->
                 <a class="dropdown-item" href="javascript:void(0)" style="font-family: serif;"><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a>
                 <a class="dropdown-item" href="javascript:void(0)" style="font-family: serif;"><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a>
                 <div class="dropdown-divider"></div>

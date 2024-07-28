@@ -50,9 +50,10 @@
               <label for="lname" class="col-sm-3 text-end control-label col-form-label">Type</label>
               <div class="col-sm-9">
                 <select [(ngModel)]="variable.type" required [ngModelOptions]="{standalone: true}" class="form-control">
-                  <option value="TEXT">Text</option>
-                  <option value="NUMBER">Number</option>
-                  <option value="DATE">Date</option>
+                  <option value="ENUMERATION">ENUMERATION</option>
+                  <option value="NUMBER">NUMBER</option>
+                  <option value="DATE">DATE</option>
+                  <option value="INTERVALE">INTERVALE</option>
                 </select>
               </div>
             </div>
