@@ -116,7 +116,10 @@
             </tbody>
           </table>
           <br>
-          <!-- Display ponderation value -->
+          <!-- Affichage de la valeur calculée de la pondération -->
+          <div *ngIf="ponderationValue !== undefined">
+            <h3 style="font-size: 16px;font-family: serif">Valeur de la Pondération : {{ ponderationValue }}</h3>
+          </div>
         </div>
       </div>
     </div>

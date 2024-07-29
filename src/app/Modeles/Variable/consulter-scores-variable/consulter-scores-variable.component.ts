@@ -14,22 +14,23 @@ import Swal from 'sweetalert2';
 export class ConsulterScoresVariableComponent implements OnInit {
 
   variable: Variable | undefined;
-
+  ponderationValue: number | undefined;
+  variableId: number | null = null;
   constructor(
     private scoreService: ScoreService,
     private variableService: VariableService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      console.log(params);
+      console.log('Variable ID from route:', id);
       this.loadVariableWithScores(id);
+      this.valeurPonderer(id);
     });
-    
   }
+
   loadVariableWithScores(id: number): void {
     this.variableService.getVariableById(id).subscribe(
       (data: Variable) => {
@@ -43,7 +44,19 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
-  
+
+  valeurPonderer(id: number): void {
+    this.variableService.valeurPonderer(id).subscribe(
+      (data: any) => {
+        this.ponderationValue = data; // Supposons que `data` est une valeur calculée
+        console.log('Ponderation value loaded:', this.ponderationValue);
+      },
+      error => {
+        console.error('Error loading ponderation value:', error);
+        Swal.fire('Erreur', 'Erreur lors du chargement de la valeur de pondération', 'error');
+      }
+    );
+  }
   openUpdateForm(scoreId?: number): void {
     if (scoreId === undefined || !this.variable) {
       console.error('Score ID or variable is undefined');
