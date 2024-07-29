@@ -48,7 +48,7 @@ export class ConsulterScoresVariableComponent implements OnInit {
   valeurPonderer(id: number): void {
     this.variableService.valeurPonderer(id).subscribe(
       (data: any) => {
-        this.ponderationValue = data; // Supposons que `data` est une valeur calculée
+        this.ponderationValue = data; 
         console.log('Ponderation value loaded:', this.ponderationValue);
       },
       error => {

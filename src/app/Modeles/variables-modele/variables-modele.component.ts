@@ -17,13 +17,26 @@ export class VariablesModeleComponent implements OnInit{
   itemsPerPage: number = 5;
   totalModules: any;
   searchtext: any;
+  ponderationValue: number | undefined;
+  modeleId: number | null = null;
   constructor(private service:ModeleService ,private sniper:ActivatedRoute, private router:Router){ }
 
   ngOnInit(): void {
     this.id = this.sniper.snapshot.params['id'];
     this.loadModele();
+    this.valeurPonderer(this.id);
   }
-
+  valeurPonderer(id: number): void {
+    this.service.valeurPonderer(id).subscribe(
+      (data: any) => {
+        this.ponderationValue = data; // Supposons que `data` est une valeur calculée
+        console.log('Ponderation value loaded:', this.ponderationValue);
+      },
+      error => {
+        console.error('Error loading ponderation value:', error);
+      }
+    );
+  }
   loadModele(): void {
     this.service.getModeleById(this.id).subscribe({
       next: (res) => {

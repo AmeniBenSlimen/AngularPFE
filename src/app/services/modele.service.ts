@@ -46,4 +46,8 @@ SearchByNameAndAnnee(name:any,annee:any){
 ModeleUsed(id: number): Observable<Modele> {
   return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, null);
 }
+valeurPonderer(modeleId: number): Observable<Modele> {
+  const url = `${this.BasicUrl}/ponderationModele/${modeleId}`;
+  return this.http.get<Modele>(url);
+}
 }
