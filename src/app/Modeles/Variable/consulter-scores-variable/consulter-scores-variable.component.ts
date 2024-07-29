@@ -132,7 +132,15 @@ export class ConsulterScoresVariableComponent implements OnInit {
   
 
   updateScore(scoreId: number, updatedScore: Score): void {
-    this.scoreService.updateScore(scoreId, updatedScore).subscribe(
+    const payload = {
+      id: updatedScore.id,
+      score: updatedScore.score,
+      variableId: updatedScore.variableId,
+      valeur: updatedScore.valeur,
+      type: updatedScore.type
+    };
+  
+    this.scoreService.updateScore(scoreId, payload).subscribe(
       updated => {
         console.log('Score mis à jour avec succès :', updated);
         if (this.variable && this.variable.id) {
@@ -140,15 +148,21 @@ export class ConsulterScoresVariableComponent implements OnInit {
         } else {
           console.error('Variable ID is undefined or variable itself is not defined');
         }
-        
         Swal.fire('Succès', 'Score mis à jour avec succès!', 'success');
       },
       error => {
         console.error('Erreur lors de la mise à jour du score :', error);
-        Swal.fire('Erreur', 'Erreur lors de la mise à jour du score', 'error');
+        console.error('Error details:', error.message || error);
+        console.error('Request Payload:', payload);
+        Swal.fire('Erreur', 'Erreur lors de la mise à jour du score: ' + error.message, 'error');
       }
     );
   }
+  
+  
+  
+  
+  
   
   deleteScore(id: any): void {
     Swal.fire({

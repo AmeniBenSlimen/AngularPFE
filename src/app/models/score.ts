@@ -6,7 +6,7 @@ export class Score {
     valeur?: string | number | Date ; 
     vmax?: number;
     vmin?: number;
-    variableId?: number;
+    variableId?: number| null;
     type: Type; 
     num?: number;
     enumeration?: string;
