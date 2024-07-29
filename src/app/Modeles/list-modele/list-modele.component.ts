@@ -78,6 +78,9 @@ export class ListModeleComponent implements OnInit {
   removeModeleFromList(id: number): void {
     this.modele = this.modele.filter(m => m.id !== id);
   }
+  listeVariableModele(id:any):void {
+    this.router.navigate(['/admin/Modele/variables',id]);
+  }
 
   updateModele(id:any):void {
     this.router.navigate(['/admin/Modele/update-modele',id]);

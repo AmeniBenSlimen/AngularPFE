@@ -61,6 +61,7 @@ import { AddScoreComponent } from './Modeles/Score/add-score/add-score.component
 import { ListVariableComponent } from './Modeles/Variable/list-variable/list-variable.component';
 import { ConsulterScoresVariableComponent } from './Modeles/Variable/consulter-scores-variable/consulter-scores-variable.component';
 import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionnaire.component';
+import { VariablesModeleComponent } from './Modeles/variables-modele/variables-modele.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionna
     AddScoreComponent,
     ListVariableComponent,
     ConsulterScoresVariableComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    VariablesModeleComponent
    ],
   imports: [
     BrowserModule,

@@ -49,16 +49,15 @@ export class ConsulterScoresVariableComponent implements OnInit {
       console.error('Score ID or variable is undefined');
       return;
     }
-
+  
     this.scoreService.ScoreById(scoreId).subscribe(
       (score: Score) => {
         console.log('Received score from backend:', score);
-
+  
         let inputHtml = '';
-
+  
         switch (score.type) {
           case 'ENUMERATION':
-            console.log('ENUMERATION valeur:', score.valeur); 
             inputHtml = `<input id="swal-input2" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Nouveau Choix" value="${score.valeur ?? ''}">`;
             break;
           case 'INTERVALE':
@@ -76,7 +75,7 @@ export class ConsulterScoresVariableComponent implements OnInit {
             inputHtml = `<input id="swal-input2" style="font-size: 16px;font-family: serif" class="swal2-input" placeholder="Valeur" value="${score.valeur ?? ''}">`;
             break;
         }
-
+  
         Swal.fire({
           title: 'Modifier Score',
           html:
@@ -90,11 +89,11 @@ export class ConsulterScoresVariableComponent implements OnInit {
             const newChoice = (document.getElementById('swal-input2') as HTMLInputElement)?.value;
             const newVMin = (document.getElementById('swal-input3') as HTMLInputElement)?.value;
             const newVMax = (document.getElementById('swal-input4') as HTMLInputElement)?.value;
-            const newDate = (document.getElementById('swal-input5') as HTMLInputElement)?.value;
+            const newDate = (document.getElementById('swal-input-date') as HTMLInputElement)?.value;
             const newNumber = (document.getElementById('swal-input6') as HTMLInputElement)?.value;
-
+  
             score.score = parseFloat(newScore);
-
+  
             switch (score.type) {
               case 'ENUMERATION':
                 score.valeur = newChoice ?? undefined;
@@ -113,7 +112,7 @@ export class ConsulterScoresVariableComponent implements OnInit {
                 score.valeur = newChoice ?? undefined;
                 break;
             }
-
+  
             if (score.id) {
               this.updateScore(score.id, score);
             } else {
@@ -128,17 +127,25 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
+  
 
   
 
   updateScore(scoreId: number, updatedScore: Score): void {
-    const payload = {
+    // Préparation du payload
+    const payload: any = {
       id: updatedScore.id,
       score: updatedScore.score,
       variableId: updatedScore.variableId,
-      valeur: updatedScore.valeur,
-      type: updatedScore.type
+      type: updatedScore.type,
+      valeur: updatedScore.valeur
     };
+  
+    // Gestion spéciale pour les dates
+    if (updatedScore.type === 'DATE' && updatedScore.valeur) {
+      // Assurer que la valeur est bien formatée en ISO (YYYY-MM-DD)
+      payload.valeur = new Date(updatedScore.valeur).toISOString().split('T')[0];
+    }
   
     this.scoreService.updateScore(scoreId, payload).subscribe(
       updated => {
@@ -158,6 +165,8 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
+  
+  
   
   
   

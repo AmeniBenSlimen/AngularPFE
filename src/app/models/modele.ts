@@ -1,3 +1,5 @@
+import { Variable } from "./variable";
+
 export class Modele {
 id?: number;
 name?:string;
@@ -10,4 +12,5 @@ nextUpdateDate?:Date;
 lastUsedDate?:Date;
 disabled?:boolean;
 annee?:number;
+variables: Variable[] = [];; 
 }

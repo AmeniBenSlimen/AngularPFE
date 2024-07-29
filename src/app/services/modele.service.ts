@@ -19,10 +19,10 @@ export class ModeleService {
       return this.http.post<Modele>(`${this.BasicUrl}/addModele`,modele);
     }
        
-  public getModeleById(id: number): Observable<Modele> {
-    const url = `${this.BasicUrl}/getModeleById/${id}`;
-    return this.http.get<Modele>(url);
-  }
+    public getModeleById(id: number): Observable<Modele> {
+      const url = `${this.BasicUrl}/getModeleById/${id}`;
+      return this.http.get<Modele>(url);
+    }
   getVariableById(id: number): Observable<Variable> {
     return this.http.get<Variable>(`${this.BasicUrl}/getVariableById/${id}`);
   }
