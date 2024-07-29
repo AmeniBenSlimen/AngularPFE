@@ -36,5 +36,9 @@ export class VariableService {
 public getVariables(){
   return this.http.get<Variable[]>(`${this.BasicUrl}`);
 }
+valeurPonderer(variableId: number): Observable<Variable> {
+  const url = `${this.BasicUrl}/ponderation/${variableId}`;
+  return this.http.get<Variable>(url);
+}
 
 }

@@ -128,6 +128,7 @@ export class ConsulterScoresVariableComponent implements OnInit {
     );
   }
   
+  
 
   
 
@@ -137,14 +138,22 @@ export class ConsulterScoresVariableComponent implements OnInit {
       id: updatedScore.id,
       score: updatedScore.score,
       variableId: updatedScore.variableId,
-      type: updatedScore.type,
-      valeur: updatedScore.valeur
+      type: updatedScore.type
     };
   
-    // Gestion spéciale pour les dates
+    // Gestion spéciale pour les types spécifiques
     if (updatedScore.type === 'DATE' && updatedScore.valeur) {
       // Assurer que la valeur est bien formatée en ISO (YYYY-MM-DD)
       payload.valeur = new Date(updatedScore.valeur).toISOString().split('T')[0];
+    } else if (updatedScore.type === 'INTERVALE' && updatedScore.vmin !== undefined && updatedScore.vmax !== undefined) {
+      payload.vmin = updatedScore.vmin;
+      payload.vmax = updatedScore.vmax;
+    } else if (updatedScore.type === 'NUMBER' && updatedScore.valeur !== undefined) {
+      payload.valeur = updatedScore.valeur;
+    } else if (updatedScore.type === 'ENUMERATION' && updatedScore.valeur) {
+      payload.valeur = updatedScore.valeur;
+    } else {
+      payload.valeur = updatedScore.valeur;
     }
   
     this.scoreService.updateScore(scoreId, payload).subscribe(
@@ -165,6 +174,7 @@ export class ConsulterScoresVariableComponent implements OnInit {
       }
     );
   }
+  
   
   
   
