@@ -12,5 +12,5 @@ nextUpdateDate?:Date;
 lastUsedDate?:Date;
 disabled?:boolean;
 annee?:number;
-variables: Variable[] = [];; 
+variables: Variable[] = [];
 }

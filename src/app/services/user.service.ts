@@ -43,4 +43,11 @@ export class UserService {
  deleteUser(id:any){
   return this.http.delete<any>(`${this.Url}/deleteUser/${id}`);
 }
+private apiUrl = 'http://localhost:8085/bank/api/auth';
+
+toggleUserStatus(id: number, status: 'activate' | 'deactivate'): Observable<any> {
+  const apiUrl = `${this.apiUrl}/${id}/${status}`;
+  return this.http.put(apiUrl, {}, { responseType: 'text' });
+}
+
 }

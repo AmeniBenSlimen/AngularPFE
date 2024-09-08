@@ -31,42 +31,36 @@
     .content {
       flex-grow: 1;
       padding: 20px;
-      
     }
-    .user-management {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-      font-size: 16px;
-      font-family: serif;
-      margin-right: 40px;
-    }
-
+    
    
+    
+    /* Couleurs alternées pour les lignes du tableau */
+    table tbody tr:nth-child(odd) {
+      background-color: #f2f2f2; /* Couleur des lignes impaires */
+    }
 
+    table tbody tr:nth-child(even) {
+      background-color: #ffffff; /* Couleur des lignes paires */
+    }
   </style>
 </head>
 <body>
   <app-menu></app-menu>
   <div class="content">
-    <br><br>
-    <div class="user-management">
+    <div>
       <div style="font-size: 16px;font-family: serif">
         <div class="card-body">
-          <h5 class="card-title" style="font-family: serif;font-size: 20px;">Liste des menus</h5>
-          <br>
-          <button class="btn btn-primary btn-sm"  style="font-family: serif;font-size: 15px;margin-left: auto;margin-left:1000px; " routerLink="/admin/add-menu">Ajouter Menu</button>
+          <button class="btn btn-primary btn-sm" style="font-family: serif;font-size: 15px;margin-left: auto;margin-left:1000px;" routerLink="/admin/add-menu"> + Ajouter Menu</button>
           <div class="table-responsive">
-            <div class="main-search-input-wrap">
-              <div class="main-search-input fl-wrap">
-                <div class="main-search-input-item">
-                  <input type="text" value="" placeholder="Rechercher menu..." [(ngModel)]="searchtext">
-                </div>                                
-              </div>                      
+            <div class="input-wrap">
+              <div class="input fl-wrap">
+                <div class="input-item">
+                  <input type="text" value="" [(ngModel)]="searchtext" [ngModelOptions]="{standalone: true}" placeholder="Rechercher...">
+                </div>
+              </div>
             </div>
+            <br>
             <table id="zero_config" class="table table-striped table-bordered">
               <thead>
                 <tr>
@@ -80,8 +74,10 @@
                 <tr>
                   <td>{{m?.cdMenu}}</td>
                   <td>{{m?.lbMenu}}</td>
-                  <td style="text-align: center; vertical-align: middle;"><button class="btn btn-success btn-sm" style="color: white;" [routerLink]="['/admin/update-menu', m.cdMenu]">Update</button></td>
-                  <td style="text-align: center; vertical-align: middle;"><button class="btn btn-danger btn-sm" (click)="deleteModule(m.cdMenu)">Delete</button></td>
+                  <td style="text-align: center; vertical-align: middle;"><button class="btn btn-sm" style="color: white;" [routerLink]="['/admin/update-menu', m.cdMenu]">                    <img style="height: 23px;width: 23px;" src="../assets/images/rotation.png" alt="update" title="Mettre à jour">
+                  </button></td>
+                  <td style="text-align: center; vertical-align: middle;"><button class="btn btn-sm" (click)="deleteModule(m.cdMenu)">                    <img style="height: 23px;width: 23px;" src="../assets/images/delete.png" alt="delete" title="Supprimer">
+                  </button></td>
                 </tr>
               </tbody>
             </table>

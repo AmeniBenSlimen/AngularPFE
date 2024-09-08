@@ -29,4 +29,8 @@ export class TokenstorageService {
   clean(): void {
     window.localStorage.clear();
   }
+  public getRoles(): string[] {
+    const user = this.getUser();
+    return user && user.role ? user.role : [];
+  }
 }

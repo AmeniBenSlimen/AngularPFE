@@ -4,6 +4,7 @@ import { TokenstorageService } from 'src/app/services/tokenstorage.service';
 import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Roles } from 'src/app/models/roles';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,6 @@ export class LoginComponent implements OnInit{
     if(this.tokenservice.getToken()!= null){
       this.isLogedIn = true;
       this.roles = this.tokenservice.getUser().role;
-     // alert('on est connecte'+this.isLogedIn+"role :"+this.roles);
     }
 
     this.form = this.fb.group({
@@ -46,36 +46,43 @@ export class LoginComponent implements OnInit{
   {
     return this.form.get('password')
   }
-  onSubmit(){
-    
-    /*this.submitted = true ;
-    if(this.form.invalid)
-    {
-      return ;
-    }*/
-    
+  onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+  
     this.authservice.login(this.form.value).subscribe(
-
       data => {
-        this.tokenservice.saveToken(data.token)
+        this.tokenservice.saveToken(data.token);
         this.tokenservice.saveUser(JSON.stringify(data));
-        this.submitted = false ;
+        
+        this.submitted = false;
         this.isLoginFailed = false;
         this.isLogedIn = true;
+  
         this.roles = this.tokenservice.getUser().role;
-        this.router.navigate(['/admin/dashboard'])
+        this.router.navigate(['/admin/dashboard']); 
       },
       error => {
         this.isLoginFailed = true;
         this.isLogedIn = false;
+  
+        if (error.status === 401) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Compte Désactivé',
+            text: 'Votre compte est désactivé. Merci de contacter l’administrateur.',
+            confirmButtonText: 'OK'
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur de Connexion',
+            text: 'Une erreur est survenue. Veuillez vérifier vos informations et réessayer.',
+            confirmButtonText: 'OK'
+          });
+        }
       }
     );
-   
-  }
-  isAdmin(): boolean {
-    return this.authservice.hasAccess({ cdRole: 'ROLE_ADMIN' });
-  }
-  isUser(): boolean {
-    return this.authservice.hasAccess({ cdRole: 'ROLE_USER' });
   }
 }

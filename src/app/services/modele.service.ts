@@ -26,7 +26,9 @@ export class ModeleService {
   getVariableById(id: number): Observable<Variable> {
     return this.http.get<Variable>(`${this.BasicUrl}/getVariableById/${id}`);
   }
-  
+  getVariableId(id: number): Observable<Modele> {
+    return this.http.get<Modele>(`${this.BasicUrl}/getVariableById/${id}`);
+  }
   restoreModele(id: number): Observable<any> {
     const url = `${this.BasicUrl}/restoreModele/${id}`;
     return this.http.put(url, null);
@@ -45,6 +47,9 @@ SearchByNameAndAnnee(name:any,annee:any){
  }
 ModeleUsed(id: number): Observable<Modele> {
   return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, null);
+}
+getModeleUsed(): Observable<Modele[]> {
+  return this.http.get<Modele[]>(`${this.BasicUrl}/ModelUsed`);
 }
 valeurPonderer(modeleId: number): Observable<Modele> {
   const url = `${this.BasicUrl}/ponderationModele/${modeleId}`;

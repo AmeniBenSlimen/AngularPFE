@@ -62,6 +62,11 @@ import { ListVariableComponent } from './Modeles/Variable/list-variable/list-var
 import { ConsulterScoresVariableComponent } from './Modeles/Variable/consulter-scores-variable/consulter-scores-variable.component';
 import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionnaire.component';
 import { VariablesModeleComponent } from './Modeles/variables-modele/variables-modele.component';
+import { ListeClientNotationComponent } from './Retail/Notaion/liste-client-notation/liste-client-notation.component';
+import { ListeVariableModeleComponent } from './Retail/Notaion/liste-variable-modele/liste-variable-modele.component';
+import { ConsulterNotationComponent } from './Notation/consulter-notation/consulter-notation.component';
+import { NoterClientComponent } from './Notation/noter-client/noter-client.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +119,11 @@ import { VariablesModeleComponent } from './Modeles/variables-modele/variables-m
     ListVariableComponent,
     ConsulterScoresVariableComponent,
     QuestionnaireComponent,
-    VariablesModeleComponent
+    VariablesModeleComponent,
+    ListeClientNotationComponent,
+    ListeVariableModeleComponent,
+    ConsulterNotationComponent,
+    NoterClientComponent
    ],
   imports: [
     BrowserModule,

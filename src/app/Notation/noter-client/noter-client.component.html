@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="admin dashboard, HTML CSS dashboard, Bootstrap 5 admin" />
+    <meta name="description" content="Matrix Admin Lite is a powerful and clean admin dashboard template inspired by Bootstrap Framework" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Matrix Admin Lite Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        app-menu-modele {
+            width: 240px; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            bottom: 0;
+          
+        }
+
+        .container {
+            margin-left: 500px; /* Space for the fixed menu */
+            padding: 20px; /* General padding for the content */
+            max-width: 750px; /* Limiting the width of the container */
+        }
+
+     
+
+    </style>
+</head>
+<body>
+    <app-menu-modele></app-menu-modele>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Questionnaire
+            </div>
+            <div class="card-body">
+                <!-- Loop through variables and display them as cards -->
+                <div class="row">
+                    <div class="col-md-12" *ngFor="let v of variables | filter:searchtext">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ v.description }}</h5>
+
+                                <!-- Enumeration Type -->
+                                <ng-container *ngIf="v.type === Type.ENUMERATION">
+                                    <select class="form-select" [(ngModel)]="getResponseByVariableId(v.id).response" [ngModelOptions]="{ standalone: true }" id="enumeration">
+                                        <option *ngFor="let p of v.scores" [value]="p.valeur">{{ p.valeur }}</option>
+                                    </select>
+                                </ng-container>
+
+                                <!-- Date Type -->
+                                <ng-container *ngIf="v.type === Type.DATE">
+                                    <input type="date" [(ngModel)]="getResponseByVariableId(v.id).response" required name="date" class="form-control mt-2" placeholder="Date" id="date" />
+                                </ng-container>
+
+                                <!-- Number Type -->
+                                <ng-container *ngIf="v.type === Type.NUMBER">
+                                    <input type="number" [(ngModel)]="getResponseByVariableId(v.id).response" required name="num" class="form-control mt-2" placeholder="" id="number" />
+                                </ng-container>
+
+                                <!-- Interval Type -->
+                                <ng-container *ngIf="v.type === Type.INTERVALE">
+                                    <input type="text" [(ngModel)]="getResponseByVariableId(v.id).response" required name="interval" class="form-control mt-2" placeholder="" id="interval" />
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-warning" (click)="submitResponseSave()">Save</button>
+                    <button class="btn btn-warning ms-2" (click)="submitResponse()">Noter</button>
+                </div>
+
+                <div class="text-center mt-4 pagination-controls">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  style="margin-bottom: 220px;"></div>
+    <div class="page-wrapper">
+      <app-footer></app-footer>
+  </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

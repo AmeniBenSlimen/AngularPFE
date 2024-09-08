@@ -92,5 +92,33 @@ hasAccess(role: Roles): boolean {
   }
   return false; 
 }
+isAuthenticated(): boolean {
+  return !!localStorage.getItem('authToken');
+}
+incrementFailedAttempts(email: string): Observable<any> {
+  return this.http.post(`${this.Url}/incrementFailedAttempts`, email, { responseType: 'text' });
+}
 
+isLocked(email: string): Observable<boolean> {
+  return this.http.get<boolean>(`${this.Url}/isLocked/${email}`);
+}
+getCurrentUserEmail(): string | null {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  return user.email || null;
+}
+
+
+isAdmin(): boolean {
+  const roles = this.tokenstorageService.getRoles();
+  console.log('User roles:', roles); 
+  return roles.includes('ROLE_ADMIN');
+}
+printUserRole(): void {
+  const role = this.getRole();
+  if (role) {
+    console.log(`Rôle de l'utilisateur : ${role}`);
+  } else {
+    console.log("Aucun rôle trouvé ou utilisateur non authentifié.");
+  }
+}
 }

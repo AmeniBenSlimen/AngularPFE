@@ -44,6 +44,11 @@ import { ListVariableComponent } from './Modeles/Variable/list-variable/list-var
 import { ConsulterScoresVariableComponent } from './Modeles/Variable/consulter-scores-variable/consulter-scores-variable.component';
 import { QuestionnaireComponent } from './Modeles/Score/questionnaire/questionnaire.component';
 import { VariablesModeleComponent } from './Modeles/variables-modele/variables-modele.component';
+import { ListeClientNotationComponent } from './Retail/Notaion/liste-client-notation/liste-client-notation.component';
+import { ListeVariableModeleComponent } from './Retail/Notaion/liste-variable-modele/liste-variable-modele.component';
+import { authGuard } from './auth.guard';
+import { ConsulterNotationComponent } from './Notation/consulter-notation/consulter-notation.component';
+import { NoterClientComponent } from './Notation/noter-client/noter-client.component';
 
 
 const routes: Routes = [  
@@ -53,7 +58,7 @@ const routes: Routes = [
     
     children: [
       { path: 'dashboard', component: BodyDashboardComponent },
-      { path: 'users', component: AllUsersComponent },
+      { path: 'users', component: AllUsersComponent},
       { path: 'permission/:id', component: PermissionComponent },
       { path: 'consulter-privilege', component: ListRolesComponent},
       { path: 'updateRole/:id', component: UpdateRoleComponent},
@@ -91,8 +96,13 @@ const routes: Routes = [
       { path: 'Variable/list-variable', component: ListVariableComponent},
       { path: 'Variable/ConsulterScoresVariable/:id', component: ConsulterScoresVariableComponent},
       { path: 'Modele/questionnaire', component: QuestionnaireComponent},
-      { path: 'Modele/variables/:id', component:VariablesModeleComponent}
-      
+      { path: 'Modele/variables/:id', component:VariablesModeleComponent},
+      { path: 'Retail/ListClient', component:ListeClientNotationComponent},
+      { path: 'Retail/ListeVariableModele/:id', component:ListeVariableModeleComponent},
+      { path: 'Retail/Notation/consulter-notation', component: ConsulterNotationComponent },
+      { path: 'Retail/Notation/Notation/noter-client', component: NoterClientComponent },
+
+    
     ]
   },
   { path: 'login', component: LoginComponent },
@@ -105,3 +115,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+//, canActivate: [authGuard] 

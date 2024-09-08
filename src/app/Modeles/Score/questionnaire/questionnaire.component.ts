@@ -42,7 +42,6 @@ export class QuestionnaireComponent implements OnInit {
       return;
     }
 
-    // Check if all questions have a selected value
     for (let variable of this.variables) {
       if (!this.selectedValues[variable.id!.toString()]) {
         Swal.fire({

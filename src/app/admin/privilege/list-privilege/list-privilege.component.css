@@ -1,123 +1,123 @@
-.main-search-input {
+/* Applique un fond blanc à toutes les lignes */
+table.table-striped tbody tr {
+    background-color: white !important;
+}
+
+table.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2 !important;
+}
+
+table.table-striped tbody tr:nth-child(even) {
+    background-color: white !important;
+}
+
+/* Pour ajuster le style des bordures des lignes du tableau */
+table.table-striped tbody tr td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Autres styles que vous avez déjà */
+.input-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-width: 600px;
     background: #fff;
-    padding: 0 120px 0 0;
-    border-radius: 1px;
-    margin-left: 300px;
-    width: 50px;
-    box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.3);
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
 }
 
-.fl-wrap {
-    float: left;
+.input-item {
+    flex: 1;
+}
+
+.input-item input {
     width: 100%;
-    position: relative;
-}
-
-.main-search-input:before {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    width: 50px;
-    height: 1px;
-    background: rgba(255,255,255,0.41);
-    left: 50%;
-    margin-left: -25px;
-}
-
-.main-search-input-item {
-    float: left;
-    width: 100%;
-    box-sizing: border-box;
-    border-right: 1px solid #eee;
-    height: 50px;
-    position: relative;
-}
-
-.main-search-input-item input:first-child {
-    border-radius: 100%;
-}
-
-.main-search-input-item input {
-    float: left;
     border: none;
-    width: 100%;
-    height: 50px;
-    padding-left: 20px;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 50px;
 }
 
-.main-search-button{
-
-      background: #4DB7FE;
+.input-item input::placeholder {
+    color: #999;
 }
 
-.main-search-button {
-    position: absolute;
-    right: 0px;
-    height: 50px;
-    width: 120px;
-    color: #fff;
-    top: 0;
+.btn1 {
+    background-color: #4285F4;
     border: none;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.main-search-input-wrap {
-    max-width: 500px;
-    margin: 20px auto;
-    position: relative;
+.btn1:hover {
+    background-color: #357ae8;
 }
 
-:focus {
-    outline: 0;
-}
-
-
-@media only screen and (max-width: 768px){
-.main-search-input {
-    background: rgba(255,255,255,0.2);
-    padding: 14px 20px 10px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 0px 10px rgba(255,255,255,0.0);
-}
-
-.main-search-input-item {
-    width: 100%;
-    border: 1px solid #eee;
-    height: 50px;
-    border: none;
-    margin-bottom: 10px;
-}
-
-.main-search-input-item input {
-    border-radius: 6px !important;
-    background: #fff;
-}
-
-.main-search-button {
-    position: relative;
-    float: left;
-    width: 100%;
-    border-radius: 6px;
-}
-}
 .button {
     display: inline-block;
     padding: 10px;
     margin: 5px;
-    border: none; 
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    background: none; 
-  }
-  .button img {
-    width: 24px; 
+    background: none;
+}
+
+.button img {
+    width: 24px;
     height: 24px;
     vertical-align: middle;
     border: none;
-    background: none; 
+    background: none;
+}
+
+body {
+    overflow: hidden;
+}
+
+.table-responsive {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+.white-background {
+    background-color: white;
   }
-  body {
-    overflow: hidden; 
+  
+  .grey-background {
+    background-color: #f2f2f2;
   }
+  

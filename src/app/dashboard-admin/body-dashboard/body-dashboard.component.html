@@ -138,7 +138,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="authService.isAdmin()">
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
@@ -202,7 +202,7 @@
                     </div>
                   </div>
                   <div class="el-card-content">
-                    <h4 class="mb-0">Gestion des Modules</h4>
+                    <h4 class="mb-0">Gestion des Modèles</h4>
                   </div>
                 </div>
               </div>

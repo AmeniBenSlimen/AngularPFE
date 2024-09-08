@@ -40,5 +40,16 @@ valeurPonderer(variableId: number): Observable<Variable> {
   const url = `${this.BasicUrl}/ponderation/${variableId}`;
   return this.http.get<Variable>(url);
 }
-
+public getVariablesModele(id:any){
+  return this.http.get<Variable[]>(`${this.BasicUrl}/VariableModele/${id}`);
+}
+public getTerminated(){
+  return this.http.get<any>(`${this.BasicUrl}/done`);
+}
+public saveResponses(responses: any){
+  return this.http.post<any>(`${this.BasicUrl}/notation`,responses);
+}
+public sendResponses(responses: any){
+  return this.http.post<any>(`${this.BasicUrl}/note`,responses);
+}
 }

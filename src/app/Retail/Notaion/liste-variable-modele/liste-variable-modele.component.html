@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+  <style>
+    body {
+      font-family: serif;
+      overflow-y: hidden;
+      margin: 0;
+    }
+
+    .content {
+      padding-top: 70px; /* Adjust based on menu height */
+    }
+
+    .variables-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .variable-section {
+      width: 80%;
+      max-width: 800px;
+      margin: 20px 0;
+    }
+
+    .variable-header {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .score-container {
+      margin: 10px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+
+    .score-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .score-container input, .score-container select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .score-container input[type="date"] {
+      padding: 7px;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .message-box {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .message-box .fs-title {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
+
+    .page-wrapper {
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <app-menu-modele></app-menu-modele>
+
+  <div class="content">
+    <div class="variables-container">
+      <div *ngFor="let variable of variables" class="variable-section">
+        <div class="variable-header">{{ variable.description }}</div>
+        <div *ngFor="let score of variable.scores" class="score-container">
+          <div *ngIf="score.type === 'ENUMERATION'">
+            <label for="enum-{{ score.id }}">Enumeration:</label>
+            <select id="enum-{{ score.id }}" [(ngModel)]="score.enumeration">
+            </select>
+          </div>
+
+          <div *ngIf="score.type === 'INTERVALE'">
+            <label for="vmin-{{ score.id }}">Min:</label>
+            <input id="vmin-{{ score.id }}" type="number" [(ngModel)]="score.vmin">
+            <label for="vmax-{{ score.id }}">Max:</label>
+            <input id="vmax-{{ score.id }}" type="number" [(ngModel)]="score.vmax">
+          </div>
+
+          <div *ngIf="score.type === 'NUMBER'">
+            <label for="num-{{ score.id }}">Number:</label>
+            <input id="num-{{ score.id }}" type="number" [(ngModel)]="score.num">
+          </div>
+
+          <div *ngIf="score.type === 'DATE'">
+            <label for="date-{{ score.id }}">Date:</label>
+            <input id="date-{{ score.id }}" type="date" [(ngModel)]="score.date">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+    <div class="page-wrapper">
+      <app-footer></app-footer>
+    </div>
+  </div>
+
+</body>
+</html>
