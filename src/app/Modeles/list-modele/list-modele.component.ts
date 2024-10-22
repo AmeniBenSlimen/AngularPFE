@@ -1,9 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Modele } from 'src/app/models/modele';
 import { ModeleService } from 'src/app/services/modele.service';
 import Swal from 'sweetalert2';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-list-modele',
@@ -25,23 +26,23 @@ export class ListModeleComponent implements OnInit {
   notExists: boolean = false;
   maDate: Date = new Date();
 
-  constructor(private service: ModeleService,private router: Router) {}
+  constructor(private service: ModeleService,private router: Router,private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.loadModele();
+    this.loadModeles();
   }
 
-  loadModele(): void {
+  loadModeles(): void {
     this.service.getModeles().subscribe({
-      next: (data) => {
-        this.modele = data;
-        this.totalUsers = data.length;
-      },
-      error: (Error) => {
-        console.log(Error);
-      }
+        next: (modeles: Modele[]) => {
+            this.modele = modeles;
+            this.cdr.detectChanges(); // Force la détection des changements
+        },
+        error: (error) => {
+            console.error('Erreur lors du chargement des modèles:', error);
+        }
     });
-  }
+}
 
   deleteModele(id: any): void {
     Swal.fire({
@@ -113,19 +114,23 @@ export class ListModeleComponent implements OnInit {
       }
     });
   }
-
   toggleUsed(modele: Modele): void {
     if (!modele || modele.id === undefined) {
         console.error('Modèle invalide:', modele);
         return;
     }
 
-    this.service.ModeleUsed(modele.id).subscribe({
+    console.log('Valeur avant mise à jour:', modele.used);
+    modele.used = !modele.used; // Inverse la valeur de used
+
+    this.service.ModeleUsed(modele.id, modele.used).subscribe({
         next: (updatedModele: Modele) => {
+            console.log('Réponse de l\'API:', updatedModele);
             const index = this.modele.findIndex(m => m.id === updatedModele.id);
             if (index !== -1) {
                 this.modele[index] = updatedModele;
-                console.log('Modèle mis à jour:', updatedModele);
+                this.cdr.detectChanges(); // Force la détection des changements
+                console.log('Modèle mis à jour dans la liste:', updatedModele);
             } else {
                 console.error('Modèle non trouvé dans la liste:', updatedModele);
             }
@@ -135,6 +140,4 @@ export class ListModeleComponent implements OnInit {
         }
     });
 }
-
-
 }

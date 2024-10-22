@@ -47,46 +47,44 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Login</span>
+              <span class="padding-bottom--15">Se connecter</span>
               <form id="stripe-login" *ngIf="!isLogedIn" [formGroup]="form" (ngSubmit)="onSubmit()"
              >
                 <div class="field padding-bottom--24">
-                  <label for="username">Username</label>
+                  <label for="username">Nom d'utilisateur</label>
                   <input type="text" name="username" formControlName="username">
                   <div
                   class="alert alert-danger"
                   role="alert"
                   *ngIf="submitted && username?.invalid"
                 >
-                  Username is required!
-                </div>
+                Le nom d'utilisateur est requis !                </div>
                 </div>
                 <div class="field padding-bottom--24">
-                    <label for="password">password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" name="password" formControlName="password" #password minlength="8" required>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
-                   Password is required
-                  
+                      Le mot de passe est requis                  
                   </div>
                   </div>
                 
                 <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Login" style="color: #5469d4;font-weight: bold;">
+                  <input type="submit" name="submit" value="Se connecter" style="color: #5469d4;font-weight: bold;">
                   <div class="form-group">
                     <div
                       class="alert alert-danger"
                       role="alert"
                       *ngIf=" isLoginFailed"
                     >
-                      Login failed:  Incorrect username or password 
-                    </div>
+                    Échec de la connexion : nom d'utilisateur ou mot de passe incorrect
+                                      </div>
                   </div>
                 </div>
               </form>
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span><a routerLink="/register">Sign up</a></span>
+            <span><a routerLink="/register">S'inscrire</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">© Stackfindover</a></span>
               <span><a href="#">Contact</a></span>

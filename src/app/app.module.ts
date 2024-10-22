@@ -66,7 +66,18 @@ import { ListeClientNotationComponent } from './Retail/Notaion/liste-client-nota
 import { ListeVariableModeleComponent } from './Retail/Notaion/liste-variable-modele/liste-variable-modele.component';
 import { ConsulterNotationComponent } from './Notation/consulter-notation/consulter-notation.component';
 import { NoterClientComponent } from './Notation/noter-client/noter-client.component';
-
+import { ModifierNotationComponent } from './Notation/modifier-notation/modifier-notation.component';
+import { UpdateNotationComponent } from './Notation/update-notation/update-notation.component';
+import { ListClientsComponent } from './Notation/list-clients/list-clients.component';
+import { UpdateProfileComponent } from './admin/update-profile/update-profile.component';
+import { MenuUpdateProfileComponent } from './admin/menu-update-profile/menu-update-profile.component';
+import { BodySettingsComponent } from './admin/body-settings/body-settings.component';
+import { UpdataPwdComponent } from './admin/updata-pwd/updata-pwd.component';
+import { CreditDecisionComponent } from './Credit/credit-decision/credit-decision.component';
+import { NgChartsModule } from 'ng2-charts';
+import { LiClientNotationComponent } from './Notation/li-client-notation/li-client-notation.component';
+import { NotationInProgressUpdateComponent } from './Notation/notation-in-progress-update/notation-in-progress-update.component';
+import { DetailsNotationComponent } from './Notation/details-notation/details-notation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +134,18 @@ import { NoterClientComponent } from './Notation/noter-client/noter-client.compo
     ListeClientNotationComponent,
     ListeVariableModeleComponent,
     ConsulterNotationComponent,
-    NoterClientComponent
+    NoterClientComponent,
+    ModifierNotationComponent,
+    UpdateNotationComponent,
+    ListClientsComponent,
+    UpdateProfileComponent,
+    MenuUpdateProfileComponent,
+    BodySettingsComponent,
+    UpdataPwdComponent,
+    CreditDecisionComponent,
+    LiClientNotationComponent,
+    NotationInProgressUpdateComponent,
+    DetailsNotationComponent,
    ],
   imports: [
     BrowserModule,
@@ -134,7 +156,9 @@ import { NoterClientComponent } from './Notation/noter-client/noter-client.compo
     NgxPaginationModule,
     MatDialogModule,
     RouterModule,
-    NgbModule  ],
+    NgbModule,
+    NgChartsModule
+    ],
   providers: [authInterceptorProvider,AuthService],
   bootstrap: [AppComponent]
 })

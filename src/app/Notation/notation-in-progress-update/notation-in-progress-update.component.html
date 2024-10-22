@@ -1,0 +1,60 @@
+<app-menu-retail></app-menu-retail>
+<div class="page-breadcrumb">
+  <div class="row">
+    <div class="col-12 d-flex no-block align-items-center">
+      <div class="ms-auto text-end">
+        <nav aria-label="breadcrumb" style="margin-right: 990px">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/admin/module-retail">Notation Client</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Modifier Notation Client
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4" style="margin-left: 230px;">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div *ngIf="notations.length > 0">
+        <div *ngFor="let notation of notations">
+          <form>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div *ngIf="notation.status === 'IN_PROGRESS'" style="display: flex; align-items: center; margin-left: 640px">
+                <div class="lamp glowing"></div>
+                <span class="glowing-text" style="margin-left: 10px; color: black;">En cours de Traitement ...</span>
+              </div>            
+            </div>
+            <br><br>
+            <table id="response_table" class="table table-striped table-bordered">
+              <tbody>
+                <tr *ngFor="let response of notation.responses">
+                  <td class="question-title" style="font-family: Arial, sans-serif;">
+                    {{ response.variable?.description }}
+                  </td>
+                  <td>
+                    <!-- Ajout d'un nom unique basé sur l'id de la réponse -->
+                    <input type="text" [(ngModel)]="response.response" name="response_{{response.id}}" [value]="response.response || ''" class="form-control" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <!-- Bouton Save global pour toutes les notations -->
+        <div class="text-center mt-4">
+          <button class="btn btn-warning" (click)="submitResponse()">
+            Noter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 320px;"></div>
+<div class="page-wrapper">
+  <app-footer></app-footer>
+</div>

@@ -1,95 +1,63 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Consulter Notation</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f6f9;
-        margin: 0;
-        padding: 0;
-      }
+<app-menu-retail></app-menu-retail>
+<div class="page-breadcrumb">
+  <div class="row">
+    <div class="col-12 d-flex no-block align-items-center">
+      <div class="ms-auto text-end">
+        <nav aria-label="breadcrumb" style="margin-right: 990px">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/admin/module-retail">Notation Client</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Consulter Notation Client</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="container mt-4" style="margin-left: 230px;font-size: 16px; font-family: serif;">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID Notation</th>
+            <th>ID Client</th>
+            <th>Nom Client</th>
+            <th>Note</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notation of notationsFinalisees">
+            <td>{{ notation.id }}</td>
+            <td>{{ notation.clientId }}</td>
+            <td>{{ notation.nom }}</td> 
+            <td>{{ notation.note }}</td>
+            <td style="text-align: center; vertical-align: middle;">
+              <button class="btn btn-outline btn-sm" (click)="getNotationById(notation.id)">
+                <img style="height: 23px; width: 23px;" src="../assets/images/see.png" alt="update" title="Plus d'infos">
+              </button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
 
-      .container {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #333;
-      }
-
-      .notation-card {
-        background-color: #ffffff;
-        border: 1px solid #e3e6f0;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .notation-card h3 {
-        margin-top: 0;
-        color: #007bff;
-        font-size: 20px;
-      }
-
-      .notation-card p {
-        margin: 10px 0;
-        color: #666;
-      }
-
-      .responses-list {
-        list-style-type: none;
-        padding-left: 0;
-        margin: 15px 0 0;
-      }
-
-      .responses-list li {
-        background-color: #f8f9fa;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-        color: #333;
-      }
-
-      .footer {
-        text-align: center;
-        margin-top: 50px;
-        padding: 20px 0;
-        background-color: #e9ecef;
-      }
-    </style>
-  </head>
-  <body>
-    <app-menu-modele></app-menu-modele>
-    <div class="container">
-      <h2>Consulter Notation</h2>
-      <div *ngFor="let notation of notationsFinalisees" class="notation-card">
-        <h3>Notation #{{ notation.id }}</h3>
-        <p>Note: <strong>{{ notation.note }}</strong></p>
+      <!-- Section pour les réponses (cachée par défaut) -->
+      <!-- <div *ngFor="let notation of notationsFinalisees">
+        <h3>Détails de la notation #{{ notation.id }}</h3>
         <h4>Réponses:</h4>
         <ul class="responses-list">
           <li *ngFor="let response of notation.responses">
             <strong>{{ response.description }}:</strong> {{ response.response }}
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
+  </div>
+</div>
 
-    <div class="footer">
-      <app-footer></app-footer>
-    </div>
-  </body>
-</html>
+<div style="margin-bottom: 320px;"></div>
+<div class="page-wrapper">
+  <app-footer></app-footer>
+</div>

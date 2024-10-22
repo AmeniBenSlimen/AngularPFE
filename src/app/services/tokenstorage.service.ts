@@ -6,9 +6,12 @@ import { Injectable } from '@angular/core';
 export class TokenstorageService {
   TOKEN_KEY = 'auth-token';
   USER_KEY = 'auth-user';
-
+  ROLES_KEY = 'auth-roles' ;
   constructor() { }
-  
+  getRol(): string[] {
+    const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    return user.roles || [];
+  }
   signOut(){
     window.sessionStorage.clear();
   }
@@ -32,5 +35,44 @@ export class TokenstorageService {
   public getRoles(): string[] {
     const user = this.getUser();
     return user && user.role ? user.role : [];
+  }
+  getUsername(): string | null {
+    const user = sessionStorage.getItem(this.USER_KEY);
+    console.log('User data from sessionStorage:', user); 
+    if (user) {
+      try {
+        const userObj = JSON.parse(user);  
+        return userObj.username || null; 
+      } catch (error) {
+        console.error('Error parsing user object:', error); 
+      }
+    }
+    return null; 
+  }
+  getInfoUser(): string | null {
+    const user = sessionStorage.getItem(this.USER_KEY);
+    if (user) {
+      try {
+        const userObj = JSON.parse(user);  
+        return userObj.user || null; 
+      } catch (error) {
+        console.error('Error parsing user object:', error); 
+      }
+    }
+    return null; 
+  }
+  getU() {
+    return JSON.parse(sessionStorage.getItem('auth-user') || '{}');
+  }
+
+  getR(): string[] {
+    const user = this.getUser();
+    return user && user.roles ? user.roles : [];
+  }
+
+  // Retrieves the username
+  getUsern(): string | null {
+    const user = this.getUser();
+    return user && user.username ? user.username : null;
   }
 }

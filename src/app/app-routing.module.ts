@@ -49,6 +49,15 @@ import { ListeVariableModeleComponent } from './Retail/Notaion/liste-variable-mo
 import { authGuard } from './auth.guard';
 import { ConsulterNotationComponent } from './Notation/consulter-notation/consulter-notation.component';
 import { NoterClientComponent } from './Notation/noter-client/noter-client.component';
+import { ModifierNotationComponent } from './Notation/modifier-notation/modifier-notation.component';
+import { UpdateNotationComponent } from './Notation/update-notation/update-notation.component';
+import { UpdateProfileComponent } from './admin/update-profile/update-profile.component';
+import { BodySettingsComponent } from './admin/body-settings/body-settings.component';
+import { UpdataPwdComponent } from './admin/updata-pwd/updata-pwd.component';
+import { CreditDecisionComponent } from './Credit/credit-decision/credit-decision.component';
+import { LiClientNotationComponent } from './Notation/li-client-notation/li-client-notation.component';
+import { NotationInProgressUpdateComponent } from './Notation/notation-in-progress-update/notation-in-progress-update.component';
+import { DetailsNotationComponent } from './Notation/details-notation/details-notation.component';
 
 
 const routes: Routes = [  
@@ -69,7 +78,7 @@ const routes: Routes = [
       { path: 'list-modules', component:ListModuleComponent},
       { path: 'update-module/:cdModul', component:UpdateModuleComponent},
       { path: 'add-module', component:AddModuleComponent},
-      { path: 'add-menu', component:AddMenuComponent},
+      { path: 'add-menu', component:AddMenuComponent, canActivate: [authGuard] },
       { path: 'list-menu', component:ListMenuComponent},
       { path: 'update-menu/:cdMenu', component:UpdateMenuComponent},
       { path: 'list-privilege', component:ListPrivilegeComponent},
@@ -97,11 +106,23 @@ const routes: Routes = [
       { path: 'Variable/ConsulterScoresVariable/:id', component: ConsulterScoresVariableComponent},
       { path: 'Modele/questionnaire', component: QuestionnaireComponent},
       { path: 'Modele/variables/:id', component:VariablesModeleComponent},
+      
+      { path: 'Retail/Notation/noter-client', component: NoterClientComponent },
       { path: 'Retail/ListClient', component:ListeClientNotationComponent},
-      { path: 'Retail/ListeVariableModele/:id', component:ListeVariableModeleComponent},
+      { path: 'Retail/Notation/consulter-notation/:id', component: ConsulterNotationComponent },
       { path: 'Retail/Notation/consulter-notation', component: ConsulterNotationComponent },
-      { path: 'Retail/Notation/Notation/noter-client', component: NoterClientComponent },
-
+      { path: 'Retail/Notation/Notation/noter-client/:id', component: NoterClientComponent },
+      { path: 'Retail/Notation/modifier-notation', component: ModifierNotationComponent },
+      { path: 'updateNotation/:id',component: UpdateNotationComponent},
+      { path: 'Retail/Notation/list-clients', component: ListeClientNotationComponent },
+      { path: 'Retail/Notation/list-clients-notation', component: LiClientNotationComponent },
+      { path: 'Retail/Notation/getNotationInProgress/:id', component: NotationInProgressUpdateComponent },
+      { path: 'Retail/Notation/DetailsNotation/:id', component: DetailsNotationComponent},
+      
+      { path: 'update-profile', component: UpdateProfileComponent },
+      { path: 'settings', component: BodySettingsComponent},
+      { path: 'update-pwd', component: UpdataPwdComponent},
+      { path: 'credit-decision', component: CreditDecisionComponent }
     
     ]
   },

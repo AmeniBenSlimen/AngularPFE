@@ -1,0 +1,47 @@
+.lamp {
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.glowing {
+    animation: glowing 1.5s infinite;
+}
+
+.glowing-text {
+    color: black; /* Changez ici pour la couleur de votre choix */
+    animation: glowing-text 1.5s infinite; /* Si vous ne voulez pas d'animation sur le texte, retirez cette ligne */
+}
+
+@keyframes glowing {
+    0% {
+        background-color: green;
+        box-shadow: 0 0 5px green, 0 0 10px green, 0 0 15px green;
+    }
+    50% {
+        background-color: lightgreen;
+        box-shadow: 0 0 10px lightgreen, 0 0 20px lightgreen, 0 0 30px lightgreen;
+    }
+    100% {
+        background-color: green;
+        box-shadow: 0 0 5px green, 0 0 10px green, 0 0 15px green;
+    }
+}
+
+/* Si vous voulez garder l'animation sur le texte, mais avec une autre couleur */
+@keyframes glowing-text {
+    0% {
+        color: black; /* Changez ici si vous voulez une autre couleur */
+        text-shadow: none; /* Pas d'ombre pour le texte */
+    }
+    50% {
+        color: darkgray; /* Changez ici pour une couleur différente à la moitié de l'animation */
+        text-shadow: none; /* Pas d'ombre pour le texte */
+    }
+    100% {
+        color: black; /* Retour à la couleur initiale */
+        text-shadow: none; /* Pas d'ombre pour le texte */
+    }
+}

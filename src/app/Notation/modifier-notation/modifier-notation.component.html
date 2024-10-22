@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modifier Notation</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <app-menu-retail></app-menu-retail>
+    <br>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Modifier Notation</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID Notation</th>
+                  <th>Note</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let notation of notations">
+                  <td>{{ notation.id }}</td>
+                  <td>{{ notation.note }}</td>
+                  <td>
+                    <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/updateNotation', notation.id]">
+                      <img src="../assets/images/see.png" alt="update" />
+                    </button>
+
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 220px;"></div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+

@@ -32,10 +32,10 @@
     border-radius: 5px;
     margin-right: 20px;
   ">
-    <!-- Button to add variable for the current model -->
     <button class="button delete-button" (click)="addVariable(modele!.id)" style="margin-left: 1100px;">
-      <img style="height: 30px;width: 30px;" src="../assets/images/plus.png" alt="Add Variable">
+      <img style="height: 30px; width: 30px;" src="../assets/images/plus.png" alt="Add Variable">
     </button>
+    
 
     <div style="font-size: 16px;font-family: serif">
       <div class="card-body">
@@ -78,9 +78,6 @@
             </tbody>
           </table>
           <br>
-          <div *ngIf="ponderationValue !== undefined">
-            <h3 style="font-size: 16px;font-family: serif">Valeur de la Pondération : {{ ponderationValue }}</h3>
-          </div>
           <div class="text-center">
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>

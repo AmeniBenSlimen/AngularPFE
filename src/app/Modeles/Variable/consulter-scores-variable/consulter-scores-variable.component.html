@@ -40,7 +40,7 @@
       <div class="card-body">
         <br>
         <div *ngIf="variable">
-          <h3 style="font-size: 16px;font-family: serif">Détails de la Question N° : {{ variable.id }}</h3>
+          <h3 style="font-size: 16px;font-family: serif">Détails de la Variable N° : {{ variable.id }}</h3>
           <table>
             <thead>
               <tr>
@@ -71,7 +71,7 @@
             </tbody>
           </table>
           <br>
-          <h3 style="font-size: 16px;font-family: serif">Liste des Choix</h3>
+          <h3 style="font-size: 16px;font-family: serif">Liste des scores</h3>
           <table>
             <thead>
               <tr>
@@ -116,10 +116,7 @@
             </tbody>
           </table>
           <br>
-          <!-- Affichage de la valeur calculée de la pondération -->
-          <div *ngIf="ponderationValue !== undefined">
-            <h3 style="font-size: 16px;font-family: serif">Valeur de la Pondération : {{ ponderationValue }}</h3>
-          </div>
+        
         </div>
       </div>
     </div>

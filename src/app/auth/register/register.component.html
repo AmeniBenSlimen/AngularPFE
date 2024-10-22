@@ -47,89 +47,85 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Registration</span>
+              <span class="padding-bottom--15">Inscription</span>
               <form id="stripe-login" *ngIf="!isLogedIn" [formGroup]="form" (ngSubmit)="onSubmit()"
              >
              <div class="field padding-bottom--24">
-              <label for="username">Username</label>
+              <label for="username">Nom d'utilisateur</label>
               <input type="text" name="username" formControlName="username" #username required>
               <div class="alert alert-danger" role="alert" *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['required']">
-              Username is required!
+                Le nom d'utilisateur est requis !
             </div>
             </div>
             <div class="field padding-bottom--24">
-              <label for="fullname">Fullname</label>
+              <label for="fullname">Nom et prénom</label>
               <input type="text" name="fullname" formControlName="fullname"  required #fullname>
               <div
               class="alert alert-danger" role="alert" *ngIf="form.get('fullname')?.touched && form.get('fullname')?.errors?.['required']">
-              Fullname is required!
+              Le nom complet est requis !
             </div>
             </div>
                   <div class="field padding-bottom--24">
                     <label for="email">Email</label>
                     <input type="email" name="email" formControlName="email" #email required>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
-                      Email is required!
+                      Email est requis !
                     </div>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
-                      Please enter a valid email address.
-                    </div>
+                      S'il vous plaît, mettez une adresse email valide.                    </div>
                   </div>
                   <div class="field padding-bottom--24">
-                    <label for="phone">Phone</label>
+                    <label for="phone">Téléphone</label>
                     <input type="text" name="phone" formControlName="phone" minlength="8" #phone required>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('minlength')">
-                      Phone must be 8 numbers
-                    </div>
+                      Le téléphone doit comporter 8 chiffre                    </div>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('phone')?.touched && form.get('phone')?.errors?.['required']">Phone is required!</div>
                     
                     
 
                   </div>
                   <div class="field padding-bottom--24">
-                    <label for="password">password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" name="password" formControlName="password" #password minlength="8" required>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
-                      Password is required!
-                    </div>
+                      Le mot de passe est requis !                    </div>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('minlength')">
-                      Password must be minimum 8 characters
-                    </div>
+                      Le mot de passe doit contenir au minimum 8 caractères                    </div>
           
                   
                   </div>
 
                   <div class="field padding-bottom--24">
-                    <label for="password">Confirm password</label>
+                    <label for="password">Confirmez le mot de passe</label>
                     <input type="password" name="confirmPassword" formControlName="confirmPassword" #confirmPassword required>
                     <div class="alert alert-danger" role="alert" *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.errors?.['required']">
-                      Confirm password is required
+                      Le mot de passe est requis ! 
                     </div>
                   <div class="alert alert-danger" role="alert" *ngIf="form.get('confirmPassword')?.errors?.['mismatch'] && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">
-                    Password do not match please verify!
-                  </div>
+                    Le mot de passe ne correspond pas, veuillez vérifier !
+                                    </div>
 
 
                   
                   </div>
                 
                   <div class="field padding-bottom--24">
-                    <input type="submit" name="submit" value="Register" style="color: #5469d4;font-weight: bold;">
+                    <input type="submit" name="submit" value="S'inscrire" style="color: #5469d4;font-weight: bold;">
                     <div class="form-group">
                       <div
                         class="alert alert-danger"
                         role="alert"
                         *ngIf=" isLoginFailed"
                       >
-                        Exesting Username
-                      </div>
+                      Nom d'utilisateur existant
+                                          </div>
                     </div>
                   </div>
               </form>
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span><a routerLink="/login">Sign in</a></span>
+            <span><a routerLink="/login">Se connecter</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">© Stackfindover</a></span>
               <span><a href="#">Contact</a></span>

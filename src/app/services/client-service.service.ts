@@ -12,6 +12,9 @@ export class ClientServiceService {
   public getClients(){
     return this.http.get<Client[]>(`${this.BasicUrl}/getAllClients`);
   }
+  public getClientWithScore(){
+    return this.http.get<Client[]>(`${this.BasicUrl}/getClientWithScore`);
+  }
   public getClientId(id: number): Observable<Client> {
     const url = `${this.BasicUrl}/getClientById/${id}`;
     return this.http.get<Client>(url);

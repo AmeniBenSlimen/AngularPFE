@@ -71,22 +71,19 @@
                       <td style="text-align: center; vertical-align: middle;"><button class="button delete-button" (click)="listeVariableModele(m.id)"><img style="height: 23px;width: 23px;" src="../assets/images/details.png" alt="Delete"></button></td>
                       <!--<td style="text-align: center; vertical-align: middle;"><button class="button delete-button" (click)="addVariable(m.id)"><img style="height: 23px;width: 23px;" src="../assets/images/plus.png" alt="Delete"></button></td>-->
                       <!--<td style="text-align: center; vertical-align: middle;"><button class="button delete-button" (click)="addVariable(m.id)"><img style="height: 23px;width: 23px;" src="../assets/images/see.png" alt="Delete"></button></td>-->
-
                       <td style="text-align: center; vertical-align: middle;">
-                        
                         <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch"
-                            [id]="'flexSwitchCheck' + m.id"
-                            [checked]="m.used"
-                            (change)="toggleUsed(m)">
-                          <label class="form-check-label" [for]="'flexSwitchCheck' + m.id">
-                          </label>
+                            <input class="form-check-input" type="checkbox" role="switch"
+                                   [id]="'flexSwitchCheck' + m.id"
+                                   [(ngModel)]="m.used"
+                                   (ngModelChange)="toggleUsed(m)">
+                            <label class="form-check-label" [for]="'flexSwitchCheck' + m.id"></label>
                         </div>
-                      </td>
+                    </td>
                     </tr>
                   </tbody>
                 </table>
-                                  <div class="text-center">
+              <div class="text-center">
                       <pagination-controls (pageChange)="p = $event"></pagination-controls>
                   </div>
                   </div>

@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { PrivilegeService } from 'src/app/services/privilege.service';
+import { TokenstorageService } from 'src/app/services/tokenstorage.service';
 
 @Component({
   selector: 'app-body-dashboard',
@@ -15,14 +16,19 @@ import { PrivilegeService } from 'src/app/services/privilege.service';
 export class BodyDashboardComponent implements OnInit{
   menus: any[] = [];
   user: User = new User();
-  roles: Roles[] = [];
+  roles: string[] = [];
   showAdminBoard = false;
   AuthUserSub!: Subscription;
   privileges : Privilege[]=[];
-
-  constructor(public authService: AuthService, private menuService: MenuService,private pservice:PrivilegeService) {}
+  accessAdmin : boolean = false ;
+  accessManager : boolean = false ;
+  accessUser : boolean = false ;
+  constructor(public authService: AuthService, private menuService: MenuService,private pservice:PrivilegeService, private tokenStorageService:TokenstorageService) {}
 
   ngOnInit(): void {
+    this.canAdminAccess();
+    this.canManagerAccess();
+    this.canUserAccess()
     this.menuService.getModuls().subscribe({
       next: (data) => {
         this.menus = data
@@ -32,7 +38,36 @@ export class BodyDashboardComponent implements OnInit{
       }
     });
   }
+  canAdminAccess()
+  {
+    this.roles = this.tokenStorageService.getRoles() ;
+    if(this.roles.includes('ROLE_ADMIN')){
+          this.accessAdmin = true ;
+    } else {
+          // this.router.navigate(['home'])
+    }
+  }
 
+  
+  canManagerAccess()
+  {
+    this.roles = this.tokenStorageService.getRoles() ;
+    if(this.roles.includes('ROLE_MANAGER')){
+          this.accessManager = true ;
+    } else {
+          // this.router.navigate(['home'])
+    }
+  }
+  
+  canUserAccess()
+  {
+    this.roles = this.tokenStorageService.getRoles() ;
+    if(this.roles.includes('ROLE_USER')){
+          this.accessUser = true ;
+    } else {
+          // this.router.navigate(['home'])
+    }
+  }
   handleLogout() {
     this.authService.logout();
   }

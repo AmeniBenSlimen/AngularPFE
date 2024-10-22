@@ -45,9 +45,9 @@ public getSoftDeleteModels(){
 SearchByNameAndAnnee(name:any,annee:any){
   return this.http.get<Modele[]>(`${this.BasicUrl}/searchByNameAndAnnee?name=${name}&annee=${annee}`);
  }
-ModeleUsed(id: number): Observable<Modele> {
-  return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, null);
-}
+ /*ModeleUsed(id: number,modele: Modele): Observable<Modele> {
+  return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, modele);
+}*/
 getModeleUsed(): Observable<Modele[]> {
   return this.http.get<Modele[]>(`${this.BasicUrl}/ModelUsed`);
 }
@@ -55,4 +55,11 @@ valeurPonderer(modeleId: number): Observable<Modele> {
   const url = `${this.BasicUrl}/ponderationModele/${modeleId}`;
   return this.http.get<Modele>(url);
 }
+ModeleUsed(id: number, used: boolean): Observable<Modele> {
+  return this.http.put<Modele>(`${this.BasicUrl}/${id}/ModeleUsed`, { used });
+}
+
+
+
+
 }

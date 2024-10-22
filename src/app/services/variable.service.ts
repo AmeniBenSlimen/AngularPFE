@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Variable } from '../models/variable';
 import { Observable } from 'rxjs';
 import { Score } from '../models/score';
+import { Notation } from '../models/notation';
 
 @Injectable({
   providedIn: 'root'
@@ -46,10 +47,39 @@ public getVariablesModele(id:any){
 public getTerminated(){
   return this.http.get<any>(`${this.BasicUrl}/done`);
 }
-public saveResponses(responses: any){
-  return this.http.post<any>(`${this.BasicUrl}/notation`,responses);
+public saveResponses(responses: any) {
+  return this.http.post<any>(`${this.BasicUrl}/notation`, responses);
 }
-public sendResponses(responses: any){
-  return this.http.post<any>(`${this.BasicUrl}/note`,responses);
+public sendResponses(clientId: number, responses: any): Observable<any> {
+  return this.http.post<any>(`${this.BasicUrl}/notation/${clientId}`, responses);
 }
+public finaliseNote(clientId: number, responses: any): Observable<any> {
+  return this.http.post<any>(`${this.BasicUrl}/finaliseNote/${clientId}`, responses);
+}
+public getInProgress(){
+  return this.http.get<any>(`${this.BasicUrl}/inProgress`);
+}
+public getAllVariableResponses(notationId:any){
+  return this.http.get<any[]>(`${this.BasicUrl}/variableResponses/${notationId}`);
+}
+public updateResponses(responses: any){
+  return this.http.put<any>(`${this.BasicUrl}/notation`,responses);
+}
+public getNotationById(id: number): Observable<any> {
+
+  const url = `${this.BasicUrl}/variableResponses/${id}`;
+  return this.http.get<any>(url);
+}
+public getAllVariablesId(clientId: any){
+  return this.http.get<Variable[]>(`${this.BasicUrl}/getAllVariables/${clientId}`);
+}
+public finalizeNotation(notationId: number) {
+  return this.http.put<any>(`${this.BasicUrl}/notation/${notationId}/finalize`, {});
+}
+
+
+getAllClientsWithNotationsInProgress(id: number): Observable<Notation[]> {
+  return this.http.get<Notation[]>(`${this.BasicUrl}/getNotationById/${id}`);
+}
+
 }

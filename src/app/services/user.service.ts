@@ -37,7 +37,7 @@ export class UserService {
   removeRoleFromUser(userId: number, roleId: number) {
     return this.http.delete(`${this.Url}/user/${userId}/roles/${roleId}`);
   }
-  updateUser(id:any,user:any){
+ updateUser(id:any,user:any){
     return this.http.put<User>(`${this.Url}/updateUser/${id}`,user);
  }
  deleteUser(id:any){
@@ -49,5 +49,13 @@ toggleUserStatus(id: number, status: 'activate' | 'deactivate'): Observable<any>
   const apiUrl = `${this.apiUrl}/${id}/${status}`;
   return this.http.put(apiUrl, {}, { responseType: 'text' });
 }
-
+updateUserProfile(userId: number, user: User): Observable<User> {
+  return this.http.put<User>(`${this.apiUrl}/update-profile/${userId}`, user);
+}
+getUserById(id: number): Observable<User> {
+  return this.http.get<User>(`${this.apiUrl}/getByUserId/${id}`);
+}
+updatePassword(data: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/update-profile`, data);
+}
 }

@@ -1,0 +1,121 @@
+<app-menu-update-profile></app-menu-update-profile>
+<div class="container mt-5" style="font-size: 16px; font-family: serif;margin-left: 570px;">
+  <div class="card shadow-sm w-50">
+    <div class="card-header form-label">
+      <h3 class="mb-0" style=" font-family: serif">Mettre à jour le profil</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control"
+              placeholder="Entrez votre nom d'utilisateur"
+            />
+            <div
+              *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched"
+              class="text-danger"
+            >
+              <small>Nom d'utilisateur requis.</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="fullname" class="form-label">Prénom d'utilisateur</label>
+            <input
+              type="text"
+              id="fullname"
+              formControlName="fullname"
+              class="form-control"
+              placeholder="Entrez votre prénom"
+            />
+            <div
+              *ngIf="userForm.get('fullname')?.invalid && userForm.get('fullname')?.touched"
+              class="text-danger"
+            >
+              <small>Prénom d'utilisateur requis.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="Entrez votre email"
+            />
+            <div
+              *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+              class="text-danger"
+            >
+              <small>Email requis et doit être valide.</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="phone" class="form-label">Téléphone</label>
+            <input
+              type="text"
+              id="phone"
+              formControlName="phone"
+              class="form-control"
+              placeholder="Entrez votre numéro de téléphone"
+            />
+            <div
+              *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched"
+              class="text-danger"
+            >
+              <small>Téléphone requis.</small>
+            </div>
+          </div>
+        </div>
+
+       <!--  <div class="mb-3">
+          <label for="password" class="form-label">Nouveau mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="Entrez un nouveau mot de passe"
+          />
+          <div
+            *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"
+            class="text-danger"
+          >
+            <small>Le mot de passe doit comporter au moins 6 caractères.</small>
+          </div>
+        </div> -->
+
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            [disabled]="userForm.invalid"
+          >
+            Mettre à jour
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="isUpdateSuccess" class="alert alert-success mt-3">
+        <i class="fas fa-check-circle"></i> Profil mis à jour avec succès !
+      </div>
+
+      <div *ngIf="isUpdateError" class="alert alert-danger mt-3">
+        <i class="fas fa-exclamation-circle"></i> Une erreur est survenue lors de la
+        mise à jour du profil.
+      </div>
+    </div>
+  </div>
+</div>
+<div  style="margin-bottom: 242px;"></div>
+<div class="page-wrapper">
+  <app-footer></app-footer>
+</div>

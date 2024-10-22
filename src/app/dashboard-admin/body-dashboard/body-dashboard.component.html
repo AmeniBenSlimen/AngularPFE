@@ -57,21 +57,7 @@
                 </a
               >
             </li>
-           
           
-           <!--- <li class="sidebar-item" *ngFor="let m of menus">
-              <a class="sidebar-link has-arrow waves-effect waves-dark" (click)="m.expanded = !m.expanded" [attr.aria-expanded]="m.expanded ? 'true' : 'false'" style="text-decoration: none;font-family: serif;">
-                  <i class="mdi mdi-face"></i>
-                  <span class="hide-menu">{{m?.cdModul}}</span>
-                  <span class="ml-auto" *ngIf="m.expanded"></span>
-                  <span class="ml-auto" *ngIf="!m.expanded"></span>
-              </a>
-              <ul *ngIf="m.expanded">
-                  <li class="sidebar-item" *ngFor="let mod of m.menuDtos">
-                      <a [routerLink]="mod.routerLink" class="sidebar-link" style="margin-left: 25px;text-decoration: none;font-family: serif;">{{mod.libmenu}}</a>
-                  </li>
-              </ul>
-          </li>-->
 
           </ul>
         </nav>
@@ -101,11 +87,11 @@
         <div class="container-fluid" style="width: 100%;">
          
           <div class="row el-element-overlay">
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser && accessAdmin">
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/retail.png" alt="user" />
+                    <img src="../assets/images/big/retail.jpg" alt="user" style="height: 263px;"/>
                     <div class="el-overlay">
                       <ul class="list-style-none el-info">
                         <li class="el-item">
@@ -117,7 +103,7 @@
                               image-popup-vertical-fit
                               el-link
                             "
-                            href="../assets/images/big/retail.png"
+                            href="../assets/images/big/retail.jpg"
                             ><i class="mdi mdi-magnify-plus"></i
                           ></a>
                         </li>
@@ -138,11 +124,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="authService.isAdmin()">
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser"> 
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img4.jpg" alt="user" />
+                    <img src="../assets/images/big/hab.png" alt="user" style="height: 263px;"/>
                     <div class="el-overlay">
                       <ul class="list-style-none el-info">
                         <li class="el-item">
@@ -154,7 +140,7 @@
                               image-popup-vertical-fit
                               el-link
                             "
-                            href="../assets/images/big/img4.jpg"
+                            href="../assets/images/big/hab.png"
                             ><i class="mdi mdi-magnify-plus"></i
                           ></a>
                         </li>
@@ -174,11 +160,12 @@
               </div>
             </div>
             
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
+            
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser && accessManager">
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img3.jpg" alt="user" />
+                    <img src="../assets/images/big/modele.jpg" alt="user" />
                     <div class="el-overlay">
                       <ul class="list-style-none el-info">
                         <li class="el-item">
@@ -190,7 +177,7 @@
                               image-popup-vertical-fit
                               el-link
                             "
-                            href="../assets/images/big/img3.jpg"
+                            href="../assets/images/big/modele.jpg"
                             ><i class="mdi mdi-magnify-plus"></i
                           ></a>
                         </li>
@@ -208,58 +195,14 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
-              <div class="card">
-                <div class="el-card-item">
-                  <div class="el-card-avatar el-overlay-1">
-                    <img src="../assets/images/big/img5.jpg" alt="user" />
-                    <div class="el-overlay">
-                      <ul class="list-style-none el-info">
-                        <li class="el-item">
-                          <a
-                            class="
-                              btn
-                              default
-                              btn-outline
-                              image-popup-vertical-fit
-                              el-link
-                            "
-                            href="../assets/images/big/img5.jpg"
-                            ><i class="mdi mdi-magnify-plus"></i
-                          ></a>
-                        </li>
-                        <li class="el-item">
-                          <a
-                            class="btn default btn-outline el-link"
-                            href="javascript:void(0);"
-                            ><i class="mdi mdi-link"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="el-card-content">
-                    <h4 class="mb-0">Project title</h4>
-                  </div>
-                </div>
-              </div>
+              <div style="margin-bottom: 110px;"></div>
             </div>
-            
-           
-           
-            
-            
-           
           </div>
-        
         </div>
-      
       </div>
       <div class="page-wrapper">
         <app-footer></app-footer>
     </div>
     </div>
-   
-    
-
   </body>
 </html>

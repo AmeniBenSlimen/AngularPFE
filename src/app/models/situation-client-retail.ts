@@ -56,4 +56,5 @@ export class SituationClientRetail {
     variableLibre5?:String;
     variableLibre6?:String;
     variableLibre7?:String;
+    [key: string]: any;
 }

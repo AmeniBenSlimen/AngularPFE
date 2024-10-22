@@ -1,3 +1,5 @@
+import { Notation } from "./notation";
+
 export class Client {
     
 id?:number;
@@ -23,4 +25,6 @@ salaireDomicile?:number;
 dateEmbauche?:Date;
 newProfessionCode?:number; 
 newModelUBCI?:String;
+  //notations: boolean;
+  notations?: Notation[];
 }

@@ -1,0 +1,74 @@
+<app-menu-update-profile></app-menu-update-profile>
+<div class="container mt-5" style="font-size: 16px; font-family: serif;margin-left: 570px;">
+    <div class="card shadow-sm w-50">
+      <div class="card-header form-label">
+        <h3 class="mb-0" style=" font-family: serif">Mettre à jour le mot de passe</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+  
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+            <input
+              type="password"
+              id="newPassword"
+              formControlName="newPassword"
+              class="form-control"
+              placeholder="Entrez un nouveau mot de passe"
+            />
+            <div
+              *ngIf="passwordForm.get('newPassword')?.invalid && passwordForm.get('newPassword')?.touched"
+              class="text-danger"
+            >
+              <small>Le mot de passe doit comporter au moins 6 caractères.</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmer le nouveau mot de passe</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              class="form-control"
+              placeholder="Confirmez le nouveau mot de passe"
+            />
+            <div
+              *ngIf="passwordForm.get('confirmPassword')?.errors?.['mismatch'] && passwordForm.get('confirmPassword')?.touched"
+              class="text-danger"
+            >
+              <small>Les mots de passe ne correspondent pas.</small>
+            </div>
+            <div
+              *ngIf="passwordForm.get('confirmPassword')?.invalid && passwordForm.get('confirmPassword')?.touched && !passwordForm.get('confirmPassword')?.errors?.['mismatch']"
+              class="text-danger"
+            >
+              <small>Confirmation du mot de passe requise.</small>
+            </div>
+          </div>
+  
+          <div class="text-center">
+            <button
+              type="submit"
+              class="btn btn-primary w-100" style="background-color: blue;"
+              [disabled]="passwordForm.invalid"
+            >
+              Mettre à jour le mot de passe
+            </button>
+          </div>
+        </form>
+  
+        <div *ngIf="isUpdateSuccess" class="alert alert-success mt-3">
+          <i class="fas fa-check-circle"></i> Mot de passe mis à jour avec succès !
+        </div>
+  
+        <div *ngIf="isUpdateError" class="alert alert-danger mt-3">
+          <i class="fas fa-exclamation-circle"></i> Une erreur est survenue lors de la mise à jour du mot de passe.
+        </div>
+      </div>
+    </div>
+</div>
+<div style="margin-bottom: 242px;"></div>
+<div class="page-wrapper">
+    <app-footer></app-footer>
+</div>

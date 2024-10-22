@@ -43,19 +43,19 @@ export class ListeClientNotationComponent implements OnInit {
     });
   }
 
-  navigateToModele(clientId: number): void {
-    this.modeleService.getModeleUsed().subscribe({
-      next: (modeles: Modele[]) => {
-        const modele = modeles.find((m: Modele) => m.used === true);
-        if (modele) {
-          this.router.navigate(['/admin/Retail/ListeVariableModele', modele.id]);
+  navigateToNotationClient(clientId: number): void {
+    this.clientService.getClientId(clientId).subscribe({
+      next: (client: Client) => {
+        if (client) {
+          this.router.navigate(['/admin/Retail/Notation/Notation/noter-client', client.id]);
         } else {
-          console.error('No modele with used=true found');
+          console.error('Client not found');
         }
       },
       error: (error) => {
-        console.error('Error fetching modeles used:', error);
+        console.error('Error fetching client:', error);
       }
     });
   }
+  
 }

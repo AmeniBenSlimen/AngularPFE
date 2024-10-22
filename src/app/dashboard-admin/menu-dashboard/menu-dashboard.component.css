@@ -10,6 +10,8 @@ a:hover {
     color: #007bff;
   }
   .user-name {
-    color: black; /* Change this to any color that contrasts with the background */
+    color: black; 
   }
-  
+    .navbar-custom {
+        background-color: #0F265B !important; 
+    }

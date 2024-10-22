@@ -1,0 +1,75 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #e9ecef;
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: #e9ecef;
+  color: #333;
+  text-align: center;
+}
+
+.table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn img {
+  height: 23px;
+  width: 23px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover img {
+  transform: scale(1.1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e9ecef;
+  color: #333;
+  border-radius: 10px;
+}

@@ -1,0 +1,15 @@
+/* Custom styles for centering */
+.custom-btn {
+    margin-right: 10px;
+  }
+  
+  /* You can adjust margins for the table */
+  .table {
+    margin: 0 auto; /* Centers the table */
+  }
+  
+  /* To add some spacing around the content */
+  .container {
+    padding: 20px; /* Adjusts spacing around the container */
+  }
+  

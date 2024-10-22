@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RoleUserComponent {
   user: User = {
-    userRoles: []
+  userRoles: []
   };
     roles : any[] = [];
 
