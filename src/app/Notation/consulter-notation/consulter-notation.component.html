@@ -33,12 +33,16 @@
             <td>{{ notation.clientId }}</td>
             <td>{{ notation.nom }}</td> 
             <td>{{ notation.note }}</td>
-            <td style="text-align: center; vertical-align: middle;">
+           <!--  <td style="text-align: center; vertical-align: middle;">
               <button class="btn btn-outline btn-sm" (click)="getNotationById(notation.id)">
                 <img style="height: 23px; width: 23px;" src="../assets/images/see.png" alt="update" title="Plus d'infos">
               </button>
+            </td> -->
+            <td style="text-align: center; vertical-align: middle;">
+              <button class="btn btn-outline btn-sm"  [routerLink]="['/admin/Retail/Notation/NotationClient', notation.clientId]">
+                <img style="height: 23px; width: 23px;" src="../assets/images/see.png" alt="update" title="Plus d'infos">
+              </button>
             </td>
-            
           </tr>
         </tbody>
       </table>

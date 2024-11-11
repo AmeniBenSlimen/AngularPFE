@@ -1,7 +1,7 @@
 .lamp {
     width: 15px;
     height: 15px;
-    background-color: #ffc107;
+    background-color: #28a745;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -17,16 +17,16 @@
 
 @keyframes glowing {
     0% {
-        background-color: #ffc107;
-        box-shadow: 0 0 5px #ffc107, 0 0 10px #ffc107, 0 0 15px #ffc107;
+        background-color: #28a745;
+        box-shadow: 0 0 5px #28a745, 0 0 10px #28a745, 0 0 15px #28a745;
     }
     50% {
-        background-color: light#ffc107;
-        box-shadow: 0 0 10px light#ffc107, 0 0 20px light#ffc107, 0 0 30px light#ffc107;
+        background-color: light#28a745;
+        box-shadow: 0 0 10px light#28a745, 0 0 20px light#28a745, 0 0 30px light#28a745;
     }
     100% {
-        background-color: #ffc107;
-        box-shadow: 0 0 5px #ffc107, 0 0 10px #ffc107, 0 0 15px #ffc107;
+        background-color: #28a745;
+        box-shadow: 0 0 5px #28a745, 0 0 10px #28a745, 0 0 15px #28a745;
     }
 }
 

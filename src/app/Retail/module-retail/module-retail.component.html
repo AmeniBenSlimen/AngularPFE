@@ -45,12 +45,14 @@
       data-boxed-layout="full"
     >
     <app-menu-retail></app-menu-retail>
+
+    
     <div class="page-wrapper">
      
       <div class="page-breadcrumb">
         <div class="row">
           <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Axely Modules</h4>
+            <h4 class="page-title">Bank Modules</h4>
             <div class="ms-auto text-end">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -67,8 +69,8 @@
      
       <div class="container-fluid" style="width: 100%;">
        
-        <div class="row el-element-overlay">
-          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" >
+        <div class="row el-element-overlay" >
+          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessAdmin && !accessUser">
             <div class="card">
               <div class="el-card-item">
                 <div class="el-card-avatar el-overlay-1">
@@ -105,7 +107,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" > 
+          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessManager && !accessUser"> 
             <div class="card">
               <div class="el-card-item">
                 <div class="el-card-avatar el-overlay-1">
@@ -142,7 +144,7 @@
           </div>
           
           
-          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" >
+          <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessManager && !accessUser" >
             <div class="card">
               <div class="el-card-item">
                 <div class="el-card-avatar el-overlay-1">
@@ -181,6 +183,9 @@
         </div>
       </div>
      
+    
+        
+    
     
       </div>
       <div class="page-wrapper">

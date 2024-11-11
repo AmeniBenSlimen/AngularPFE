@@ -12,6 +12,7 @@ import { NotationService } from 'src/app/services/notation.service';
 export class DetailsNotationComponent implements OnInit {
   notationDetails: any; // Déclare la propriété pour stocker les détails de la notation
 
+
   constructor(
     private notationService: NotationService,
     private route: ActivatedRoute

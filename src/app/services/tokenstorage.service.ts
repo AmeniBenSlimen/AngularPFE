@@ -15,6 +15,20 @@ export class TokenstorageService {
   signOut(){
     window.sessionStorage.clear();
   }
+  public getRoless(): string[] {
+    const user = this.getUser();
+    console.log('User from getUser():', user);  // Ajouter un log pour vérifier la structure de l'utilisateur
+    
+    if (user && Array.isArray(user.roles)) {
+      console.log('User roles:', user.roles);  // Afficher les rôles pour vérifier leur structure
+      return user.roles;
+    } else {
+      console.log('Roles not found or not an array');
+      return [];  // Si les rôles ne sont pas dans un tableau, retourner un tableau vide
+    }
+  }
+  
+  
   public saveToken(token : string){
     window.sessionStorage.removeItem(this.TOKEN_KEY);
     window.sessionStorage.setItem(this.TOKEN_KEY,token);

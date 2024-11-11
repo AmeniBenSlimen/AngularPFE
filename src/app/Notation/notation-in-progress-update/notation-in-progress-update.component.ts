@@ -35,6 +35,7 @@ export class NotationInProgressUpdateComponent implements OnInit {
             if (params['clientId']) {
                 this.clientId = +params['clientId']; // Récupère l'ID du client depuis la route
             }
+            
         });
     }
     
@@ -94,22 +95,22 @@ export class NotationInProgressUpdateComponent implements OnInit {
             submitResponse(): void {
                 if (this.clientId !== undefined) {
                     const responsePayload = {
+                        id: this.notationId, // Ajouter l'ID de la notation à mettre à jour
                         responses: this.responses.map(response => ({
-                            variableId: response.variable ? response.variable.id : null, // Vérifie si la variable existe
-                            response: response.response || '' // Assure que la réponse n'est pas null
-                        })), 
-                        status: "DONE"
+                            variableId: response.variable ? response.variable.id : null,
+                            response: response.response || ''
+                        })),
+                        status: 1 // Statut "finalisé" lorsque la notation est terminée
                     };
             
                     console.log('Payload envoyé au serveur:', responsePayload);
             
-                    this.variableService.finaliseNote(this.clientId, responsePayload).subscribe({
+                    this.variableService.finaliseNoteProgress(this.clientId, responsePayload).subscribe({
                         next: (data) => {
                             Swal.fire("VOTRE NOTE EST : " + data.note);
                         },
                         error: (error) => {
                             console.error("Erreur lors de la soumission :", error);
-                            console.error("Détails de l'erreur :", error.error); 
                             Swal.fire("Erreur : Impossible de soumettre la réponse. Détails : " + (error.error || "Aucun détail fourni"));
                         }
                     });
@@ -119,12 +120,4 @@ export class NotationInProgressUpdateComponent implements OnInit {
                 }
             }
             
-            
-    
-    
-    
-    
-    
-    
-    
 } 

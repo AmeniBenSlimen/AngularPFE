@@ -87,7 +87,7 @@
         <div class="container-fluid" style="width: 100%;">
          
           <div class="row el-element-overlay">
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser && accessAdmin">
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessAdmin && !accessUser">
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
@@ -124,7 +124,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser"> 
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessManager && !accessUser"> 
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">
@@ -161,7 +161,7 @@
             </div>
             
             
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" [hidden]="accessUser && accessManager">
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngIf="!accessManager && !accessUser">
               <div class="card">
                 <div class="el-card-item">
                   <div class="el-card-avatar el-overlay-1">

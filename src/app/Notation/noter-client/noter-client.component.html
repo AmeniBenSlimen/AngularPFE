@@ -19,12 +19,11 @@
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10 col-sm-12">
       
-
       <!-- Displaying Questions and Inputs -->
       <table id="zero_config" class="table table-striped table-bordered">
         <tbody>
           <tr *ngFor="let v of variables; let i = index">
-            <td class="question-title" style="font-family: Arial, sans-serif;">{{ v.description }}</td>
+            <td class="question-title" style="font-family: serif">{{ v.description }}</td>
             <td>
               <!-- ENUMERATION Type -->
               <div class="form-group" *ngIf="v.type === Type.ENUMERATION">
@@ -33,7 +32,7 @@
                   [(ngModel)]="getResponseByVariableId(v.id).response"
                   id="enumeration-{{i}}"
                   class="form-control"
-                  placeholder="Entrez une option" style="font-family: Arial, sans-serif;"
+                  placeholder="Entrez une option" style="font-family: serif"
                 />
               </div>
               <!-- DATE Type -->
@@ -42,7 +41,7 @@
                   type="date"
                   [(ngModel)]="getResponseByVariableId(v.id).response"
                   id="date-{{i}}"
-                  class="form-control" style="font-family: Arial, sans-serif;"
+                  class="form-control" style="font-family: serif"
                 />
               </div>
               <!-- NUMBER Type -->
@@ -51,7 +50,7 @@
                   type="text"
                   [(ngModel)]="getResponseByVariableId(v.id).response"
                   id="number-{{i}}"
-                  class="form-control" style="font-family: Arial, sans-serif;"
+                  class="form-control" style="font-family: serif"
                   placeholder="Entrez un nombre"
                 />
               </div>
@@ -60,7 +59,7 @@
                 <input
                   type="text"
                   [(ngModel)]="getResponseByVariableId(v.id).response"
-                  id="interval-{{i}}" style="font-family: Arial, sans-serif;"
+                  id="interval-{{i}}" style="font-family: serif"
                   class="form-control"
                   placeholder="Entrez un intervalle"
                 />
@@ -71,10 +70,24 @@
       </table>
 
       <!-- Improved Button Design -->
-      <div class="text-center mt-4">
-        <button class="btn btn-primary custom-btn" (click)="submitResponseSave()"><i class="fas fa-save"></i> Sauvegarder</button>
-        <button class="btn btn-warning custom-btn" (click)="submitResponse()"><i class="fas fa-clipboard-check"></i> Noter</button>
-        
+      <div class="text-center mt-4" style="font-family: serif">
+        <button class="btn btn-primary custom-btn" (click)="submitResponseSave()"><i class="fas fa-save"></i> Initié Note</button>
+        <button class="btn btn-warning custom-btn" (click)="submitResponse()"><i class="fas fa-clipboard-check"></i> Finalisé Note</button>
+      </div>
+
+      <!-- Affichage du résultat de l'appréciation -->
+      <div *ngIf="note !== undefined" class="appreciation-result mt-4">
+        <div class="alert" 
+             [ngClass]="{
+               'alert-success': note >= 8, 
+               'alert-warning': note >= 5 && note < 8, 
+               'alert-danger': note < 5
+             }">
+          <strong>Votre note est :</strong> {{ note }} 
+          <span *ngIf="note >= 0.8">- Félicitations, vous avez une excellente appréciation !</span>
+          <span *ngIf="note >= 0.3 && note < 0.8">- Bonne appréciation, mais peut être améliorée.</span>
+          <span *ngIf="note < 0.5">- Note faible, des améliorations sont nécessaires.</span>
+        </div>
       </div>
 
       <!-- Additional Space Before Footer -->

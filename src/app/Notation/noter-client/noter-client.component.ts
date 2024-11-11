@@ -22,6 +22,7 @@ export class NoterClientComponent  implements OnInit{
   responses: Response[] = [];
   clientId?: number;
   currentIndex: number = 0; 
+  note: number | undefined;
   constructor(private route: ActivatedRoute, private service: VariableService, private router: Router) {}
 
   ngOnInit(): void {
@@ -66,27 +67,81 @@ export class NoterClientComponent  implements OnInit{
     const variable = this.getVariableById(variableId);
     return variable ? variable.scores : [];
   }
-
   submitResponse(): void {
     if (this.clientId !== undefined) {
         const responsePayload = {
             responses: this.responses.map(response => ({
                 variableId: response.variableId,
                 response: response.response
-            })), 
-            status: "DONE" 
+            })),
+            status: "DONE"
         };
 
         console.log('Payload envoyé au serveur:', responsePayload);
 
         this.service.finaliseNote(this.clientId, responsePayload).subscribe({
             next: (data) => {
-                Swal.fire("VOTRE NOTE EST : " + data.note);
+                let appreciationMessage = '';
+                let alertIcon: 'success' | 'warning' | 'error';
+
+                switch(data.appreciation) {
+                    case 'TRES_BON':
+                        appreciationMessage = "Félicitations, vous avez une très bonne appréciation !";
+                        alertIcon = 'success';
+                        break;
+                    case 'BON':
+                        appreciationMessage = "Bonne appréciation, continuez ainsi !";
+                        alertIcon = 'success';
+                        break;
+                    case 'MOYEN':
+                        appreciationMessage = "Appréciation moyenne, des améliorations sont possibles.";
+                        alertIcon = 'warning';
+                        break;
+                    case 'FAIBLE':
+                        appreciationMessage = "Note faible, il est important de s'améliorer.";
+                        alertIcon = 'warning';
+                        break;
+                    case 'TRES_FAIBLE':
+                        appreciationMessage = "Très faible appréciation, des efforts importants sont nécessaires.";
+                        alertIcon = 'error';
+                        break;
+                    default:
+                        appreciationMessage = "Appréciation inconnue.";
+                        alertIcon = 'error';
+                        break;
+                }
+
+                Swal.fire({
+                    title: 'Résultat de l\'appréciation',
+                    html: `<strong>La note finale du client est :</strong> ${data.note}<br>${appreciationMessage}`,
+                    icon: alertIcon,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'animated fadeInDown'
+                    }
+                });
             },
             error: (error) => {
                 console.error("Erreur lors de la soumission :", error);
-                console.error("Détails de l'erreur :", error.error); 
-                Swal.fire("Erreur : Impossible de soumettre la réponse. Détails : " + (error.error || "Aucun détail fourni"));
+                console.error("Détails de l'erreur :", error.error);
+
+                // Vérifiez si l'erreur est liée à un problème de client déjà en cours (ex. déjà une notation en cours)
+                if (error.status === 409) { // Conflit: une notation est déjà en cours
+                    Swal.fire({
+                        title: "Erreur",
+                        text: "Vous devez finaliser votre note en cours avant d'en affecter une nouvelle.",
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                } else {
+                    // Erreur générique pour tout autre cas
+                    Swal.fire({
+                        title: "Erreur",
+                        text: "Impossible de soumettre la réponse. Détails : " + (error.error || "Aucun détail fourni"),
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
             }
         });
     } else {
@@ -94,7 +149,6 @@ export class NoterClientComponent  implements OnInit{
         Swal.fire("Erreur : L'ID du client est manquant.");
     }
 }
-
 
 
   submitResponseSave(): any {

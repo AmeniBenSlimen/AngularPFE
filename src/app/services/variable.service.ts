@@ -56,6 +56,9 @@ public sendResponses(clientId: number, responses: any): Observable<any> {
 public finaliseNote(clientId: number, responses: any): Observable<any> {
   return this.http.post<any>(`${this.BasicUrl}/finaliseNote/${clientId}`, responses);
 }
+public finaliseNoteProgress(clientId: number, responses: any): Observable<any> {
+  return this.http.post<any>(`${this.BasicUrl}/Progress/${clientId}`, responses);
+}
 public getInProgress(){
   return this.http.get<any>(`${this.BasicUrl}/inProgress`);
 }
@@ -76,10 +79,7 @@ public getAllVariablesId(clientId: any){
 public finalizeNotation(notationId: number) {
   return this.http.put<any>(`${this.BasicUrl}/notation/${notationId}/finalize`, {});
 }
-
-
 getAllClientsWithNotationsInProgress(id: number): Observable<Notation[]> {
   return this.http.get<Notation[]>(`${this.BasicUrl}/getNotationById/${id}`);
 }
-
 }

@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-12 d-flex no-block align-items-center">
         <div class="ms-auto text-end">
-          <nav aria-label="breadcrumb" style="margin-right: 990px">
+          <nav aria-label="breadcrumb" style="margin-right: 960px">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a routerLink="/admin/module-retail">Notation Client</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                Exporter Notation Client
+                Exporter Notation Client #{{ notationDetails.id }}
               </li>
             </ol>
           </nav>
@@ -15,10 +15,11 @@
       </div>
     </div>
   </div>
-<div class="container mt-5 p-4 shadow-lg bg-light rounded" style="margin-right: 265px;font-family: Arial, sans-serif;">
+<div class="container mt-5 p-4 shadow-lg bg-light rounded" style="margin-right: 265px;font-family: serif;">
     <div class="text-center mb-4">
-        <h2 class="text-primary font-weight-bold" style="font-family: Arial, sans-serif;">Rapport de Notation Client</h2>
+        <h2 class="text-primary font-weight-bold" style="font-family: serif;">Rapport de Notation Client</h2>
     </div>
+    <p style="margin-left: 550px;">Créé le : {{ notationDetails.createdDate | date: 'dd/MM/yyyy' }} à {{ notationDetails.createdDate | date: 'HH:mm' }}</p>
     <div class="table-responsive">
         <table class="table table-bordered bg-white shadow-sm">
             <thead class="thead-light">
@@ -31,19 +32,20 @@
                     <td><strong>ID Client:</strong> {{ notationDetails?.clientId }}</td>
                     <td><strong>Nom Client:</strong> {{ notationDetails?.nom }}</td>
                     <td><strong>Code Client:</strong> {{ notationDetails?.codeRelation }}</td>
+
                     <td class="text-right"><strong>Note:</strong> <span class="badge badge-success p-2" style="margin-left: 5px;">{{ notationDetails?.note }}</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <h4 class="text-secondary mb-3">Réponses :</h4>
+    <h4 class="text-secondary mb-3" style="font-family: serif">Réponses :</h4>
     <ul class="list-unstyled responses-list">
         <li *ngFor="let response of notationDetails?.responses" class="mb-3 p-2 border-bottom">
             <strong class="text-primary">{{ response.variable?.description }}:</strong> {{ response.response }}
         </li>
     </ul>
     <div class="text-center mt-4">
-        <button (click)="generatePDF()" class="btn btn-primary btn-lg px-5 py-2 rounded-pill shadow-sm" style="font-family: Arial, sans-serif;font-size: 14px;">
+        <button (click)="generatePDF()" class="btn btn-primary btn-lg px-5 py-2 rounded-pill shadow-sm" style="font-family: serif;font-size: 14px;">
             Télécharger PDF
         </button>
     </div>

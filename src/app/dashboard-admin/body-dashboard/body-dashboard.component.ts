@@ -26,18 +26,21 @@ export class BodyDashboardComponent implements OnInit{
   constructor(public authService: AuthService, private menuService: MenuService,private pservice:PrivilegeService, private tokenStorageService:TokenstorageService) {}
 
   ngOnInit(): void {
-    this.canAdminAccess();
-    this.canManagerAccess();
-    this.canUserAccess()
+    this.roles = this.tokenStorageService.getRoless();
+    this.accessAdmin = this.roles.includes('ROLE_ADMIN');
+    this.accessManager = this.roles.includes('ROLE_MANAGER');
+    this.accessUser = this.roles.includes('ROLE_USER');
+  
     this.menuService.getModuls().subscribe({
       next: (data) => {
-        this.menus = data
+        this.menus = data;
       },
       error: (error) => {
         console.log(error);
       }
     });
   }
+  
   canAdminAccess()
   {
     this.roles = this.tokenStorageService.getRoles() ;

@@ -1,0 +1,10 @@
+<div class="progress-container">
+  <h2>Progression de votre demande de crédit</h2>
+  <p *ngIf="progress === -1">Aucune demande de crédit trouvée.</p>
+  <div *ngIf="progress !== -1">
+    <p>Progression : {{ progress }}%</p>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="progress"></div>
+    </div>
+  </div>
+</div>

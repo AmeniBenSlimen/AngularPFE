@@ -30,7 +30,7 @@ export class Notation {
     status: 'en cours' | 'finalisé' | 'IN_PROGRESS'; // Inclure toutes les valeurs possibles
     note?: number; // Assure-toi que cette propriété est définie
     responses?: Response[];
-
+    createdDate?: Date | string;
     constructor(
         id: number,
         clientId: number,
@@ -38,7 +38,8 @@ export class Notation {
         scores: { [variableId: number]: number },
         status: 'en cours' | 'finalisé' | 'IN_PROGRESS',
         responses?: Response[],
-        note?: number
+        note?: number,
+        createdDate?: Date | string
     ) {
         this.id = id;
         this.clientId = clientId;
@@ -47,5 +48,5 @@ export class Notation {
         this.status = status;
         this.responses = responses;
         this.note = note;
-    }
+        this.createdDate = createdDate   }
 }

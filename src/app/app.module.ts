@@ -78,6 +78,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { LiClientNotationComponent } from './Notation/li-client-notation/li-client-notation.component';
 import { NotationInProgressUpdateComponent } from './Notation/notation-in-progress-update/notation-in-progress-update.component';
 import { DetailsNotationComponent } from './Notation/details-notation/details-notation.component';
+import { ConsulterResultatCreditComponent } from './Client/consulter-resultat-credit/consulter-resultat-credit.component';
+import { LesNotationClientComponent } from './Notation/les-notation-client/les-notation-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -146,6 +148,8 @@ import { DetailsNotationComponent } from './Notation/details-notation/details-no
     LiClientNotationComponent,
     NotationInProgressUpdateComponent,
     DetailsNotationComponent,
+    ConsulterResultatCreditComponent,
+    LesNotationClientComponent,
    ],
   imports: [
     BrowserModule,
